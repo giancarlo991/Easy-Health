@@ -1,0 +1,164 @@
+.sidebar {
+  width: 250px;
+  background-color: #170C23;
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* Espaço entre os itens principais e o login */
+  position: fixed;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif !important; 
+}
+
+/* Logo */
+.sidebar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.sidebar .logo span {
+  display: block;
+  color: #08F984;
+  font-size: 1.2rem;
+}
+
+/* Navegação */
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar nav ul li {
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #9D9D9D;
+  /* Cor padrão do texto */
+  cursor: pointer;
+  transition: color 0.3s;
+  /* Transição suave na cor */
+}
+
+/* Efeito hover para os itens do menu (apenas a cor das letras muda) */
+.sidebar nav ul li:hover {
+  color: #08F984;
+  /* Texto fica verde-claro no hover */
+}
+
+/* Botão de Login */
+.sidebar .login {
+  margin-top: auto;
+  /* Empurra o botão para o final da sidebar */
+  text-align: left;
+  /* Alinha o botão à esquerda */
+}
+
+.sidebar .login a {
+  display: block;
+  background-color: #08F984;
+  color: #170C23;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar .login a:hover {
+  background-color: #2F1E40;
+  color: #08F984;
+}
+
+/* Conteúdo principal */
+main {
+  margin-left: 270px;
+  /* Distância da sidebar */
+  padding: 20px;
+  color: white;
+}
+
+/* Ads Section */
+.ads {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.ad {
+  flex: 1;
+  height: 150px;
+  background-color: #58446D;
+  border-radius: 10px;
+  overflow: hidden;
+  /* Garante que o conteúdo não ultrapasse o contêiner */
+  display: flex;
+  align-items: center;
+  /* Centraliza verticalmente o conteúdo */
+  justify-content: center;
+  /* Centraliza horizontalmente o conteúdo */
+}
+
+.ad img {
+  width: 100%;
+  /* Faz a imagem ocupar toda a largura do contêiner */
+  height: 100%;
+  /* Faz a imagem ocupar toda a altura do contêiner */
+  object-fit: cover;
+  /* Corta a imagem proporcionalmente para preencher o contêiner */
+  border-radius: 10px;
+  /* Garante que as bordas da imagem respeitem o raio do contêiner */
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 20px;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  background-color: #2F1E40;
+  color: #9D9D9D;
+  border-radius: 10px;
+  font-size: clamp(0.8rem, 1vw, 1rem);
+  font-weight: 600;
+  line-height: 1.2;
+  word-wrap: break-word;
+  overflow: hidden;
+  min-height: 90px;
+  max-height: 100px;
+  cursor: pointer;
+}
+
+.action:hover {
+   background-color: #170C23;
+   color: #08F984;
+   transition: 0.32s;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+  .sidebar {
+      width: 100%;
+      height: auto;
+      position: static;
+      text-align: center;
+  }
+
+  main {
+      margin-left: 0;
+  }
+
+  .ads {
+      flex-direction: column;
+  }
+}

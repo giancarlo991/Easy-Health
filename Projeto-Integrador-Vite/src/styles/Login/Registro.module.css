@@ -1,0 +1,332 @@
+.sidebar {
+  width: 250px;
+  background-color: #170C23;
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.logo span {
+  display: block;
+  color: #08F984;
+  font-size: 1.2rem;
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+}
+
+.navItem {
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #9D9D9D;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.navItem:hover {
+  color: #08F984;
+}
+
+.main {
+  margin-left: 270px;
+  width: 100%;
+  padding: 20px;
+  color: white;
+}
+
+.formContainer {
+  
+  background-color: #170C23;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.formContainer h1 {
+  color: #08F984;
+  margin-bottom: 20px;
+}
+
+.formControl {
+  background-color: #58446D;
+  color: white;
+  border: 1px solid #9D9D9D;
+}
+
+.formControl:focus {
+  border-color: #08F984;
+  box-shadow: 0 0 5px rgba(8, 249, 132, 0.5);
+}
+
+.label {
+  color: #9D9D9D;
+}
+
+.btnPrimary {
+  background-color: #08F984;
+  color: #170C23;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btnPrimary:hover {
+  background-color: #2F1E40;
+  color: #08F984;
+}
+
+.radioGroup {
+  display: flex;
+  gap: 20px;
+  padding: 5px 0 0px 0;
+}
+
+.radioContainer {
+  position: relative;
+  padding-left: 28px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #ccc;
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+.formCheckInput {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 18px;
+  width: 18px;
+  border: 2px solid #aaa;
+  border-radius: 50%;
+  background-color: transparent;
+  box-sizing: border-box;
+}
+
+.formCheckInput:checked ~ .checkmark {
+  background-color: #00ff84;
+  border-color: #00ff84;
+}
+
+.checkmark::after {
+  content: "";
+  display: none;
+}
+
+.formCheckInput:checked ~ .checkmark::after {
+  display: block;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: white;
+}
+
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.listItem {
+  margin: 10px 0;
+}
+
+.listLink {
+  text-decoration: none;
+  color: #08F984;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.listLink:hover {
+  color: #170C23;
+}
+
+.inputError {
+  border-color: red;
+}
+.app {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  display: flex;
+}
+
+
+
+.formGroup {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup label {
+  margin-bottom: 5px;
+  color: #9D9D9D;
+}
+
+.formGroup input[type="text"],
+.formGroup input[type="email"],
+.formGroup input[type="password"],
+.formGroup input[type="tel"] {
+  background-color: #58446D;
+  color: white;
+  border: 1px solid #9D9D9D;
+  padding: 10px;
+  border-radius: 5px;
+  height: 40px;
+  margin-top: 3px;
+}
+
+.formGroup input:focus {
+  border-color: #08F984;
+  box-shadow: 0 0 5px rgba(8, 249, 132, 0.5);
+  outline: none;
+}
+
+ul li a {
+  text-decoration: none;
+  color: #08F984;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+ul{
+  list-style: none;
+  padding: 0px !important;
+}
+ul li{
+  margin-top: 10px;
+}
+
+.submitButton {
+  width: auto;
+  background-color: #08F984;
+  color: #170C23;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 8px;
+}
+
+.submitButton:hover {
+  background-color: #2F1E40;
+  color: #08F984;
+}
+
+.loginRedirect {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.loginLink {
+  color: #08F984;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.loginLink:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .main {
+    margin-left: 0;
+    padding: 10px;
+  }
+
+  .formContainer {
+    padding: 20px;
+  }
+
+  .radioGroup {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+.navSidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.loginSidebarButton {
+  display: inline-block;
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px 15px;
+  border: 2px solid #08F984;
+  border-radius: 10px;
+  color: #08F984;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.loginSidebarButton:hover {
+  background-color: #08F984;
+  color: #000;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .sidebar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .loginSidebarButton {
+    align-self: center;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+  }
+}
+

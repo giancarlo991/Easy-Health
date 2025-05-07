@@ -1,0 +1,104 @@
+
+
+.body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #00ff88;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background-color: #2c2b3d;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 400px;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: white;
+}
+
+.container h1 {
+  font-size: 20px;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+
+.container p {
+  font-size: 14px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-field {
+  width: 100%;
+  padding-right: 40px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.password-strength {
+  text-align: left;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+.password-strength.fraca {
+  font-size: 0.9rem;
+  color: red;
+}
+
+.password-strength.media {
+  font-size: 0.9rem;
+  color: orange;
+}
+
+.password-strength.forte {
+  font-size: 0.9rem;
+  color: green;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #00ff88;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+}
+
+.container button:hover {
+  background-color: #00e67a;
+}
+.container a{
+  letter-spacing: 2px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+.password-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}

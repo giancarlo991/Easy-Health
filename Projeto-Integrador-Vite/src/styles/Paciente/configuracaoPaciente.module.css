@@ -1,0 +1,137 @@
+/* configuracaoPaciente.module.css */
+
+.sidebar {
+  width: 250px;
+  background-color: #170C23;
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.logo span {
+  display: block;
+  color: #08F984;
+  font-size: 1.2rem;
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.navItem {
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #9D9D9D;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.navItem:hover {
+  color: #08F984;
+}
+
+.login {
+  margin-top: auto;
+}
+
+.login a {
+  display: block;
+  background-color: #08F984;
+  color: #170C23;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.login a:hover {
+  background-color: #2F1E40;
+  color: #08F984;
+}
+
+.main {
+  margin-left: 270px;
+  padding: 20px;
+  color: white;
+}
+
+.configHeader {
+  background-color: #170C23;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.configHeader h1 {
+  font-size: 2rem;
+}
+
+.configSection {
+  margin-bottom: 30px;
+}
+
+.configSection h3 {
+  color: #08F984;
+  height: 10px;
+}
+
+.configItem {
+  margin-bottom: 20px;
+
+}
+
+.configItem label {
+  display: block;
+  color: #000;
+  font-family: 'Poppins';
+  font-weight: bolder;
+  margin-bottom: 5px;
+}
+
+.configItem input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #9D9D9D;
+  border-radius: 8px;
+  background-color: #2F1E40;
+  color: #FFFFFF;
+}
+
+.configItem input[type="checkbox"] {
+  width: auto;
+}
+
+.actions {
+  margin-top: 20px;
+}
+
+.action {
+  padding: 10px 20px;
+  background-color: #08F984;
+  color: #170C23;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+  border: 2px solid #170C23;
+}
+
+.action:hover {
+  background-color: #2F1E40;
+  color: #08F984;
+}
