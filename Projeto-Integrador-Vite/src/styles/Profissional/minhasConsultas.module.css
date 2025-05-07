@@ -42,7 +42,7 @@
   margin-left: 250px;
   padding: 20px;
   width: calc(100% - 250px);
-  background-color: #f8f9fa;
+  background-color: #08F984;
 }
 
 .mainContent h1 {
@@ -65,7 +65,7 @@
 }
 
 .consultaCard:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .consultaCard h3 {

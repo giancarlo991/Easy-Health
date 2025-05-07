@@ -3,9 +3,9 @@ import styles from "../../styles/Paciente/configuracaoPaciente.module.css";
 import { Link } from "react-router-dom";
 
 const ConfiguracaoPaciente = () => {
-  const [email, setEmail] = useState("joao.silva@mail.com");
-  const [telefone, setTelefone] = useState("(11) 98765-4321");
-  const [endereco, setEndereco] = useState("Rua das Flores, 123");
+  const [email, setEmail] = useState("maridaAmador@saude.com");
+  const [telefone, setTelefone] = useState("(11) 99999-9999");
+  const [endereco, setEndereco] = useState("Rua das Caneleiras, 123");
   const [notificacoes, setNotificacoes] = useState(true);
 
   const handleSave = () => {
@@ -21,7 +21,7 @@ const ConfiguracaoPaciente = () => {
         </div>
         <nav>
           <ul className={styles.navList}>
-            <Link><li className={styles.navItem}>Início</li></Link>
+            <Link to="/home2"><li className={styles.navItem}>Início</li></Link>
             <Link to="/minhasConsultas"><li className={styles.navItem}>Consultas</li></Link>
             <Link to="/perfilProfissional"><li className={styles.navItem}>Perfil</li></Link>
             <li className={styles.navItem} style={{ color: "#00FF88" }}>Configurações</li>

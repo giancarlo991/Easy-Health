@@ -11,7 +11,7 @@ const PerfilProfissional = () => {
         </div>
         <nav>
           <ul>
-            <Link to=""><li className={styles.navItem}>Início</li></Link>
+            <Link to="/home2"><li className={styles.navItem}>Início</li></Link>
             <Link to="/minhasConsultas"><li className={styles.navItem}>Consultas</li></Link>
             <Link to="/perfilProfissional"><li className={styles.navItem} style={{ color: '#00FF88' }}>Perfil</li></Link>
             <Link to="/configuracaoProfissional"><li className={styles.navItem}>Configurações</li></Link>

@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../../styles/Administrador/dashboard.module.css";
+import { Link } from "react-router-dom"
 import {
   Chart as ChartJS,
   BarElement,
@@ -80,7 +81,7 @@ export default function DashboardAdmin() {
             </ul>
           </nav>
           <div className={styles.login}>
-            <a href="#">Sair</a>
+            <Link to="/login">Sair</Link>
           </div>
         </aside>
 

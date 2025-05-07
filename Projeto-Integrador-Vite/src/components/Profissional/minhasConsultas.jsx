@@ -30,17 +30,26 @@ const MinhasConsultasProfissional = () => {
   return (
     <div className={styles.container}>
       {/* Sidebar */}
-      <div className={styles.sidebar}>
-        <h2 className={styles.sidebarTitle}>Minha Conta</h2>
-        <nav>
-          <ul className={styles.navList}>
-            <Link to="/"><li className={styles.navItem}>Início</li></Link>
-            <Link to="/minhasConsultas"><li className={styles.navItem}>Consultas</li></Link>
-            <Link to="/perfilProfissional"><li className={styles.navItem}>Perfil</li></Link>
-            <li className={styles.navItem} style={{ color: "#00FF88" }}>Configurações</li>
-          </ul>
-        </nav>
-      </div>
+      <div className="sidebar">
+              <div className="logo">
+                Logo<br /><span>Easy Health</span>
+              </div>
+              <nav>
+                <ul>
+                <nav>
+                  <ul className="navList">
+                    <Link to="/home2"><li className="navItem">Início</li></Link>
+                    <Link to="/minhasConsultas"><li className="navItem" style={{ color: "#00FF88" }}>Consultas</li></Link>
+                    <Link to="/perfilProfissional"><li className="navItem">Perfil</li></Link>
+                    <Link to="/configuracaoProfissional"><li className="navItem">Configurações</li></Link>
+                  </ul>
+                </nav>
+                </ul>
+              </nav>
+              <div className="login">
+               <Link to="/login">Sair</Link>
+              </div>
+            </div>
 
       {/* Conteúdo Principal */}
       <div className={styles.mainContent}>

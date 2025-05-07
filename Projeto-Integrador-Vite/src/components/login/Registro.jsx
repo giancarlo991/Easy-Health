@@ -52,8 +52,7 @@ const Registro = () => {
         </div>
         <nav className={styles.navSidebar}>
           <ul>
-            <li><Link to="/home1">Início</Link></li>
-            <li><Link to="/home1">Configurações</Link></li>
+            <li><Link to="/home1"></Link></li>
           </ul>
           <Link to="/login" className={styles.loginSidebarButton}>
             Já tenho uma conta
