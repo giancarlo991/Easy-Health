@@ -84,7 +84,7 @@ export default function RedefinirSenha() {
       >
         As senhas não são iguais!
       </div>
-      <Link to="/login">
+      <Link to="/">
         <button>
           <a>REDEFINIR</a>
         </button>

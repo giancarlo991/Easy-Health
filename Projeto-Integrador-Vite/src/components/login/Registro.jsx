@@ -54,7 +54,7 @@ const Registro = () => {
           <ul>
             <li><Link to="/home1"></Link></li>
           </ul>
-          <Link to="/login" className={styles.loginSidebarButton}>
+          <Link to="/" className={styles.loginSidebarButton}>
             Já tenho uma conta
           </Link>
         </nav>

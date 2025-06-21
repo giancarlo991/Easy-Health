@@ -47,7 +47,7 @@ const MinhasConsultasProfissional = () => {
                 </ul>
               </nav>
               <div className="login">
-               <Link to="/login">Sair</Link>
+               <Link to="/">Sair</Link>
               </div>
             </div>
 

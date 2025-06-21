@@ -18,7 +18,7 @@ const PerfilPaciente = () => {
           </ul>
         </nav>
         <div className={styles.login}>
-          <Link to="/login">Sair</Link>
+          <Link to="/">Sair</Link>
         </div>
       </aside>
 
