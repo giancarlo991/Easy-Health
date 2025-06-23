@@ -15,10 +15,11 @@
 
 ## 🚀 Como rodar localmente
 ```bash
-git clone https://github.com/seu-usuario/easy-health.git
+git clone https://github.com/giancarlo991/Easy-Health
 cd easy-health
+cd .\Projeto-Integrador-Vite\
 npm install
-npm start
+npm run dev
 ```
 
 ## 📄 Licença
