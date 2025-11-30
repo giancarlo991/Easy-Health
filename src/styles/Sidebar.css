@@ -1,0 +1,106 @@
+/* GERAL DA SIDEBAR */
+.sidebar {
+  font-family: "Poppins";
+  width: 250px;
+  height: 100vh;
+  background-color: #FFFFFF; /* Fundo branco e limpo */
+  border-right: 1px solid #EAEAEA; /* Linha sutil para separar do conteúdo */
+  display: flex;
+  flex-direction: column;
+  padding: 20px 15px;
+  box-sizing: border-box;
+  position: fixed;
+}
+
+/* LOGO */
+.sidebar .logo {
+  font-family: "poppins";
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 40px;
+  padding: 0 15px;
+  color: #36454F; /* Cor do texto principal */
+}
+
+.sidebar .logo span {
+  display: block;
+  color: #8FBC8F; /* Verde sálvia */
+  font-size: 1.2rem;
+}
+
+/* LISTA DE NAVEGAÇÃO */
+.sidebar .navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar .navList li {
+  margin-bottom: 10px;
+}
+
+/* ITENS DE NAVEGAÇÃO (LINKS) */
+.sidebar .navItem {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #555; /* Cinza para itens inativos */
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative; /* Para o detalhe da barra lateral */
+}
+
+.sidebar .navItem:hover {
+  background-color: rgba(143, 188, 143, 0.5); /* Verde Sálvia com 10% de opacidade */
+  color: #36454F;
+}
+
+/* ESTILO DO LINK ATIVO (O MAIS IMPORTANTE!) */
+.sidebar .navItem.active {
+  color: #709670; /* Verde mais escuro para o texto ativo */
+  font-weight: 600;
+  background-color: rgba(143, 188, 143, 0.15); /* Fundo verde bem transparente */
+}
+
+/* Detalhe: Barra verde na lateral do item ativo */
+.sidebar .navItem.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60%;
+  width: 4px;
+  background-color: #8FBC8F;
+  border-radius: 0 4px 4px 0;
+}
+
+/* BOTÃO DE SAIR (LOGIN) */
+.sidebar .login {
+  margin-top: auto; /* Empurra para o final */
+  padding: 0 15px;
+}
+
+.sidebar .login a {
+  display: block;
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+
+  /* Estilo "Ghost Button" */
+  background-color: transparent;
+  border: 2px solid #8FBC8F;
+  color: #8FBC8F;
+}
+
+.sidebar .login a:hover {
+  background-color: #8FBC8F;
+  color: #FFFFFF;
+}

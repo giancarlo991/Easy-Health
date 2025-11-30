@@ -1,0 +1,205 @@
+/* src/pages/Registro/Registro.css */
+
+/* Importando uma fonte para ficar mais parecido com o design */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+  /* Cores exatas da sua imagem de login */
+  --primary-green: #8cb48f; /* O verde principal */
+  --background-beige: #f9f6f2; /* O fundo da página */
+  --white: #ffffff;
+  --text-dark: #333;
+  --text-gray: #666;
+  --border-light: #ddd;
+}
+
+/* Zerando margens e aplicando fonte */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background-color: var(--background-beige);
+}
+
+/* Container da página inteira */
+.registro-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  padding: 20px 20px 0px 20px;
+}
+
+/* Card principal */
+.registro-container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px; /* Largura do card */
+  border-radius: 15px; /* Bordas arredondadas */
+  overflow: hidden; /* Garante que os filhos respeitem as bordas */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  background-color: var(--white);
+  border: 1px solid black;
+}
+
+
+/* === PAINEL VERDE (ESQUERDA) === */
+.registro-sidebar {
+  flex: 1; /* Ocupa metade do espaço */
+  background-color: var(--primary-green);
+  color: var(--white);
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.registro-sidebar h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.registro-sidebar p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+/* Botão "fantasma" (só com borda) */
+.sidebar-btn {
+  background: transparent;
+  border: 2px solid var(--white);
+  color: var(--white);
+  padding: 10px 30px;
+  border-radius: 25px; /* Botão "pílula" */
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none; /* Para o caso de usar <Link> */
+}
+
+.sidebar-btn:hover {
+  background: var(--white);
+  color: var(--primary-green);
+}
+
+/* === FORMULÁRIO (DIREITA) === */
+.registro-form-section {
+  flex: 1; /* Ocupa a outra metade */
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--white);
+}
+
+.registro-form-section h2 {
+  color: var(--text-dark);
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: left; /* Alinhado com o formulário */
+}
+
+.form-group {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.form-group label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-gray);
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+/* Estilo dos inputs */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid black;
+  border-radius: 8px; /* Bordas um pouco mais arredondadas */
+  font-size: 1rem;
+  box-sizing: border-box; /* Essencial para o padding funcionar bem */
+}
+
+/* Linha com 2 colunas */
+.form-row {
+  display: flex;
+  gap: 15px; /* Espaçamento entre os campos */
+}
+
+/* Inputs em radio (Tipo de Perfil) */
+.profile-type label {
+  margin-bottom: 10px;
+}
+
+.radio-options {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.radio-options label {
+  margin-bottom: 0;
+  font-weight: 400;
+  color: var(--text-dark);
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.radio-options input[type="radio"] {
+  cursor: pointer;
+  /* Melhora a visibilidade do radio button */
+  transform: scale(1.1);
+  accent-color: var(--primary-green); /* Deixa o radio com a cor do tema */
+}
+
+/* Botão principal de Cadastro */
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 25px; /* Botão "pílula" */
+  background-color: var(--primary-green);
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  opacity: 0.9;
+}
+
+/* src/pages/Registro/Registro.css */
+
+/* ... (todo o seu CSS anterior) ... */
+
+
+/* NOVO: Animação para os campos condicionais */
+.conditional-fields {
+  /* Animação de "surgimento" */
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px); /* Começa um pouco acima */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Termina na posição normal */
+  }
+}

@@ -1,0 +1,14 @@
+/* src/mainLayout.css */
+body{
+  margin: 0px !important;
+}
+.layout-container {
+  display: flex; /* A mágica para deixar os itens lado a lado */
+}
+
+.page-content {
+  flex-grow: 1; /* Faz o conteúdo principal ocupar todo o espaço restante */
+  padding: 20px;
+  /* Como a sidebar é 'fixed' e tem 250px, precisamos de uma margem */
+  margin-left: 250px; 
+}

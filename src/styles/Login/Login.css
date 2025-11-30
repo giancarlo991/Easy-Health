@@ -1,0 +1,185 @@
+.login-page {
+    background-color: #F4F1EA; /* Fundo off-white, mais suave */
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* CARTÃO PRINCIPAL */
+.login-page .c1 {
+    display: flex; /* Mais flexível que grid para este layout */
+    width: 100%;
+    border: 1px solid black;
+    max-width: 1000px;
+    min-height: 600px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Garante que os cantos arredondados sejam aplicados aos filhos */
+}
+
+/* PAINEL VERDE (ESQUERDA) */
+.login-page .c11 {
+    flex-basis: 50%; /* Ocupa metade do espaço */
+    background-color: #8FBC8F; /* Seu verde como destaque */
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.login-page .c11 h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.login-page .c11 p {
+    font-size: 1.1rem;
+    margin: 20px 0;
+    opacity: 0.9;
+}
+
+.login-page .c11 hr {
+    width: 380px;
+    height: 3px;
+    background-color: #FFFFFF;
+    border: 0;
+    opacity: 0.8;
+}
+
+/* Botão secundário (ghost button) */
+.login-page .c11 button {
+    background-color: transparent;
+    border: 2px solid #FFFFFF;
+    color: #FFFFFF;
+    padding: 12px 40px;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.login-page .c11 button:hover {
+    background-color: #FFFFFF;
+    color: #8FBC8F;
+}
+
+/* FORMULÁRIO (DIREITA) */
+.login-page .login {
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px;
+    width: 100%;
+    box-sizing: border-box; /* Garante que o padding não estoure o layout */
+}
+
+.login-page .login h1 {
+    color: #36454F; /* Cinza escuro para texto, mais profissional */
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 30px 0;
+    text-align: center;
+}
+
+.login-page .login label {
+    color: #555;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.login-page .login input {
+    width: 100%;
+    height: 45px;
+    border: 1px solid #555;
+    border-radius: 8px;
+    padding: 0 15px;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    background-color: #F8F9FA;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+}
+
+.login-page .login input:focus {
+    outline: none;
+    border-color: #8FBC8F;
+    box-shadow: 0 0 0 3px rgba(143, 188, 143, 0.3);
+}
+
+.login-page .login input::placeholder {
+    color: #A9A9A9;
+}
+
+/* Botão primário */
+.login-page .login button {
+    width: 100%;
+    height: 48px;
+    background: #8FBC8F;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.login-page .login button:hover {
+    background-color: #709670; /* Um tom de verde mais escuro para o hover */
+}
+
+.login-page .esqueceu-a-senha {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-page .esqueceu-a-senha a {
+    color: #8FBC8F;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.login-page .esqueceu-a-senha a:hover {
+    color: #709670;
+}
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+    .login-page {
+        padding: 20px;
+        height: auto;
+    }
+    .login-page .c1 {
+        flex-direction: column;
+        min-height: auto;
+        margin: 0;
+    }
+    .login-page .c11 {
+        padding: 40px 20px;
+    }
+    .login-page .c11 h1 {
+        font-size: 2rem;
+    }
+    .login-page .login {
+        padding: 40px 20px;
+    }
+}
