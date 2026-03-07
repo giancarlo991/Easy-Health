@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+  --primary-green: #8cb48f; 
+  --background-beige: #f9f6f2; 
+  --white: #ffffff;
+  --text-dark: #333;
+  --text-gray: #666;
+  --border-light: #ddd;
+}
+
+/* Estilo geral da página */
+.esqueceu-senha-page {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--background-beige); /* Fundo bege claro */
+  padding: 20px;
+}
+
+/* Container que centraliza o box de recuperação */
+.esqueceu-senha-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 450px; /* Largura do card de recuperação */
+}
+
+/* Box de Recuperação de Senha */
+.reset-password-box {
+  background-color: var(--white);
+  padding: 40px;
+  border-radius: 15px; /* Bordas arredondadas */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  width: 100%; /* Ocupa a largura máxima do container */
+  border: 1px solid black;
+}
+
+.reset-password-box h2 {
+  color: var(--text-dark);
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.reset-password-box p {
+  color: var(--text-gray);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+/* Estilo do grupo de formulário (label e input) */
+.form-group {
+  margin-bottom: 20px;
+  text-align: left; /* Alinha o label à esquerda */
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-gray);
+  margin-bottom: 8px;
+}
+
+.form-group input[type="email"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid black;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  box-sizing: border-box; /* Garante que padding não estoure a largura */
+}
+
+/* Botão de Enviar */
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 25px; /* Botão "pílula" */
+  background-color: var(--primary-green);
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  opacity: 0.9;
+}
+
+/* Link para voltar ao login */
+.back-to-login-link {
+  display: block; /* Para que o margin-top funcione */
+  margin-top: 25px;
+  color: var(--primary-green); /* Cor do tema */
+  font-size: 0.9rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.back-to-login-link:hover {
+  color: var(--text-dark); /* Escurece um pouco no hover */
+}
