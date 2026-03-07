@@ -20,14 +20,12 @@ function Registro() {
     crm: ''
   });
 
-
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.id]: e.target.value
     });
   };
-
 
   const handleRadioChange = (e) => {
     setFormData({
@@ -36,7 +34,7 @@ function Registro() {
     });
   };
 
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (formData.senha !== formData.confirmarSenha) {
@@ -44,6 +42,7 @@ const handleSubmit = async (e) => {
         return;
     }
 
+    const API_BASE_URL = 'http://localhost:3000'; 
     let urlDestino = '';
     let dadosParaEnvio = {
         name: formData.nome,
@@ -56,40 +55,36 @@ const handleSubmit = async (e) => {
     };
 
     if (formData.tipoPerfil === 'profissional') {
-        // Rota corrigida conforme seu app.js
-        urlDestino = 'http://localhost:3000/api/professionals'; 
-        
-        // Adiciona campos específicos de profissional
+        urlDestino = `${API_BASE_URL}/api/professionals`; 
         dadosParaEnvio.role = 'professional';
         dadosParaEnvio.crm = formData.crm;
-        dadosParaEnvio.specialty = formData.especialidade; // Verifique se no model é specialty ou especialidade
+        dadosParaEnvio.specialty = formData.especialidade;
     } else {
-        urlDestino = 'http://localhost:3000/api/auth/register';
+        urlDestino = `${API_BASE_URL}/api/auth/register`;
         dadosParaEnvio.role = 'user';
     }
 
     try {
-        // Certifique-se que a porta é 3000 (conforme seu app.js) e não 3001
         const response = await axios.post(urlDestino, dadosParaEnvio);
         if (response.status === 201 || response.status === 200) {
             alert("Conta criada com sucesso!");
             navigate('/');
         }
     } catch (error) {
+        console.error("Erro ao cadastrar:", error);
         const mensagemErro = error.response?.data?.error || "Erro ao conectar com o servidor.";
         alert(mensagemErro);
     }
-};
+  };
+
   return (
     <div className="registro-page">
       <div className="registro-container">
-        
         <div className="registro-sidebar">
           <h2>Já tem uma conta?</h2>
           <p>Faça o login para acessar sua plataforma e cuidar da sua saúde.</p>
           <Link to="/" className="sidebar-btn">Entrar</Link>
         </div>
-
 
         <div className="registro-form-section">
           <form onSubmit={handleSubmit}>
@@ -120,7 +115,6 @@ const handleSubmit = async (e) => {
               </div>
             </div>
 
-            {/* AQUI ESTAVA O ERRO: Corrigido o value para formData.birthdate */}
             <div className="form-group">
               <label htmlFor="birthdate">Data de Nascimento</label>
               <input 
@@ -164,7 +158,6 @@ const handleSubmit = async (e) => {
               </div>
             </div>
             
-            {/* Campos Condicionais */}
             {formData.tipoPerfil === 'profissional' && (
               <div className="form-row conditional-fields">
                 <div className="form-group">
