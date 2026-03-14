@@ -117,17 +117,31 @@ body {
   text-align: left;
 }
 
-/* Estilo dos inputs */
+/* Estilo dos inputs - AGORA INCLUINDO O TYPE="DATE" */
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group input[type="tel"],
-.form-group input[type="password"] {
+.form-group input[type="password"],
+.form-group input[type="date"] {
   width: 100%;
   padding: 12px;
   border: 1px solid black;
   border-radius: 8px; /* Bordas um pouco mais arredondadas */
   font-size: 1rem;
+  font-family: 'Poppins', sans-serif; /* Garante que a fonte fique igual no date */
+  color: var(--text-dark); /* Cor do texto ao digitar a data */
   box-sizing: border-box; /* Essencial para o padding funcionar bem */
+}
+
+/* NOVO: Deixa o ícone de calendário clicável e com um efeito visual sutil */
+.form-group input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.form-group input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
 }
 
 /* Linha com 2 colunas */
@@ -181,11 +195,6 @@ body {
 .submit-btn:hover {
   opacity: 0.9;
 }
-
-/* src/pages/Registro/Registro.css */
-
-/* ... (todo o seu CSS anterior) ... */
-
 
 /* NOVO: Animação para os campos condicionais */
 .conditional-fields {
