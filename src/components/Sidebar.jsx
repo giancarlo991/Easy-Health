@@ -1,10 +1,20 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import '../styles/Sidebar.css';
 
-function Sidebar() {
+export default function Sidebar() {
+  const navigate = useNavigate();
+  const tipoPerfil = localStorage.getItem('role');
+  const userId = localStorage.getItem('userId');
+
   const getNavLinkClass = ({ isActive }) => {
     return isActive ? 'navItem active' : 'navItem';
+  };
+
+  const handleSairOuLogin = (e) => {
+    e.preventDefault();
+    localStorage.clear();
+    navigate('/');
   };
 
   return (
@@ -14,19 +24,28 @@ function Sidebar() {
       </div>
 
       <nav>
-        <ul className="navList">
-          <li><NavLink to="/home1" className={getNavLinkClass}>Início</NavLink></li>
-          <li><NavLink to="/minhasConsultas" className={getNavLinkClass}>Consultas</NavLink></li>
-          <li><NavLink to="/perfilProfissional" className={getNavLinkClass}>Perfil</NavLink></li>
-          <li><NavLink to="/configuracaoProfissional" className={getNavLinkClass}>Configurações</NavLink></li>
-        </ul>
+        {tipoPerfil === 'trainer' ? (
+          <ul className="navList">
+            <li><NavLink to="/home2" className={getNavLinkClass}>Início</NavLink></li>
+            <li><NavLink to="/minhasConsultas" className={getNavLinkClass}>Consultas</NavLink></li>
+            <li><NavLink to="/perfilProfissional" className={getNavLinkClass}>Perfil</NavLink></li>
+            <li><NavLink to="/configuracaoProfissional" className={getNavLinkClass}>Configurações</NavLink></li>
+          </ul>
+        ) : (
+          <ul className="navList">
+            <li><NavLink to="/home1" className={getNavLinkClass}>Início</NavLink></li>
+            <li><NavLink to="/agendamento" className={getNavLinkClass}>Consultas</NavLink></li>
+            <li><NavLink to="/perfilPaciente" className={getNavLinkClass}>Perfil</NavLink></li>
+            <li><NavLink to="/configuracaoPaciente" className={getNavLinkClass}>Configurações</NavLink></li>
+          </ul>
+        )}
       </nav>
 
       <div className="login">
-        <NavLink to="/">Sair</NavLink>
+        <a href="/" onClick={handleSairOuLogin}>
+          {userId === 'convidado' ? 'Login' : 'Sair'}
+        </a>
       </div>
     </div>
   );
 }
-
-export default Sidebar;

@@ -1,0 +1,194 @@
+.consultas-container {
+  padding: 40px;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.cabecalho-consultas {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+
+.cabecalho-consultas h1 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin: 0 0 10px 0;
+}
+
+.cabecalho-consultas p {
+  color: #7f8c8d;
+  margin: 0;
+}
+
+.botao-agendar {
+  background-color: #8cb48f;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.botao-agendar:hover {
+  background-color: #709670;
+}
+
+.botao-voltar {
+  background-color: transparent;
+  color: #8cb48f;
+  border: 2px solid #8cb48f;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.botao-voltar:hover {
+  background-color: #8cb48f;
+  color: white;
+}
+
+.lista-consultas {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card-consulta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.info-consulta h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.3rem;
+  color: #333;
+}
+
+.medico-nome {
+  margin: 0 0 12px 0;
+  color: #666;
+  font-size: 1rem;
+}
+
+.status-badge {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.data-consulta {
+  text-align: right;
+}
+
+.data-destaque {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0 0 5px 0;
+}
+
+.horario-destaque {
+  font-size: 1.1rem;
+  color: #8cb48f;
+  margin: 0;
+  font-weight: 500;
+}
+
+.estado-vazio {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #f9f6f2;
+  border-radius: 12px;
+  color: #666;
+}
+
+.area-busca {
+  margin-bottom: 30px;
+}
+
+.input-busca {
+  width: 100%;
+  padding: 15px 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input-busca:focus {
+  border-color: #8cb48f;
+}
+
+.grid-especialidades {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card-especialidade {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-especialidade:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+.card-especialidade h3 {
+  margin: 0 0 20px 0;
+  color: #333;
+}
+
+.botao-selecionar {
+  background-color: transparent;
+  color: #8cb48f;
+  border: 1px solid #8cb48f;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.botao-selecionar:hover {
+  background-color: #8cb48f;
+  color: white;
+}
+
+.mensagem-vazia {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #666;
+  padding: 40px;
+}

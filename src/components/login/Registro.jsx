@@ -107,9 +107,11 @@ function Registro() {
     <div className="registro-page">
       <div className="registro-container">
         <div className="registro-sidebar">
-          <h2>Já tem uma conta?</h2>
-          <p>Faça o login para acessar sua plataforma e cuidar da sua saúde.</p>
-          <Link to="/" className="sidebar-btn">Entrar</Link>
+          <div className="sidebar-fixa">
+            <h2>Já tem uma conta?</h2>
+            <p>Faça o login para acessar sua plataforma e cuidar da sua saúde.</p>
+            <Link to="/" className="sidebar-btn">Entrar</Link>
+          </div>
         </div>
 
         <div className="registro-form-section">

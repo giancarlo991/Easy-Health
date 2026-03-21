@@ -33,20 +33,27 @@ body {
 .registro-container {
   display: flex;
   width: 100%;
-  max-width: 1200px; /* Largura do card */
-  border-radius: 15px; /* Bordas arredondadas */
-  overflow: hidden; /* Garante que os filhos respeitem as bordas */
+  max-width: 1200px;
+  border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   background-color: var(--white);
   border: 1px solid black;
+  /* Removido o overflow: hidden; */
 }
 
 
 /* === PAINEL VERDE (ESQUERDA) === */
 .registro-sidebar {
-  flex: 1; /* Ocupa metade do espaço */
+  flex: 1;
   background-color: var(--primary-green);
   color: var(--white);
+  border-radius: 15px 0 0 15px; /* Arredonda só os cantos da esquerda */
+}
+
+.sidebar-fixa {
+  position: sticky;
+  top: 50vh; /* Trocado para 50vh para garantir que use a altura da tela do seu monitor */
+  transform: translateY(-50%);
   padding: 50px;
   display: flex;
   flex-direction: column;
@@ -93,6 +100,7 @@ body {
   flex-direction: column;
   justify-content: center;
   background-color: var(--white);
+  border-radius: 15px;
 }
 
 .registro-form-section h2 {

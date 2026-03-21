@@ -1,46 +1,50 @@
 import React, { useState } from 'react';
 import '../../styles/Login/Login.css';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios'; // Não esqueça de garantir que o axios está instalado (npm install axios)
+import axios from 'axios';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
-  const [erro, setErro] = useState(''); // Estado para exibir mensagens de erro do back-end
+  const [erro, setErro] = useState('');
   
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+const handleLogin = async (e) => {
     e.preventDefault();
-    setErro(''); // Limpa qualquer erro anterior da tela
+    setErro('');
 
     const API_BASE_URL = 'http://localhost:3000'; 
 
     try {
-      // Faz o POST para a rota de login enviando email e senha
       const response = await axios.post(`${API_BASE_URL}/api/auth/login`, {
         email: email,
-        password: senha // O back-end espera 'password', então traduzimos aqui
+        password: senha
       });
 
-      // Se a requisição for um sucesso (status 200)
       if (response.status === 200) {
-        // Salva o token JWT no navegador para manter o usuário logado
         localStorage.setItem('token', response.data.token);
+        localStorage.setItem('userId', response.data.user._id); 
+        localStorage.setItem('role', response.data.user.role); 
         
-        console.log('Login efetuado com sucesso!');
-        
-        // Redireciona o usuário para a tela principal (altere '/dashboard' para a sua rota real)
-        navigate('/dashboard'); 
+        if (response.data.user.role === 'trainer') {
+          navigate('/home2'); 
+        } else {
+          navigate('/home1'); 
+        }
       }
     } catch (error) {
-      console.error("Erro ao fazer login:", error);
-      // Pega a mensagem de erro exata que o seu AuthController mandou (ex: "Email e senha são obrigatórios.")
-      const mensagemErro = error.response?.data?.error || "Erro ao conectar com o servidor. O back-end está rodando?";
+      const mensagemErro = error.response?.data?.error || "Erro ao conectar com o servidor.";
       setErro(mensagemErro);
     }
   };
 
+  const handleConvidado = () => {
+    localStorage.setItem('token', 'convidado');
+    localStorage.setItem('userId', 'convidado');
+    localStorage.setItem('role', 'user'); 
+    navigate('/home1');
+  };
   return (
     <div className="login-page">
       <div className="c1">
@@ -55,13 +59,11 @@ export default function Login() {
           </div>
         </div>
 
-        {/* O formulário agora dispara a nossa função handleLogin quando enviado */}
         <form className="login" onSubmit={handleLogin}>
           <h1>Entrar</h1>
           
-          {/* Exibe a mensagem de erro em vermelho caso o login falhe */}
           {erro && (
-            <div style={{ color: '#ff4d4f', marginBottom: '15px', fontWeight: 'bold', textAlign: 'center' }}>
+            <div className="mensagem-erro">
               {erro}
             </div>
           )}
@@ -88,7 +90,11 @@ export default function Login() {
             required
           />
 
-          <button type="submit">ENTRAR</button>
+          <button type="submit" className="btn-entrar">ENTRAR</button>
+          
+          <button type="button" className="btn-convidado" onClick={handleConvidado}>
+            Entrar como Convidado
+          </button>
 
           <div className="esqueceu-a-senha">
             <Link to="/Esqueceu-a-senha">

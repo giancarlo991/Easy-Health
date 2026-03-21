@@ -1,0 +1,70 @@
+.conteudo-principal {
+  padding: 30px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.cabecalho-home h1 {
+  font-size: 28px;
+  color: #2c3e50;
+  margin-bottom: 5px;
+}
+
+.cabecalho-home p {
+  color: #7f8c8d;
+  margin-bottom: 30px;
+}
+
+.grid-resumo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.card-informativo {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.card-informativo h3 {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.dado-destaque {
+  font-size: 24px;
+  font-weight: bold;
+  color: #4CAF50;
+  margin-bottom: 5px;
+}
+
+.secao-detalhes h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.lista-atividades {
+  background-color: #fff;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+}
+
+.item-atividade {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.item-atividade:last-child {
+  border-bottom: none;
+}
+
+.item-atividade small {
+  color: #999;
+}
