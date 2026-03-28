@@ -1,60 +1,74 @@
-/* src/pages/Registro/Registro.css */
+/* =====================================================
+   Registro — Dark Premium + Roxo Elétrico
+   ===================================================== */
 
-/* Importando uma fonte para ficar mais parecido com o design */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@700;800&family=Inter:wght@400;500;600&display=swap');
 
 :root {
-  /* Cores exatas da sua imagem de login */
-  --primary-green: #8cb48f; /* O verde principal */
-  --background-beige: #f9f6f2; /* O fundo da página */
-  --white: #ffffff;
-  --text-dark: #333;
-  --text-gray: #666;
-  --border-light: #ddd;
+  --primary:       #9d11d9;
+  --primary-hover: #7d0db0;
+  --primary-light: #c158f0;
+  --bg-dark:       #0e0e14;
+  --bg-surface:    #16161f;
+  --bg-elevated:   #1e1e2e;
+  --border:        #2a2a3d;
+  --text-primary:  #f0f0ff;
+  --text-secondary:#8888aa;
 }
 
-/* Zerando margens e aplicando fonte */
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
   margin: 0;
-  background-color: var(--background-beige);
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
 }
 
-/* Container da página inteira */
+/* ── Página ── */
 .registro-page {
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 90vh;
-  padding: 20px 20px 0px 20px;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 30px 20px;
 }
 
-/* Card principal */
+/* ── Card principal ── */
 .registro-container {
   display: flex;
   width: 100%;
   max-width: 1200px;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  background-color: var(--white);
-  border: 1px solid black;
-  /* Removido o overflow: hidden; */
+  border-radius: 18px;
+  box-shadow: 0 8px 48px rgba(0,0,0,0.7), 0 0 0 1px var(--border);
+  background-color: var(--bg-surface);
+  overflow: hidden;
 }
 
-
-/* === PAINEL VERDE (ESQUERDA) === */
+/* ── Painel Esquerdo (Roxo) ── */
 .registro-sidebar {
   flex: 1;
-  background-color: var(--primary-green);
-  color: var(--white);
-  border-radius: 15px 0 0 15px; /* Arredonda só os cantos da esquerda */
+  background: linear-gradient(150deg, #9d11d9 0%, #6b0a9e 55%, #3d0060 100%);
+  color: #fff;
+  border-radius: 18px 0 0 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.registro-sidebar::before {
+  content: '';
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+  top: -60px;
+  right: -60px;
 }
 
 .sidebar-fixa {
   position: sticky;
-  top: 50vh; /* Trocado para 50vh para garantir que use a altura da tela do seu monitor */
+  top: 50vh;
   transform: translateY(-50%);
-  padding: 50px;
+  padding: 50px 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -63,102 +77,113 @@ body {
 }
 
 .registro-sidebar h2 {
+  font-family: 'Barlow', sans-serif;
   font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 15px;
+  font-weight: 800;
+  margin-bottom: 14px;
+  letter-spacing: 0.02em;
 }
 
 .registro-sidebar p {
   font-size: 1rem;
-  line-height: 1.5;
-  margin-bottom: 25px;
+  line-height: 1.6;
+  margin-bottom: 28px;
+  opacity: 0.88;
 }
 
-/* Botão "fantasma" (só com borda) */
 .sidebar-btn {
   background: transparent;
-  border: 2px solid var(--white);
-  color: var(--white);
-  padding: 10px 30px;
-  border-radius: 25px; /* Botão "pílula" */
+  border: 2px solid rgba(255,255,255,0.8);
+  color: #fff;
+  padding: 10px 32px;
+  border-radius: 50px;
+  font-family: 'Inter', sans-serif;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  text-decoration: none; /* Para o caso de usar <Link> */
+  text-decoration: none;
+  font-size: 0.95rem;
 }
 
 .sidebar-btn:hover {
-  background: var(--white);
-  color: var(--primary-green);
+  background: #fff;
+  color: var(--primary);
 }
 
-/* === FORMULÁRIO (DIREITA) === */
+/* ── Formulário ── */
 .registro-form-section {
-  flex: 1; /* Ocupa a outra metade */
-  padding: 50px;
+  flex: 1;
+  padding: 48px 44px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: var(--white);
-  border-radius: 15px;
+  background-color: var(--bg-surface);
 }
 
 .registro-form-section h2 {
-  color: var(--text-dark);
+  font-family: 'Barlow', sans-serif;
+  color: var(--text-primary);
   font-size: 1.8rem;
-  font-weight: 600;
-  margin-bottom: 20px;
-  text-align: left; /* Alinhado com o formulário */
+  font-weight: 800;
+  margin-bottom: 24px;
+  letter-spacing: 0.02em;
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 14px;
   width: 100%;
 }
 
 .form-group label {
   display: block;
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--text-gray);
-  margin-bottom: 5px;
-  text-align: left;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
-/* Estilo dos inputs - AGORA INCLUINDO O TYPE="DATE" */
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group input[type="tel"],
 .form-group input[type="password"],
-.form-group input[type="date"] {
+.form-group input[type="date"],
+.form-group select {
   width: 100%;
-  padding: 12px;
-  border: 1px solid black;
-  border-radius: 8px; /* Bordas um pouco mais arredondadas */
-  font-size: 1rem;
-  font-family: 'Poppins', sans-serif; /* Garante que a fonte fique igual no date */
-  color: var(--text-dark); /* Cor do texto ao digitar a data */
-  box-sizing: border-box; /* Essencial para o padding funcionar bem */
+  padding: 11px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-elevated);
+  color: var(--text-primary);
+  box-sizing: border-box;
+  transition: border-color 0.25s, box-shadow 0.25s;
+  outline: none;
 }
 
-/* NOVO: Deixa o ícone de calendário clicável e com um efeito visual sutil */
+.form-group input::placeholder {
+  color: #55556a;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(157,17,217,0.2);
+}
+
 .form-group input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.5);
   cursor: pointer;
-  opacity: 0.6;
-  transition: opacity 0.3s ease;
 }
 
-.form-group input[type="date"]::-webkit-calendar-picker-indicator:hover {
-  opacity: 1;
-}
-
-/* Linha com 2 colunas */
 .form-row {
   display: flex;
-  gap: 15px; /* Espaçamento entre os campos */
+  gap: 14px;
 }
 
-/* Inputs em radio (Tipo de Perfil) */
+/* Radio buttons */
 .profile-type label {
   margin-bottom: 10px;
 }
@@ -171,52 +196,48 @@ body {
 
 .radio-options label {
   margin-bottom: 0;
-  font-weight: 400;
-  color: var(--text-dark);
-  margin-right: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-right: 14px;
   cursor: pointer;
+  font-size: 0.95rem;
 }
 
 .radio-options input[type="radio"] {
   cursor: pointer;
-  /* Melhora a visibilidade do radio button */
-  transform: scale(1.1);
-  accent-color: var(--primary-green); /* Deixa o radio com a cor do tema */
+  transform: scale(1.15);
+  accent-color: var(--primary);
 }
 
-/* Botão principal de Cadastro */
+/* Botão de Cadastro */
 .submit-btn {
   width: 100%;
-  padding: 12px;
+  padding: 13px;
   border: none;
-  border-radius: 25px; /* Botão "pílula" */
-  background-color: var(--primary-green);
-  color: var(--white);
-  font-size: 1rem;
-  font-weight: 600;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #9d11d9, #7d0db0);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.08em;
   cursor: pointer;
-  transition: opacity 0.3s ease;
-  margin-top: 10px;
+  transition: all 0.3s ease;
+  margin-top: 12px;
 }
 
 .submit-btn:hover {
-  opacity: 0.9;
+  background: linear-gradient(135deg, #b520f0, #9d11d9);
+  box-shadow: 0 0 20px rgba(157, 17, 217, 0.4);
+  transform: translateY(-1px);
 }
 
-/* NOVO: Animação para os campos condicionais */
+/* Animação campos condicionais */
 .conditional-fields {
-  /* Animação de "surgimento" */
-  animation: fadeIn 0.5s ease-out;
+  animation: fadeIn 0.4s ease-out;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px); /* Começa um pouco acima */
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0); /* Termina na posição normal */
-  }
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }

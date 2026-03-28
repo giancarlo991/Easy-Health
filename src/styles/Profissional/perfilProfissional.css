@@ -1,0 +1,306 @@
+/* =====================================================
+   Perfil Profissional — Dark Premium + Roxo
+   ===================================================== */
+
+.perfil-prof-container {
+  padding: 40px;
+  font-family: 'Inter', sans-serif;
+  color: #f0f0ff;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ── Cabeçalho ── */
+.perfil-prof-cabecalho {
+  margin-bottom: 34px;
+  border-bottom: 1px solid #2a2a3d;
+  padding-bottom: 20px;
+}
+
+.perfil-prof-cabecalho h1 {
+  font-family: 'Barlow', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #f0f0ff;
+  margin: 0 0 8px 0;
+  letter-spacing: 0.02em;
+}
+
+.perfil-prof-cabecalho p {
+  color: #8888aa;
+  margin: 0;
+}
+
+/* ── Loading ── */
+.perfil-prof-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 0;
+  gap: 20px;
+  color: #8888aa;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #2a2a3d;
+  border-top-color: #9d11d9;
+  border-radius: 50%;
+  animation: girar 0.75s linear infinite;
+}
+
+@keyframes girar {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Alerta ── */
+.alerta-prof {
+  padding: 13px 18px;
+  border-radius: 8px;
+  margin-bottom: 26px;
+  font-weight: 500;
+  text-align: center;
+  font-size: 0.92rem;
+}
+
+.alerta-prof.sucesso {
+  background: rgba(34,197,94,0.12);
+  color: #22c55e;
+  border: 1px solid rgba(34,197,94,0.3);
+}
+
+.alerta-prof.erro {
+  background: rgba(239,68,68,0.12);
+  color: #ef4444;
+  border: 1px solid rgba(239,68,68,0.3);
+}
+
+/* ── Grid de Métricas ── */
+.metricas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+  margin-bottom: 32px;
+}
+
+.metrica-card {
+  background: #16161f;
+  border: 1px solid #2a2a3d;
+  border-radius: 14px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  position: relative;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+  transition: all 0.25s ease;
+}
+
+.metrica-card:hover {
+  border-color: rgba(157, 17, 217, 0.45);
+  box-shadow: 0 0 20px rgba(157, 17, 217, 0.2);
+  transform: translateY(-2px);
+}
+
+.metrica-icone {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  font-size: 1.5rem;
+  opacity: 0.2;
+}
+
+.metrica-valor {
+  font-family: 'Barlow', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #f0f0ff;
+  line-height: 1.1;
+}
+
+.metrica-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #8888aa;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ── Badges ── */
+.status-badge {
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.status-pendente  { background: rgba(245,158,11,0.15);  color: #f59e0b; }
+.status-aprovado  { background: rgba(34,197,94,0.15);   color: #22c55e; }
+.status-reprovado { background: rgba(239,68,68,0.15);   color: #ef4444; }
+
+/* ── Grid de Cards ── */
+.perfil-prof-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 28px;
+}
+
+.perfil-prof-card {
+  background-color: #16161f;
+  padding: 30px;
+  border-radius: 14px;
+  border: 1px solid #2a2a3d;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+  transition: border-color 0.25s ease;
+}
+
+.perfil-prof-card:hover {
+  border-color: rgba(157,17,217,0.3);
+}
+
+.perfil-prof-card h2 {
+  font-family: 'Barlow', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #f0f0ff;
+  margin: 0;
+}
+
+.cabecalho-editavel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.linha-divisoria {
+  border: 0;
+  height: 1px;
+  background-color: #2a2a3d;
+  margin: 18px 0;
+}
+
+.grupo-info {
+  margin-bottom: 22px;
+  display: flex;
+  flex-direction: column;
+}
+
+.grupo-info:last-child { margin-bottom: 0; }
+
+.info-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #9d11d9;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.info-valor {
+  font-size: 1rem;
+  color: #f0f0ff;
+  font-weight: 500;
+}
+
+.input-perfil {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid #2a2a3d;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: 'Inter', sans-serif;
+  color: #f0f0ff;
+  background-color: #1e1e2e;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.input-perfil::placeholder { color: #55556a; }
+
+.input-perfil:focus {
+  border-color: #9d11d9;
+  box-shadow: 0 0 0 3px rgba(157,17,217,0.2);
+}
+
+/* ── Botões ── */
+.btn-editar {
+  background-color: transparent;
+  color: #9d11d9;
+  border: 1.5px solid #9d11d9;
+  padding: 6px 16px;
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-editar:hover {
+  background-color: rgba(157,17,217,0.15);
+  box-shadow: 0 0 10px rgba(157,17,217,0.2);
+}
+
+.acoes-edicao {
+  display: flex;
+  justify-content: flex-end;
+  gap: 14px;
+  margin-top: 26px;
+}
+
+.btn-cancelar {
+  background-color: transparent;
+  color: #8888aa;
+  border: 1px solid #2a2a3d;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-cancelar:hover {
+  background-color: #1e1e2e;
+  color: #f0f0ff;
+}
+
+.btn-salvar {
+  background: linear-gradient(135deg, #9d11d9, #7d0db0);
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-salvar:hover {
+  background: linear-gradient(135deg, #b520f0, #9d11d9);
+  box-shadow: 0 0 16px rgba(157,17,217,0.4);
+  transform: translateY(-1px);
+}
+
+/* ── Visitante ── */
+.visitante-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 50px;
+  text-align: center;
+}
+
+.mensagem-convidado {
+  color: #8888aa;
+  font-size: 1rem;
+  line-height: 1.7;
+}

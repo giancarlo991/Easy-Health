@@ -20,7 +20,7 @@ export default function Sidebar() {
   return (
     <div className="sidebar">
       <div className="logo">
-        Logo<br /><span>EasyHealth</span>
+        EasyHealth<br /><span>Trainers &amp; Nutri</span>
       </div>
 
       <nav>

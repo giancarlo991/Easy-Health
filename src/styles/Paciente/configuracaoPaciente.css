@@ -1,224 +1,243 @@
+/* =====================================================
+   Configurações Paciente — Dark Premium + Roxo
+   ===================================================== */
+
 .config-container {
   padding: 40px;
-  font-family: 'Poppins', sans-serif;
-  color: #333;
-  max-width: 1000px;
+  font-family: 'Inter', sans-serif;
+  color: #f0f0ff;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
 .cabecalho-config {
-  margin-bottom: 40px;
-  border-bottom: 1px solid #eee;
+  margin-bottom: 34px;
+  border-bottom: 1px solid #2a2a3d;
   padding-bottom: 20px;
 }
 
 .cabecalho-config h1 {
+  font-family: 'Barlow', sans-serif;
   font-size: 2rem;
-  color: #2c3e50;
-  margin: 0 0 10px 0;
+  font-weight: 800;
+  color: #f0f0ff;
+  margin: 0 0 8px 0;
+  letter-spacing: 0.02em;
 }
 
 .cabecalho-config p {
-  color: #7f8c8d;
+  color: #8888aa;
   margin: 0;
 }
 
+/* ── Alerta ── */
 .alerta-config {
-  padding: 15px 20px;
+  padding: 13px 18px;
   border-radius: 8px;
-  margin-bottom: 30px;
+  margin-bottom: 26px;
   font-weight: 500;
   text-align: center;
+  font-size: 0.92rem;
+}
+
+.alerta-config.sucesso {
+  background: rgba(34,197,94,0.12);
+  color: #22c55e;
+  border: 1px solid rgba(34,197,94,0.3);
 }
 
 .alerta-config.erro {
-  background-color: #ffebee;
-  color: #c62828;
-  border: 1px solid #ffcdd2;
+  background: rgba(239,68,68,0.12);
+  color: #ef4444;
+  border: 1px solid rgba(239,68,68,0.3);
 }
 
+/* ── Grid ── */
 .grid-config {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 24px;
 }
 
+/* ── Card ── */
 .card-config {
-  background-color: #ffffff;
-  padding: 30px;
-  border-radius: 12px;
-  border: 1px solid #e0e0e0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  background-color: #16161f;
+  padding: 28px;
+  border-radius: 14px;
+  border: 1px solid #2a2a3d;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+  transition: border-color 0.25s ease;
+}
+
+.card-config:hover {
+  border-color: rgba(157,17,217,0.25);
 }
 
 .card-config.centralizado {
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 20px;
-  padding: 50px;
-}
-
-.card-config.perigo {
-  border: 1px solid #ffcdd2;
-  background-color: #fffafb;
+  gap: 18px;
 }
 
 .sessao-titulo h2 {
-  font-size: 1.3rem;
-  color: #2c3e50;
-  margin: 0 0 5px 0;
+  font-family: 'Barlow', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #f0f0ff;
+  margin: 0 0 4px 0;
 }
 
 .sessao-titulo p {
-  color: #666;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
+  color: #8888aa;
   margin: 0;
-}
-
-.texto-perigo {
-  color: #d32f2f !important;
 }
 
 .linha-config {
   border: 0;
   height: 1px;
-  background-color: #eee;
-  margin: 20px 0;
+  background-color: #2a2a3d;
+  margin: 18px 0;
 }
 
-.card-config.perigo .linha-config {
-  background-color: #ffcdd2;
-}
-
+/* ── Item de configuração ── */
 .item-config {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 25px;
+  padding: 14px 0;
+  border-bottom: 1px solid #1e1e2e;
 }
 
-.item-config:last-child {
-  margin-bottom: 0;
-}
+.item-config:last-child { border-bottom: none; }
 
 .item-info h3 {
-  font-size: 1.05rem;
-  margin: 0 0 5px 0;
-  color: #333;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #f0f0ff;
+  margin: 0 0 3px 0;
 }
 
 .item-info p {
-  font-size: 0.9rem;
-  color: #777;
+  font-size: 0.82rem;
+  color: #8888aa;
   margin: 0;
 }
 
-.texto-convidado {
-  color: #666;
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-.botao-primario {
-  background-color: #8cb48f;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.botao-primario:hover {
-  background-color: #709670;
-}
-
-.botao-secundario {
-  background-color: transparent;
-  color: #8cb48f;
-  border: 1px solid #8cb48f;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.botao-secundario:hover {
-  background-color: #8cb48f;
-  color: white;
-}
-
-.botao-perigo {
-  background-color: transparent;
-  color: #d32f2f;
-  border: 1px solid #d32f2f;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.botao-perigo:hover {
-  background-color: #d32f2f;
-  color: white;
-}
-
-/* CSS DO SWITCH (Botão de liga/desliga) */
+/* ── Toggle Switch ── */
 .switch {
   position: relative;
   display: inline-block;
-  width: 50px;
-  height: 28px;
+  width: 46px;
+  height: 26px;
   flex-shrink: 0;
 }
 
-.switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
+.switch input { opacity: 0; width: 0; height: 0; }
 
 .slider {
   position: absolute;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  transition: .4s;
+  inset: 0;
+  background-color: #2a2a3d;
+  transition: 0.3s;
 }
+
+.slider.redondo { border-radius: 26px; }
 
 .slider:before {
+  content: '';
   position: absolute;
-  content: "";
-  height: 20px;
-  width: 20px;
+  height: 18px;
+  width: 18px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #8cb48f;
-}
-
-input:checked + .slider:before {
-  transform: translateX(22px);
-}
-
-.slider.redondo {
-  border-radius: 34px;
-}
-
-.slider.redondo:before {
+  background-color: #8888aa;
+  transition: 0.3s;
   border-radius: 50%;
+}
+
+.switch input:checked + .slider {
+  background-color: rgba(157,17,217,0.35);
+}
+
+.switch input:checked + .slider:before {
+  background-color: #9d11d9;
+  transform: translateX(20px);
+  box-shadow: 0 0 8px rgba(157,17,217,0.5);
+}
+
+/* ── Botões ── */
+.botao-primario {
+  background: linear-gradient(135deg, #9d11d9, #7d0db0);
+  color: #fff;
+  border: none;
+  padding: 11px 24px;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.botao-primario:hover {
+  box-shadow: 0 0 16px rgba(157,17,217,0.4);
+  transform: translateY(-1px);
+}
+
+.botao-secundario {
+  background: transparent;
+  color: #9d11d9;
+  border: 1.5px solid #9d11d9;
+  padding: 9px 20px;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.botao-secundario:hover {
+  background: rgba(157,17,217,0.12);
+  box-shadow: 0 0 10px rgba(157,17,217,0.2);
+}
+
+/* ── Zona de Perigo ── */
+.card-config.perigo {
+  border-color: rgba(239,68,68,0.3);
+}
+
+.card-config.perigo:hover {
+  border-color: rgba(239,68,68,0.55);
+}
+
+.texto-perigo { color: #ef4444 !important; }
+
+.botao-perigo {
+  background: transparent;
+  color: #ef4444;
+  border: 1.5px solid #ef4444;
+  padding: 9px 20px;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.botao-perigo:hover {
+  background: rgba(239,68,68,0.12);
+  box-shadow: 0 0 12px rgba(239,68,68,0.25);
+}
+
+.texto-convidado {
+  color: #8888aa;
+  font-size: 1rem;
+  line-height: 1.7;
 }

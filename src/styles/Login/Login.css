@@ -1,222 +1,270 @@
+/* =====================================================
+   Login — Dark Premium + Roxo Elétrico
+   ===================================================== */
+
 .login-page {
-    background-color: #F4F1EA;
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    margin: 0;
+  background-color: #0e0e14;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
 }
 
+/* ── Card principal ── */
 .login-page .c1 {
-    display: flex;
-    width: 100%;
-    border: 1px solid black;
-    max-width: 1000px;
-    min-height: 600px;
-    background-color: #FFFFFF;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+  min-height: 600px;
+  background-color: #16161f;
+  border-radius: 20px;
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.7), 0 0 0 1px #2a2a3d;
+  overflow: hidden;
 }
 
+/* ── Painel Esquerdo (Roxo) ── */
 .login-page .c11 {
-    flex-basis: 50%;
-    background-color: #8FBC8F;
-    color: #FFFFFF;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-    text-align: center;
+  flex-basis: 50%;
+  background: linear-gradient(145deg, #9d11d9 0%, #6b0a9e 60%, #3d0060 100%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efeito de glow decorativo no painel */
+.login-page .c11::before {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 50%;
+  top: -80px;
+  right: -80px;
+}
+
+.login-page .c11::after {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 50%;
+  bottom: -60px;
+  left: -60px;
 }
 
 .login-page .c11 h1 {
-    font-size: 2.8rem;
-    font-weight: 700;
-    line-height: 1.2;
-    margin: 0;
+  font-family: 'Barlow', sans-serif;
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0;
+  position: relative;
 }
 
 .login-page .c11 p {
-    font-size: 1.1rem;
-    margin: 20px 0;
-    opacity: 0.9;
+  font-size: 1.05rem;
+  margin: 18px 0;
+  opacity: 0.85;
+  position: relative;
 }
 
 .login-page .c11 hr {
-    width: 380px;
-    height: 3px;
-    background-color: #FFFFFF;
-    border: 0;
-    opacity: 0.8;
+  width: 100%;
+  max-width: 300px;
+  height: 1px;
+  background-color: rgba(255,255,255,0.25);
+  border: 0;
+  margin: 6px auto;
+}
+
+.login-page .registro-btn {
+  position: relative;
 }
 
 .login-page .c11 button {
-    background-color: transparent;
-    border: 2px solid #FFFFFF;
-    color: #FFFFFF;
-    padding: 12px 40px;
-    border-radius: 8px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  background-color: transparent;
+  border: 2px solid rgba(255,255,255,0.8);
+  color: #fff;
+  padding: 12px 36px;
+  border-radius: 50px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .login-page .c11 button:hover {
-    background-color: #FFFFFF;
-    color: #8FBC8F;
+  background-color: #fff;
+  color: #9d11d9;
 }
 
+/* ── Painel Direito (Formulário) ── */
 .login-page .login {
-    flex-basis: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 50px;
-    width: 100%;
-    box-sizing: border-box;
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #16161f;
 }
 
 .login-page .login h1 {
-    color: #36454F;
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 0 0 30px 0;
-    text-align: center;
+  font-family: 'Barlow', sans-serif;
+  color: #f0f0ff;
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0 0 28px 0;
+  text-align: center;
+  letter-spacing: 0.02em;
 }
 
 .login-page .mensagem-erro {
-    color: #ff4d4f;
-    margin-bottom: 15px;
-    font-weight: bold;
-    text-align: center;
+  color: #ef4444;
+  background: rgba(239,68,68,0.12);
+  border: 1px solid rgba(239,68,68,0.3);
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-align: center;
 }
 
 .login-page .login label {
-    color: #555;
-    font-weight: 600;
-    font-size: 0.9rem;
-    margin-bottom: 8px;
+  color: #8888aa;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 7px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 .login-page .login input {
-    width: 100%;
-    height: 45px;
-    border: 1px solid #555;
-    border-radius: 8px;
-    padding: 0 15px;
-    margin-bottom: 20px;
-    font-size: 1rem;
-    font-family: 'Poppins', sans-serif;
-    background-color: #F8F9FA;
-    transition: border-color 0.3s, box-shadow 0.3s;
-    box-sizing: border-box;
-}
-
-.login-page .login input:focus {
-    outline: none;
-    border-color: #8FBC8F;
-    box-shadow: 0 0 0 3px rgba(143, 188, 143, 0.3);
+  width: 100%;
+  height: 46px;
+  border: 1px solid #2a2a3d;
+  border-radius: 8px;
+  padding: 0 15px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  background-color: #1e1e2e;
+  color: #f0f0ff;
+  transition: border-color 0.25s, box-shadow 0.25s;
+  box-sizing: border-box;
 }
 
 .login-page .login input::placeholder {
-    color: #A9A9A9;
+  color: #55556a;
 }
 
+.login-page .login input:focus {
+  outline: none;
+  border-color: #9d11d9;
+  box-shadow: 0 0 0 3px rgba(157, 17, 217, 0.2);
+}
+
+/* Botão Entrar */
 .login-page .login .btn-entrar {
-    width: 100%;
-    height: 48px;
-    background: #8FBC8F;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 8px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 10px;
+  width: 100%;
+  height: 48px;
+  background: linear-gradient(135deg, #9d11d9 0%, #7d0db0 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 8px;
 }
 
 .login-page .login .btn-entrar:hover {
-    background-color: #709670;
+  background: linear-gradient(135deg, #b520f0 0%, #9d11d9 100%);
+  box-shadow: 0 0 20px rgba(157, 17, 217, 0.45);
+  transform: translateY(-1px);
 }
 
+/* Botão Convidado */
 .login-page .login .btn-convidado {
-    width: 100%;
-    height: 48px;
-    background: transparent;
-    color: #8FBC8F;
-    border: 2px solid #8FBC8F;
-    border-radius: 8px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 15px;
+  width: 100%;
+  height: 46px;
+  background: transparent;
+  color: #9d11d9;
+  border: 1.5px solid #9d11d9;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 12px;
 }
 
 .login-page .login .btn-convidado:hover {
-    background-color: #8FBC8F;
-    color: #FFFFFF;
+  background-color: rgba(157, 17, 217, 0.12);
+  box-shadow: 0 0 12px rgba(157, 17, 217, 0.2);
 }
 
+/* Esqueceu a senha */
 .login-page .esqueceu-a-senha {
-    text-align: center;
-    margin-top: 20px;
+  text-align: center;
+  margin-top: 20px;
 }
 
 .login-page .esqueceu-a-senha a {
-    color: #8FBC8F;
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-decoration: none;
-    transition: color 0.3s;
+  color: #8888aa;
+  font-weight: 500;
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: color 0.2s;
 }
 
 .login-page .esqueceu-a-senha a:hover {
-    color: #709670;
+  color: #c158f0;
 }
 
-@media (max-width: 900px) {
-    .login-page {
-        padding: 20px;
-        height: auto;
-    }
-    .login-page .c1 {
-        flex-direction: column;
-        min-height: auto;
-        margin: 0;
-    }
-    .login-page .c11 {
-        padding: 40px 20px;
-    }
-    .login-page .c11 h1 {
-        font-size: 2rem;
-    }
-    .login-page .login {
-        padding: 40px 20px;
-    }
-}
-
+/* Alertas */
 .login-page .mensagem-alerta {
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    font-weight: 600;
-    text-align: center;
-    font-size: 0.9rem;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 18px;
+  font-weight: 500;
+  text-align: center;
+  font-size: 0.88rem;
 }
 
 .login-page .mensagem-sucesso {
-    background-color: #e8f5e9;
-    color: #2e7d32;
-    border: 1px solid #c8e6c9;
+  background-color: rgba(34, 197, 94, 0.12);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .login-page { padding: 20px; }
+  .login-page .c1 {
+    flex-direction: column;
+    min-height: auto;
+  }
+  .login-page .c11 { padding: 40px 24px; }
+  .login-page .c11 h1 { font-size: 2rem; }
+  .login-page .login { padding: 40px 24px; }
 }

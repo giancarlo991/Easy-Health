@@ -1,0 +1,105 @@
+/* =====================================================
+   EasyHealth — Design System Global
+   Paleta: Roxo Elétrico #9d11d9 + Dark Premium
+   Fontes: Barlow (títulos) + Inter (corpo)
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@700;800&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  /* ── Cor Primária ── */
+  --primary:        #9d11d9;
+  --primary-hover:  #7d0db0;
+  --primary-light:  #c158f0;
+  --primary-alpha:  rgba(157, 17, 217, 0.15);
+  --primary-glow:   0 0 20px rgba(157, 17, 217, 0.35);
+
+  /* ── Plano de Fundo ── */
+  --bg-dark:        #0e0e14;
+  --bg-surface:     #16161f;
+  --bg-elevated:    #1e1e2e;
+
+  /* ── Bordas ── */
+  --border:         #2a2a3d;
+  --border-focus:   #9d11d9;
+
+  /* ── Texto ── */
+  --text-primary:   #f0f0ff;
+  --text-secondary: #8888aa;
+  --text-muted:     #55556a;
+
+  /* ── Semântico ── */
+  --success:        #22c55e;
+  --success-alpha:  rgba(34, 197, 94, 0.15);
+  --warning:        #f59e0b;
+  --warning-alpha:  rgba(245, 158, 11, 0.15);
+  --error:          #ef4444;
+  --error-alpha:    rgba(239, 68, 68, 0.15);
+
+  /* ── Tipografia ── */
+  --font-heading: 'Barlow', sans-serif;
+  --font-body:    'Inter', sans-serif;
+
+  /* ── Arredondamentos ── */
+  --radius-sm:  6px;
+  --radius-md:  10px;
+  --radius-lg:  16px;
+  --radius-xl:  24px;
+
+  /* ── Sombras ── */
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 24px rgba(157, 17, 217, 0.3);
+}
+
+/* ── Reset & Base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: 0.02em;
+}
+
+a {
+  color: var(--primary-light);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--primary);
+}
+
+/* ── Scrollbar customizada ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
