@@ -148,7 +148,6 @@ body {
 .form-group input[type="email"],
 .form-group input[type="tel"],
 .form-group input[type="password"],
-.form-group input[type="date"],
 .form-group select {
   width: 100%;
   padding: 11px 14px;
@@ -163,8 +162,9 @@ body {
   outline: none;
 }
 
-.form-group input::placeholder {
+::placeholder {
   color: #55556a;
+  opacity: 1;
 }
 
 .form-group input:focus,
@@ -173,43 +173,55 @@ body {
   box-shadow: 0 0 0 3px rgba(157,17,217,0.2);
 }
 
-.form-group input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(0.5);
-  cursor: pointer;
-}
-
 .form-row {
   display: flex;
   gap: 14px;
 }
 
-/* Radio buttons */
-.profile-type label {
-  margin-bottom: 10px;
+/* =====================================================
+   Alinhamento Perfeito dos Radio Buttons
+   ===================================================== */
+
+/* Garante que o título "TIPO DE PERFIL" fique posicionado corretamente acima */
+.profile-type > label {
+  margin-bottom: 450px;
+  display: block;
 }
 
 .radio-options {
   display: flex;
   align-items: center;
-  gap: 10px;
-}
-
-.radio-options label {
-  margin-bottom: 0;
-  font-weight: 500;
-  color: var(--text-primary);
-  margin-right: 14px;
-  cursor: pointer;
-  font-size: 0.95rem;
+  /* Removemos o 'gap' para que a bolinha não fuja do texto */
 }
 
 .radio-options input[type="radio"] {
   cursor: pointer;
-  transform: scale(1.15);
+  transform: scale(1.2); /* Bolinha levemente maior para visual premium */
   accent-color: var(--primary);
+  margin: 0 8px 0 0; /* Apenas 8px de espaço: gruda a bolinha no SEU próprio texto */
 }
 
-/* Botão de Cadastro */
+.radio-options label {
+  margin: 0 32px 0 0; /* 32px de espaço na direita: separa uma opção da outra */
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  
+  /* Truques para alinhar a altura da fonte com o centro do círculo */
+  line-height: 1; 
+  padding-top: 2px; 
+}
+
+/* Tira a margem da última opção para não sobrar espaço inútil na direita */
+.radio-options label:last-child {
+  margin-right: 0;
+}
+/* =====================================================
+   Botão de Cadastro & Animações
+   ===================================================== */
 .submit-btn {
   width: 100%;
   padding: 13px;
@@ -232,7 +244,6 @@ body {
   transform: translateY(-1px);
 }
 
-/* Animação campos condicionais */
 .conditional-fields {
   animation: fadeIn 0.4s ease-out;
 }
@@ -240,4 +251,204 @@ body {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-8px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =====================================================
+   Layout do Campo de Data Híbrido & Ícone Clicável
+   ===================================================== */
+
+.date-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 44px; /* Fixa uma altura para o container servir de base perfeita para o ícone */
+}
+
+.custom-datepicker-input {
+  width: 100%;
+  height: 100%;
+  padding: 11px 40px 11px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-elevated);
+  
+  /* Cor principal branca sempre */
+  color: var(--text-primary) !important;
+  
+  box-sizing: border-box;
+  transition: border-color 0.25s, box-shadow 0.25s;
+  outline: none;
+  cursor: text;
+}
+
+/* Força os blocos da data (dd, mm, aaaa) a ficarem brancos */
+.custom-datepicker-input::-webkit-datetime-edit-text,
+.custom-datepicker-input::-webkit-datetime-edit-month-field,
+.custom-datepicker-input::-webkit-datetime-edit-day-field,
+.custom-datepicker-input::-webkit-datetime-edit-year-field {
+  color: var(--text-primary) !important;
+}
+
+.custom-datepicker-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(157,17,217,0.2);
+}
+
+/* Oculta o ícone feio nativo do navegador */
+.no-native-icon::-webkit-calendar-picker-indicator {
+  display: none !important;
+  -webkit-appearance: none;
+}
+
+/* Alinhamento à prova de balas para o ícone SVG */
+.icon-datepicker-wrapper {
+  position: absolute;
+  right: 14px;
+  top: 0;
+  bottom: 0; /* Esticar do topo à base garante a centralização vertical com flex */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.icon-datepicker-wrapper .react-datepicker-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-icon {
+  width: 22px;
+  height: 22px;
+  fill: var(--text-secondary);
+  cursor: pointer;
+  display: block;
+  margin: 0; /* Anula qualquer margem externa */
+  transition: fill 0.2s ease, transform 0.2s ease;
+}
+
+.calendar-icon:hover {
+  fill: var(--primary-light);
+  transform: scale(1.05);
+}
+
+.date-input-container:focus-within .calendar-icon {
+  fill: var(--primary);
+}
+
+/* =====================================================
+   Customização do Calendário React DatePicker (Pop-up)
+   ===================================================== */
+
+.react-datepicker {
+  font-family: 'Inter', sans-serif !important;
+  background-color: var(--bg-surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6) !important;
+  color: var(--text-primary) !important;
+}
+
+.react-datepicker__header {
+  background-color: var(--bg-elevated) !important;
+  border-bottom: 1px solid var(--border) !important;
+  border-top-left-radius: 12px !important;
+  border-top-right-radius: 12px !important;
+  padding-top: 12px !important;
+}
+
+.react-datepicker__current-month,
+.react-datepicker-year-header {
+  color: var(--text-primary) !important;
+  font-family: 'Barlow', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 1.1rem !important;
+}
+
+.react-datepicker__day-name {
+  color: var(--text-secondary) !important;
+  font-weight: 600 !important;
+}
+
+.react-datepicker__day {
+  color: var(--text-primary) !important;
+  border-radius: 6px !important;
+  transition: all 0.2s ease !important;
+}
+
+.react-datepicker__day:hover,
+.react-datepicker__month-text:hover,
+.react-datepicker__quarter-text:hover,
+.react-datepicker__year-text:hover {
+  background-color: rgba(157, 17, 217, 0.2) !important;
+  color: var(--primary-light) !important;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background-color: var(--primary) !important;
+  color: #fff !important;
+  font-weight: bold !important;
+  box-shadow: 0 0 10px rgba(157, 17, 217, 0.4) !important;
+}
+
+.react-datepicker__navigation-icon::before {
+  border-color: var(--text-secondary) !important;
+}
+
+.react-datepicker__navigation:hover *::before {
+  border-color: var(--primary-light) !important;
+}
+
+.react-datepicker__year-read-view,
+.react-datepicker__month-read-view,
+.react-datepicker__month-year-read-view {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  cursor: pointer !important;
+  padding: 4px 12px !important;
+  border-radius: 6px !important;
+  background-color: transparent !important;
+  color: var(--text-primary) !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.react-datepicker__year-read-view:hover,
+.react-datepicker__month-read-view:hover,
+.react-datepicker__month-year-read-view:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.react-datepicker__year-read-view--down-arrow,
+.react-datepicker__month-read-view--down-arrow,
+.react-datepicker__month-year-read-view--down-arrow {
+  position: static !important;
+  margin: 0 !important;
+  transform: translateY(2px) !important;
+  border-color: var(--text-secondary) !important;
+}
+
+.react-datepicker__day--outside-month {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.react-datepicker__year-dropdown,
+.react-datepicker__month-dropdown,
+.react-datepicker__month-year-dropdown {
+  background-color: var(--bg-elevated) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-primary) !important;
+}
+
+.react-datepicker__year-option:hover,
+.react-datepicker__month-option:hover,
+.react-datepicker__month-year-option:hover {
+  background-color: rgba(157, 17, 217, 0.2) !important;
 }

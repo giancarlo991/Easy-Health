@@ -1,23 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+/* =====================================================
+   Esqueceu a Senha — Dark Premium + Roxo Elétrico
+   ===================================================== */
 
-:root {
-  --primary-green: #8cb48f; 
-  --background-beige: #f9f6f2; 
-  --white: #ffffff;
-  --text-dark: #333;
-  --text-gray: #666;
-  --border-light: #ddd;
-}
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@700;800&family=Inter:wght@400;500;600&display=swap');
 
 /* Estilo geral da página */
 .esqueceu-senha-page {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: var(--background-beige); /* Fundo bege claro */
+  background-color: #0e0e14; /* Fundo escuro premium do login */
   padding: 20px;
+  margin: 0;
 }
 
 /* Container que centraliza o box de recuperação */
@@ -26,88 +22,116 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 450px; /* Largura do card de recuperação */
+  max-width: 480px;
 }
 
 /* Box de Recuperação de Senha */
 .reset-password-box {
-  background-color: var(--white);
-  padding: 40px;
-  border-radius: 15px; /* Bordas arredondadas */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  background-color: #16161f;
+  padding: 50px 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.7), 0 0 0 1px #2a2a3d;
   text-align: center;
-  width: 100%; /* Ocupa a largura máxima do container */
-  border: 1px solid black;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .reset-password-box h2 {
-  color: var(--text-dark);
-  font-size: 1.8rem;
-  font-weight: 600;
-  margin-bottom: 15px;
+  font-family: 'Barlow', sans-serif;
+  color: #f0f0ff;
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0 0 15px 0;
+  letter-spacing: 0.02em;
 }
 
 .reset-password-box p {
-  color: var(--text-gray);
+  color: #8888aa;
   font-size: 0.95rem;
-  line-height: 1.5;
+  line-height: 1.6;
+  margin: 0 0 30px 0;
+}
+
+/* Estilo do grupo de formulário */
+.reset-password-box .form-group {
   margin-bottom: 25px;
+  text-align: left;
 }
 
-/* Estilo do grupo de formulário (label e input) */
-.form-group {
-  margin-bottom: 20px;
-  text-align: left; /* Alinha o label à esquerda */
-}
-
-.form-group label {
+.reset-password-box .form-group label {
   display: block;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--text-gray);
-  margin-bottom: 8px;
-}
-
-.form-group input[type="email"] {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid black;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  box-sizing: border-box; /* Garante que padding não estoure a largura */
-}
-
-/* Botão de Enviar */
-.submit-btn {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 25px; /* Botão "pílula" */
-  background-color: var(--primary-green);
-  color: var(--white);
-  font-size: 1rem;
+  color: #8888aa;
   font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.reset-password-box .form-group input[type="email"] {
+  width: 100%;
+  height: 46px;
+  border: 1px solid #2a2a3d;
+  border-radius: 8px;
+  padding: 0 15px;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  background-color: #1e1e2e;
+  color: #f0f0ff;
+  transition: border-color 0.25s, box-shadow 0.25s;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.reset-password-box .form-group input::placeholder {
+  color: #55556a;
+}
+
+.reset-password-box .form-group input:focus {
+  border-color: #9d11d9;
+  box-shadow: 0 0 0 3px rgba(157, 17, 217, 0.2);
+}
+
+/* Botão de Enviar (Idêntico ao Entrar) */
+.reset-password-box .submit-btn {
+  width: 100%;
+  height: 48px;
+  background: linear-gradient(135deg, #9d11d9 0%, #7d0db0 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: opacity 0.3s ease;
-  margin-top: 10px;
+  transition: all 0.3s ease;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.submit-btn:hover {
-  opacity: 0.9;
+.reset-password-box .submit-btn:hover {
+  background: linear-gradient(135deg, #b520f0 0%, #9d11d9 100%);
+  box-shadow: 0 0 20px rgba(157, 17, 217, 0.45);
+  transform: translateY(-1px);
 }
 
 /* Link para voltar ao login */
-.back-to-login-link {
-  display: block; /* Para que o margin-top funcione */
+.reset-password-box .back-to-login {
   margin-top: 25px;
-  color: var(--primary-green); /* Cor do tema */
-  font-size: 0.9rem;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
 }
 
-.back-to-login-link:hover {
-  color: var(--text-dark); /* Escurece um pouco no hover */
+.reset-password-box .back-to-login-link {
+  color: #8888aa;
+  font-weight: 500;
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.reset-password-box .back-to-login-link:hover {
+  color: #c158f0;
 }

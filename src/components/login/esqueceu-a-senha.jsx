@@ -1,11 +1,16 @@
-import React from 'react';
-import { Link } from 'react-router-dom'; 
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom'; 
 import '../../styles/Login/EsqueceuASenha.css';
 
 function EsqueceuSenha() {
+  const [email, setEmail] = useState('');
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    // Aqui no futuro você colocará a chamada para a API (axios.post)
     alert('Link de recuperação de senha enviado para o seu e-mail!'); 
+    navigate('/redefinirSenha'); // Redireciona de forma segura após o submit
   };
 
   return (
@@ -24,18 +29,23 @@ function EsqueceuSenha() {
                 type="email" 
                 id="email" 
                 placeholder="Digite seu e-mail" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required 
               />
             </div>
             
-            <Link to='/redefinirSenha' type="submit" className="submit-btn">
+            {/* O botão agora é um button de verdade para submeter o form corretamente */}
+            <button type="submit" className="submit-btn">
               ENVIAR
-            </Link>
+            </button>
           </form>
 
-          <Link to="/" className="back-to-login-link">
-            Lembrou da senha? Voltar ao Login
-          </Link>
+          <div className="back-to-login">
+            <Link to="/" className="back-to-login-link">
+              Lembrou da senha? Voltar ao Login
+            </Link>
+          </div>
         </div>
       </div>
     </div>

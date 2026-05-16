@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { ptBR } from 'date-fns/locale';
 import '../../styles/Login/Registro.css';
 
 function Registro() {
@@ -14,7 +17,7 @@ function Registro() {
     endereco: '',
     senha: '',
     confirmarSenha: '',
-    birthdate: '',
+    birthdate: '', // Voltamos para string vazia, pois o input nativo usa formato 'YYYY-MM-DD'
     tipoPerfil: 'paciente',
     especialidade: '',
     crm: ''
@@ -34,6 +37,20 @@ function Registro() {
     });
   };
 
+  /* * CRIAMOS UM COMPONENTE SÓ PARA O ÍCONE:
+   * O React DatePicker vai ser ancorado neste ícone em vez do input de texto.
+   */
+  const CalendarIconTrigger = forwardRef(({ onClick }, ref) => (
+    <svg 
+      className="calendar-icon" 
+      viewBox="0 0 24 24"
+      onClick={onClick}
+      ref={ref}
+    >
+      <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/>
+    </svg>
+  ));
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -45,67 +62,53 @@ function Registro() {
     const API_BASE_URL = 'http://localhost:3000';
 
     try {
-      // PASSO 1: Preparar os dados base do usuário. 
-      // O seu backend (models/user.js) espera 'user' ou 'trainer'.
       const dadosParaEnvio = {
         name: formData.nome,
         email: formData.email,
         password: formData.senha,
         phone: formData.telefone,
         cpf: formData.cpf,
-        birthdate: formData.birthdate,
+        birthdate: formData.birthdate, // Já está no formato correto 'YYYY-MM-DD'
         address: formData.endereco,
         role: formData.tipoPerfil === 'profissional' ? 'trainer' : 'user'
       };
 
-      // PASSO 2: Criar o Usuário base no sistema em "/api/auth/register" independentemente do tipo.
       const response = await axios.post(`${API_BASE_URL}/api/auth/register`, dadosParaEnvio);
 
-      // Se o usuário base foi criado com sucesso:
       if (response.status === 201 || response.status === 200) {
-
-        // PASSO 3: Se a pessoa for um profissional, o fluxo exige passos extras
         if (formData.tipoPerfil === 'profissional') {
-
-          // 3A. Fazer o login para obter o Token JWT e o ID (userId) gerado pelo banco
           const loginResponse = await axios.post(`${API_BASE_URL}/api/auth/login`, {
             email: formData.email,
             password: formData.senha
           });
 
-          // Pegar os dados que seu backend retornou no login (AuthService.login)
           const token = loginResponse.data.token;
           const userId = loginResponse.data.user._id;
 
-          // 3B. Criar o perfil específico do profissional!
-          // O backend espera 'userId', 'type' (especialidade) e 'document' (crm)
           await axios.post(`${API_BASE_URL}/api/professionals`, {
             userId: userId,
             type: formData.especialidade,
             document: formData.crm
           }, {
-            headers: {
-              Authorization: `Bearer ${token}` // Passando o token na barreira de segurança!
-            }
+            headers: { Authorization: `Bearer ${token}` }
           });
         }
 
-        // Sucesso total para todas as contas (Profissional e Paciente)!
         alert("Conta criada com sucesso!");
         navigate('/');
       }
     } catch (error) {
       console.error("Erro ao cadastrar:", error);
-      // Exibe a mensagem de erro exata que o banco de dados enviou (ex: "CPF já cadastrado")
       const mensagemErro = error.response?.data?.error || "Erro ao conectar com o servidor.";
       alert(mensagemErro);
     }
   };
 
-
   return (
     <div className="registro-page">
       <div className="registro-container">
+        
+        {/* Painel Esquerdo */}
         <div className="registro-sidebar">
           <div className="sidebar-fixa">
             <h2>Já tem uma conta?</h2>
@@ -114,6 +117,7 @@ function Registro() {
           </div>
         </div>
 
+        {/* Painel Direito (Formulário) */}
         <div className="registro-form-section">
           <form onSubmit={handleSubmit}>
             <h2>Criar Conta</h2>
@@ -143,15 +147,48 @@ function Registro() {
               </div>
             </div>
 
+            {/* A NOVA ESTRUTURA SEPARADA DA DATA */}
             <div className="form-group">
               <label htmlFor="birthdate">Data de Nascimento</label>
-              <input
-                type="date"
-                id="birthdate"
-                value={formData.birthdate}
-                onChange={handleChange}
-                required
-              />
+              <div className="date-input-container">
+                
+                {/* 1. O INPUT VISÍVEL: 100% nativo, lida com a digitação, sem bugar */}
+                <input
+                  type="date"
+                  id="birthdate"
+                  className="custom-datepicker-input no-native-icon"
+                  value={formData.birthdate}
+                  onChange={handleChange}
+                  required
+                  max={new Date().toISOString().split('T')[0]} 
+                />
+                
+                {/* 2. O CALENDÁRIO: Ancorado no ícone. Se o usuário escolhe a data aqui, ele atualiza o estado */}
+                <div className="icon-datepicker-wrapper">
+                  <DatePicker
+                    selected={formData.birthdate ? new Date(formData.birthdate + 'T12:00:00') : null}
+                    onChange={(date) => {
+                      if (date) {
+                        const y = date.getFullYear();
+                        const m = String(date.getMonth() + 1).padStart(2, '0');
+                        const d = String(date.getDate()).padStart(2, '0');
+                        setFormData({ ...formData, birthdate: `${y}-${m}-${d}` });
+                      } else {
+                        setFormData({ ...formData, birthdate: '' });
+                      }
+                    }}
+                    customInput={<CalendarIconTrigger />}
+                    showYearDropdown
+                    scrollableYearDropdown
+                    yearDropdownItemNumber={100}
+                    fixedHeight
+                    maxDate={new Date()}
+                    openToDate={new Date(2005, 6, 1)}
+                    popperPlacement="bottom-end"
+                  />
+                </div>
+
+              </div>
             </div>
 
             <div className="form-group">

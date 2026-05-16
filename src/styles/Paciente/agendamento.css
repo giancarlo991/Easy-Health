@@ -1,7 +1,11 @@
+/* =====================================================
+   Guia Consultas — Dark Premium + Roxo
+   ===================================================== */
+
 .consultas-container {
   padding: 40px;
-  font-family: 'Poppins', sans-serif;
-  color: #333;
+  font-family: 'Inter', sans-serif;
+  color: #f0f0ff;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -11,52 +15,59 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 40px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #2a2a3d;
   padding-bottom: 20px;
 }
 
 .cabecalho-consultas h1 {
+  font-family: 'Barlow', sans-serif;
   font-size: 2rem;
-  color: #2c3e50;
+  font-weight: 800;
+  color: #f0f0ff;
   margin: 0 0 10px 0;
+  letter-spacing: 0.02em;
 }
 
 .cabecalho-consultas p {
-  color: #7f8c8d;
+  color: #8888aa;
   margin: 0;
 }
 
 .botao-agendar {
-  background-color: #8cb48f;
+  background: linear-gradient(135deg, #9d11d9, #7d0db0) !important;
   color: white;
   border: none;
   padding: 12px 24px;
   border-radius: 8px;
+  font-family: 'Inter', sans-serif;
   font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.botao-agendar:hover {
-  background-color: #709670;
-}
-
-.botao-voltar {
-  background-color: transparent;
-  color: #8cb48f;
-  border: 2px solid #8cb48f;
-  padding: 10px 24px;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
+.botao-agendar:hover {
+  box-shadow: 0 0 16px rgba(157, 17, 217, 0.4);
+  transform: translateY(-1px);
+}
+
+.botao-voltar {
+  background-color: transparent;
+  color: #9d11d9;
+  border: 1.5px solid #9d11d9;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
 .botao-voltar:hover {
-  background-color: #8cb48f;
-  color: white;
+  background: rgba(157, 17, 217, 0.12);
+  box-shadow: 0 0 10px rgba(157, 17, 217, 0.2);
+  color: #c158f0;
 }
 
 .lista-consultas {
@@ -69,32 +80,40 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffffff;
+  background-color: #16161f;
   padding: 25px;
-  border-radius: 12px;
-  border: 1px solid #e0e0e0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  border-radius: 14px;
+  border: 1px solid #2a2a3d;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+  transition: border-color 0.25s ease;
+}
+
+.card-consulta:hover {
+  border-color: rgba(157, 17, 217, 0.25);
 }
 
 .info-consulta h3 {
   margin: 0 0 8px 0;
+  font-family: 'Barlow', sans-serif;
   font-size: 1.3rem;
-  color: #333;
+  font-weight: 700;
+  color: #f0f0ff;
 }
 
 .medico-nome {
   margin: 0 0 12px 0;
-  color: #666;
+  color: #8888aa;
   font-size: 1rem;
 }
 
 .status-badge {
-  background-color: #e8f5e9;
-  color: #2e7d32;
+  background-color: rgba(157, 17, 217, 0.12);
+  color: #c158f0;
   padding: 6px 12px;
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 600;
+  border: 1px solid rgba(157, 17, 217, 0.3);
 }
 
 .data-consulta {
@@ -102,25 +121,28 @@
 }
 
 .data-destaque {
+  font-family: 'Barlow', sans-serif;
   font-size: 1.2rem;
-  font-weight: 600;
-  color: #2c3e50;
+  font-weight: 800;
+  color: #f0f0ff;
   margin: 0 0 5px 0;
 }
 
 .horario-destaque {
+  font-family: 'Barlow', sans-serif;
   font-size: 1.1rem;
-  color: #8cb48f;
+  color: #9d11d9;
   margin: 0;
-  font-weight: 500;
+  font-weight: 800;
 }
 
 .estado-vazio {
   text-align: center;
   padding: 60px 20px;
-  background-color: #f9f6f2;
-  border-radius: 12px;
-  color: #666;
+  background-color: #16161f;
+  border-radius: 14px;
+  border: 1px solid #2a2a3d;
+  color: #8888aa;
 }
 
 .area-busca {
@@ -130,17 +152,24 @@
 .input-busca {
   width: 100%;
   padding: 15px 20px;
-  border: 1px solid #ccc;
+  background-color: #16161f;
+  color: #f0f0ff;
+  border: 1px solid #2a2a3d;
   border-radius: 10px;
   font-size: 1rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
   box-sizing: border-box;
   outline: none;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.input-busca::placeholder {
+  color: #55556a;
 }
 
 .input-busca:focus {
-  border-color: #8cb48f;
+  border-color: rgba(157, 17, 217, 0.6);
+  box-shadow: 0 0 12px rgba(157, 17, 217, 0.15);
 }
 
 .grid-especialidades {
@@ -150,45 +179,50 @@
 }
 
 .card-especialidade {
-  background-color: #ffffff;
+  background-color: #16161f;
   padding: 25px;
-  border-radius: 12px;
-  border: 1px solid #e0e0e0;
+  border-radius: 14px;
+  border: 1px solid #2a2a3d;
   text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
 }
 
 .card-especialidade:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  border-color: rgba(157, 17, 217, 0.4);
+  box-shadow: 0 8px 24px rgba(157, 17, 217, 0.18);
 }
 
 .card-especialidade h3 {
   margin: 0 0 20px 0;
-  color: #333;
+  color: #f0f0ff;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
 }
 
 .botao-selecionar {
   background-color: transparent;
-  color: #8cb48f;
-  border: 1px solid #8cb48f;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-family: 'Poppins', sans-serif;
+  color: #9d11d9;
+  border: 1.5px solid #9d11d9;
+  padding: 9px 16px;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
   font-weight: 600;
   cursor: pointer;
   width: 100%;
-  transition: background-color 0.3s, color 0.3s;
+  transition: all 0.25s ease;
 }
 
 .botao-selecionar:hover {
-  background-color: #8cb48f;
-  color: white;
+  background: rgba(157, 17, 217, 0.12);
+  box-shadow: 0 0 10px rgba(157, 17, 217, 0.2);
+  color: #c158f0;
 }
 
 .mensagem-vazia {
   grid-column: 1 / -1;
   text-align: center;
-  color: #666;
+  color: #8888aa;
   padding: 40px;
 }
