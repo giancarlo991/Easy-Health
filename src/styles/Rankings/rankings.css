@@ -1,0 +1,82 @@
+.rankings-header {
+  margin-bottom: 48px;
+  text-align: left;
+}
+
+.rankings-header h1 {
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  text-shadow: var(--primary-glow);
+}
+
+.rankings-header p {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+}
+
+/* Top 3 Grid */
+.rankings-top3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  margin-bottom: 64px;
+}
+
+/* Lista */
+.rankings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 1000px;
+}
+
+.rankings-subtitle {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  padding-left: 8px;
+  border-left: 4px solid var(--primary);
+}
+
+/* Paginação */
+.rankings-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 48px;
+  padding: 32px 0;
+}
+
+.pagination-btn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 24px;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.pagination-btn:hover:not(:disabled) {
+  border-color: var(--primary);
+  background-color: var(--primary-alpha);
+  box-shadow: var(--shadow-glow);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.pagination-info {
+  color: var(--text-secondary);
+  font-weight: 500;
+}

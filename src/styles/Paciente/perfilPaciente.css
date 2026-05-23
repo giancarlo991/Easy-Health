@@ -1,39 +1,39 @@
-/* =====================================================
-   Perfil Paciente/Cliente — Dark Premium + Roxo
+﻿/* =====================================================
+   Perfil Paciente — Sport-Medical Premium · Teal
    ===================================================== */
 
 .perfil-container {
   padding: 40px;
-  font-family: 'Inter', sans-serif;
-  color: #f0f0ff;
+  font-family: var(--font-body);
+  color: var(--text-primary);
   max-width: 1400px;
   margin: 0 auto;
 }
 
 .cabecalho-perfil {
   margin-bottom: 36px;
-  border-bottom: 1px solid #2a2a3d;
+  border-bottom: 1px solid var(--border);
   padding-bottom: 20px;
 }
 
 .cabecalho-perfil h1 {
-  font-family: 'Barlow', sans-serif;
+  font-family: var(--font-heading);
   font-size: 2rem;
   font-weight: 800;
-  color: #f0f0ff;
+  color: var(--text-primary);
   margin: 0 0 8px 0;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
 
 .cabecalho-perfil p {
-  color: #8888aa;
+  color: var(--text-secondary);
   margin: 0;
 }
 
 /* ── Alertas ── */
 .alerta-perfil {
   padding: 14px 18px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   margin-bottom: 28px;
   font-weight: 500;
   text-align: center;
@@ -41,15 +41,15 @@
 }
 
 .alerta-perfil.sucesso {
-  background-color: rgba(34, 197, 94, 0.12);
-  color: #22c55e;
-  border: 1px solid rgba(34, 197, 94, 0.3);
+  background-color: var(--success-alpha);
+  color: var(--success);
+  border: 1px solid rgba(0, 200, 150, 0.3);
 }
 
 .alerta-perfil.erro {
-  background-color: rgba(239, 68, 68, 0.12);
-  color: #ef4444;
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  background-color: var(--error-alpha);
+  color: var(--error);
+  border: 1px solid rgba(240, 64, 64, 0.3);
 }
 
 /* ── Grid ── */
@@ -61,25 +61,25 @@
 
 /* ── Cards ── */
 .card-perfil {
-  background-color: #16161f;
+  background-color: var(--bg-surface);
   padding: 30px;
-  border-radius: 14px;
-  border: 1px solid #2a2a3d;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
   transition: border-color 0.25s ease;
 }
 
 .card-perfil:hover {
-  border-color: rgba(157, 17, 217, 0.35);
+  border-color: var(--primary);
 }
 
 .card-perfil h2 {
-  font-family: 'Barlow', sans-serif;
-  font-size: 1.25rem;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
   font-weight: 700;
-  color: #f0f0ff;
+  color: var(--text-primary);
   margin: 0;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
 
 .cabecalho-editavel {
@@ -91,7 +91,7 @@
 .linha-divisoria {
   border: 0;
   height: 1px;
-  background-color: #2a2a3d;
+  background-color: var(--border);
   margin: 18px 0;
 }
 
@@ -105,17 +105,17 @@
 .grupo-info:last-child { margin-bottom: 0; }
 
 .info-label {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #9d11d9;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary);
   margin-bottom: 6px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
 }
 
 .info-valor {
   font-size: 1rem;
-  color: #f0f0ff;
+  color: var(--text-primary);
   font-weight: 500;
 }
 
@@ -123,41 +123,40 @@
 .input-perfil {
   width: 100%;
   padding: 11px 14px;
-  border: 1px solid #2a2a3d;
-  border-radius: 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
   font-size: 0.95rem;
-  font-family: 'Inter', sans-serif;
-  color: #f0f0ff;
-  background-color: #1e1e2e;
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background-color: var(--bg-elevated);
   box-sizing: border-box;
   outline: none;
   transition: border-color 0.25s, box-shadow 0.25s;
 }
 
-.input-perfil::placeholder { color: #55556a; }
+.input-perfil::placeholder { color: var(--text-muted); }
 
 .input-perfil:focus {
-  border-color: #9d11d9;
-  box-shadow: 0 0 0 3px rgba(157,17,217,0.2);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-alpha);
 }
 
 /* ── Botões ── */
 .botao-editar {
   background-color: transparent;
-  color: #9d11d9;
-  border: 1.5px solid #9d11d9;
+  color: var(--primary);
+  border: 1.5px solid var(--primary);
   padding: 6px 16px;
-  border-radius: 6px;
-  font-family: 'Inter', sans-serif;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: var(--transition);
 }
 
 .botao-editar:hover {
-  background-color: rgba(157,17,217,0.15);
-  box-shadow: 0 0 10px rgba(157,17,217,0.2);
+  background-color: var(--primary-alpha);
 }
 
 .acoes-edicao {
@@ -169,43 +168,43 @@
 
 .botao-cancelar {
   background-color: transparent;
-  color: #8888aa;
-  border: 1px solid #2a2a3d;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
   padding: 10px 20px;
-  border-radius: 8px;
-  font-family: 'Inter', sans-serif;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: var(--transition);
 }
 
 .botao-cancelar:hover {
-  background-color: #1e1e2e;
-  color: #f0f0ff;
+  background-color: var(--bg-elevated);
+  color: var(--text-primary);
 }
 
 .botao-salvar {
-  background: linear-gradient(135deg, #9d11d9, #7d0db0);
+  background: var(--primary);
   color: #fff;
   border: none;
   padding: 10px 22px;
-  border-radius: 8px;
-  font-family: 'Inter', sans-serif;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition);
 }
 
 .botao-salvar:hover {
-  background: linear-gradient(135deg, #b520f0, #9d11d9);
-  box-shadow: 0 0 16px rgba(157, 17, 217, 0.4);
+  background: var(--primary-hover);
+  box-shadow: var(--shadow-glow);
   transform: translateY(-1px);
 }
 
 /* ── Visitante ── */
 .mensagem-convidado {
   text-align: center;
-  color: #8888aa;
+  color: var(--text-secondary);
   font-size: 1rem;
   line-height: 1.7;
 }

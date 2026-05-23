@@ -1,0 +1,155 @@
+﻿.trainer-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  gap: 16px;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+
+.trainer-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+.trainer-rank {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  background: var(--bg-elevated);
+  border: 2px solid var(--border);
+  color: var(--text-primary);
+}
+
+.trainer-card-avatar {
+  flex-shrink: 0;
+}
+
+.avatar-placeholder {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.trainer-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.trainer-name {
+  margin: 0 0 2px;
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.trainer-type {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.trainer-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.trainer-rating-value {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+.trainer-rating-count {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.trainer-info-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.trainer-info-tag {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.price-tag {
+  font-weight: 600;
+  color: var(--success);
+}
+
+.trainer-modalities {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.modality-badge {
+  background: var(--primary-alpha);
+  color: var(--primary-light);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 100px;
+  border: 1px solid var(--primary-alpha);
+}
+
+.modality-badge.more {
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  border-color: var(--border);
+}
+
+/* Stars */
+.stars-rating {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.star {
+  color: var(--text-muted);
+  font-size: 16px;
+}
+
+.star.filled {
+  color: var(--warning);
+}
+
+.star.half {
+  color: var(--warning);
+  opacity: 0.6;
+}
+
+.star-sm .star {
+  font-size: 14px;
+}
+
+.star-lg .star {
+  font-size: 24px;
+}

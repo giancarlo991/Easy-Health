@@ -1,75 +1,66 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import '../../styles/Home/Home.css';
+﻿import React, { useState, useEffect } from 'react';
+import api from '../../services/api';
+import '../../styles/Home/home.css';
 
-export default function Home() {
-  const [dadosUsuario, setDadosUsuario] = useState(null);
+function HomePaciente() {
+  const [usuario, setUsuario] = useState(null);
   const [carregando, setCarregando] = useState(true);
 
   useEffect(() => {
-    const buscarDadosUsuario = async () => {
+    const fetchUser = async () => {
       try {
-        const token = localStorage.getItem('token');
         const userId = localStorage.getItem('userId');
-
-        // Se por acaso não tiver ID ou token, cancela a busca
-        if (!token || !userId) {
-          console.error("Token ou ID não encontrados. Usuário não está logado corretamente.");
-          setCarregando(false);
-          return;
-        }
-
-        const API_BASE_URL = 'http://localhost:3000';
-
-        // Faz a chamada para a rota de usuários do seu back-end usando o ID
-        const resposta = await axios.get(`${API_BASE_URL}/api/users/${userId}`, {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
-
-        // Salva os dados vindos do banco (name, email, etc) no estado
-        setDadosUsuario(resposta.data);
-      } catch (erro) {
-        console.error("Erro ao buscar dados do perfil:", erro);
+        if (!userId) return;
+        const res = await api.get(`/api/users/${userId}`);
+        setUsuario(res.data);
+      } catch (err) {
+        console.error('Erro ao buscar dados do usuario:', err);
       } finally {
         setCarregando(false);
       }
     };
-
-    buscarDadosUsuario();
+    fetchUser();
   }, []);
 
   if (carregando) {
-    return <div style={{ padding: '30px' }}>Carregando seu painel...</div>;
+    return (
+      <div className="conteudo-principal">
+        <div className="skeleton-header" />
+        <div className="grid-resumo">
+          {[1, 2, 3].map(i => <div key={i} className="skeleton-card" />)}
+        </div>
+      </div>
+    );
   }
 
   return (
     <div className="conteudo-principal">
       <header className="cabecalho-home">
-        {/* Aqui já puxa o nome real do banco de dados (name) */}
-        <h1>Olá, {dadosUsuario?.name || 'Usuário'}!</h1>
-        <p>Bem-vindo ao seu painel de saúde.</p>
+        <h1>Ola, {usuario?.name || 'Usuario'}!</h1>
+        <p>Bom ver voce de volta. Vamos focar nos seus objetivos hoje?</p>
       </header>
 
       <div className="grid-resumo">
         <div className="card-informativo">
-          <h3>Próxima Consulta</h3>
-          <p className="dado-destaque" style={{ color: '#999' }}>Nenhuma agendada</p>
-          <p>Você não possui consultas futuras.</p>
+          <h3>Proximo Treino</h3>
+          <p className="dado-destaque" style={{ color: 'var(--text-muted)', fontSize: '1.4rem' }}>
+            Nao agendado
+          </p>
+          <p>Encontre um trainer para comecar.</p>
         </div>
 
         <div className="card-informativo">
           <h3>Meu Perfil</h3>
-          {/* Mostra dados reais do banco */}
-          <p className="dado-destaque">{dadosUsuario?.role === 'trainer' ? 'Profissional' : 'Paciente'}</p>
-          <p>{dadosUsuario?.email}</p>
+          <p className="dado-destaque" style={{ fontSize: '1.8rem' }}>
+            {usuario?.role === 'trainer' ? 'Profissional' : 'Paciente'}
+          </p>
+          <p>{usuario?.email}</p>
         </div>
 
         <div className="card-informativo">
-          <h3>Alertas</h3>
+          <h3>Metas Ativas</h3>
           <p className="dado-destaque">0</p>
-          <p>Notificações novas</p>
+          <p>Nenhum objetivo definido ainda.</p>
         </div>
       </div>
 
@@ -77,11 +68,17 @@ export default function Home() {
         <h2>Atividades Recentes</h2>
         <div className="lista-atividades">
           <div className="item-atividade">
-            <span>Conta criada e acessada</span>
+            <span>Acesso a plataforma</span>
             <small>Hoje</small>
+          </div>
+          <div className="item-atividade">
+            <span>Perfil atualizado</span>
+            <small>Recentemente</small>
           </div>
         </div>
       </section>
     </div>
   );
 }
+
+export default HomePaciente;

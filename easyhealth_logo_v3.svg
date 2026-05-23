@@ -1,0 +1,58 @@
+<svg width="100%" viewBox="0 0 680 500" role="img" xmlns="http://www.w3.org/2000/svg" style="">
+  <title style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">EasyHealth logo v3</title>
+  <desc style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Logo EasyHealth com coração, folhas e ECG sobre fundo dark premium roxo elétrico</desc>
+  <defs>
+    <linearGradient id="heartG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#B94FE8"/>
+      <stop offset="100%" style="stop-color:#9D11D9"/>
+    </linearGradient>
+    <linearGradient id="leafG" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#9D11D9"/>
+      <stop offset="100%" style="stop-color:#C66FEF"/>
+    </linearGradient>
+    <linearGradient id="bgG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0E0E14"/>
+      <stop offset="100%" style="stop-color:#1A0A24"/>
+    </linearGradient>
+    <linearGradient id="divG" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#9D11D9"/>
+      <stop offset="50%" style="stop-color:#C66FEF"/>
+      <stop offset="100%" style="stop-color:#9D11D9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background card dark premium -->
+  <rect x="140" y="20" width="400" height="460" rx="36" fill="url(#bgG)" style="stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Subtle purple glow ring behind icon -->
+  <circle cx="340" cy="200" r="112" fill="#9D11D9" opacity="0.08" style="fill:rgb(157, 17, 217);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.08;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <circle cx="340" cy="200" r="88" fill="#9D11D9" opacity="0.07" style="fill:rgb(157, 17, 217);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.07;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Heart shape -->
+  <path d="M340 282 C298 254 236 222 236 172 C236 144 259 122 288 122 C309 122 327 134 340 150 C353 134 371 122 392 122 C421 122 444 144 444 172 C444 222 382 254 340 282 Z" fill="url(#heartG)" style="stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Leaves - left -->
+  <ellipse cx="308" cy="108" rx="13" ry="28" fill="url(#leafG)" transform="rotate(-32 308 108)" style="stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <!-- Leaves - right -->
+  <ellipse cx="372" cy="108" rx="13" ry="28" fill="url(#leafG)" transform="rotate(32 372 108)" style="stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <!-- Leaf center -->
+  <ellipse cx="340" cy="100" rx="10" ry="24" fill="url(#leafG)" style="stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <!-- Stem -->
+  <line x1="340" y1="122" x2="340" y2="150" stroke="#C66FEF" stroke-width="2" stroke-linecap="round" style="fill:rgb(0, 0, 0);stroke:rgb(198, 111, 239);color:rgb(0, 0, 0);stroke-width:2px;stroke-linecap:round;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- ECG line over heart -->
+  <polyline points="262,198 278,198 286,178 297,218 308,164 320,210 330,198 350,198 360,178 371,218 382,164 394,210 404,198 418,198" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.95" style="fill:none;stroke:rgb(255, 255, 255);color:rgb(0, 0, 0);stroke-width:2.5px;stroke-linecap:round;stroke-linejoin:round;opacity:0.95;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Brand name -->
+  <text x="340" y="336" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="800" letter-spacing="2" fill="white" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:36px;font-weight:800;text-anchor:middle;dominant-baseline:auto">Easy<tspan fill="#B94FE8" style="fill:rgb(185, 79, 232);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:36px;font-weight:800;text-anchor:middle;dominant-baseline:auto">Health</tspan></text>
+
+  <!-- Divider -->
+  <rect x="252" y="352" width="176" height="2" rx="1" fill="url(#divG)" style="stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Tagline -->
+  <text x="340" y="380" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="400" letter-spacing="4" fill="#8B5AA0" style="fill:rgb(139, 90, 160);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:11px;font-weight:400;text-anchor:middle;dominant-baseline:auto">FITNESS · NUTRIÇÃO · PERFORMANCE</text>
+
+  <!-- Slogan -->
+  <text x="340" y="438" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="400" letter-spacing="1" fill="#4A2860" style="fill:rgb(74, 40, 96);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:11px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Onde a tecnologia encontra a força.</text>
+
+</svg>

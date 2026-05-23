@@ -1,39 +1,39 @@
-/* =====================================================
-   Configurações Paciente — Dark Premium + Roxo
+﻿/* =====================================================
+   Configurações Paciente — Sport-Medical Premium · Teal
    ===================================================== */
 
 .config-container {
   padding: 40px;
-  font-family: 'Inter', sans-serif;
-  color: #f0f0ff;
+  font-family: var(--font-body);
+  color: var(--text-primary);
   max-width: 1400px;
   margin: 0 auto;
 }
 
 .cabecalho-config {
   margin-bottom: 34px;
-  border-bottom: 1px solid #2a2a3d;
+  border-bottom: 1px solid var(--border);
   padding-bottom: 20px;
 }
 
 .cabecalho-config h1 {
-  font-family: 'Barlow', sans-serif;
+  font-family: var(--font-heading);
   font-size: 2rem;
   font-weight: 800;
-  color: #f0f0ff;
+  color: var(--text-primary);
   margin: 0 0 8px 0;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
 
 .cabecalho-config p {
-  color: #8888aa;
+  color: var(--text-secondary);
   margin: 0;
 }
 
 /* ── Alerta ── */
 .alerta-config {
   padding: 13px 18px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   margin-bottom: 26px;
   font-weight: 500;
   text-align: center;
@@ -41,15 +41,15 @@
 }
 
 .alerta-config.sucesso {
-  background: rgba(34,197,94,0.12);
-  color: #22c55e;
-  border: 1px solid rgba(34,197,94,0.3);
+  background: var(--success-alpha);
+  color: var(--success);
+  border: 1px solid rgba(0, 200, 150, 0.3);
 }
 
 .alerta-config.erro {
-  background: rgba(239,68,68,0.12);
-  color: #ef4444;
-  border: 1px solid rgba(239,68,68,0.3);
+  background: var(--error-alpha);
+  color: var(--error);
+  border: 1px solid rgba(240, 64, 64, 0.3);
 }
 
 /* ── Grid ── */
@@ -61,16 +61,16 @@
 
 /* ── Card ── */
 .card-config {
-  background-color: #16161f;
+  background-color: var(--bg-surface);
   padding: 28px;
-  border-radius: 14px;
-  border: 1px solid #2a2a3d;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
   transition: border-color 0.25s ease;
 }
 
 .card-config:hover {
-  border-color: rgba(157,17,217,0.25);
+  border-color: var(--primary);
 }
 
 .card-config.centralizado {
@@ -82,23 +82,23 @@
 }
 
 .sessao-titulo h2 {
-  font-family: 'Barlow', sans-serif;
+  font-family: var(--font-heading);
   font-size: 1.2rem;
   font-weight: 700;
-  color: #f0f0ff;
+  color: var(--text-primary);
   margin: 0 0 4px 0;
 }
 
 .sessao-titulo p {
   font-size: 0.88rem;
-  color: #8888aa;
+  color: var(--text-secondary);
   margin: 0;
 }
 
 .linha-config {
   border: 0;
   height: 1px;
-  background-color: #2a2a3d;
+  background-color: var(--border);
   margin: 18px 0;
 }
 
@@ -108,7 +108,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 14px 0;
-  border-bottom: 1px solid #1e1e2e;
+  border-bottom: 1px solid var(--bg-elevated);
 }
 
 .item-config:last-child { border-bottom: none; }
@@ -116,13 +116,13 @@
 .item-info h3 {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #f0f0ff;
+  color: var(--text-primary);
   margin: 0 0 3px 0;
 }
 
 .item-info p {
   font-size: 0.82rem;
-  color: #8888aa;
+  color: var(--text-secondary);
   margin: 0;
 }
 
@@ -141,7 +141,7 @@
   position: absolute;
   cursor: pointer;
   inset: 0;
-  background-color: #2a2a3d;
+  background-color: var(--border);
   transition: 0.3s;
 }
 
@@ -154,90 +154,90 @@
   width: 18px;
   left: 4px;
   bottom: 4px;
-  background-color: #8888aa;
+  background-color: var(--text-muted);
   transition: 0.3s;
   border-radius: 50%;
 }
 
 .switch input:checked + .slider {
-  background-color: rgba(157,17,217,0.35);
+  background-color: var(--primary-alpha);
+  border: 1px solid var(--primary);
 }
 
 .switch input:checked + .slider:before {
-  background-color: #9d11d9;
+  background-color: var(--primary);
   transform: translateX(20px);
-  box-shadow: 0 0 8px rgba(157,17,217,0.5);
+  box-shadow: 0 0 8px rgba(0, 200, 150, 0.4);
 }
 
 /* ── Botões ── */
 .botao-primario {
-  background: linear-gradient(135deg, #9d11d9, #7d0db0);
+  background: var(--primary);
   color: #fff;
   border: none;
   padding: 11px 24px;
-  border-radius: 8px;
-  font-family: 'Inter', sans-serif;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition);
 }
 
 .botao-primario:hover {
-  box-shadow: 0 0 16px rgba(157,17,217,0.4);
+  background: var(--primary-hover);
+  box-shadow: var(--shadow-glow);
   transform: translateY(-1px);
 }
 
 .botao-secundario {
   background: transparent;
-  color: #9d11d9;
-  border: 1.5px solid #9d11d9;
+  color: var(--primary);
+  border: 1.5px solid var(--primary);
   padding: 9px 20px;
-  border-radius: 8px;
-  font-family: 'Inter', sans-serif;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
   font-weight: 600;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: var(--transition);
   white-space: nowrap;
 }
 
 .botao-secundario:hover {
-  background: rgba(157,17,217,0.12);
-  box-shadow: 0 0 10px rgba(157,17,217,0.2);
+  background: var(--primary-alpha);
 }
 
 /* ── Zona de Perigo ── */
 .card-config.perigo {
-  border-color: rgba(239,68,68,0.3);
+  border-color: rgba(240, 64, 64, 0.3);
 }
 
 .card-config.perigo:hover {
-  border-color: rgba(239,68,68,0.55);
+  border-color: rgba(240, 64, 64, 0.55);
 }
 
-.texto-perigo { color: #ef4444 !important; }
+.texto-perigo { color: var(--error) !important; }
 
 .botao-perigo {
   background: transparent;
-  color: #ef4444;
-  border: 1.5px solid #ef4444;
+  color: var(--error);
+  border: 1.5px solid var(--error);
   padding: 9px 20px;
-  border-radius: 8px;
-  font-family: 'Inter', sans-serif;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
   font-weight: 600;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: var(--transition);
   white-space: nowrap;
 }
 
 .botao-perigo:hover {
-  background: rgba(239,68,68,0.12);
-  box-shadow: 0 0 12px rgba(239,68,68,0.25);
+  background: var(--error-alpha);
 }
 
 .texto-convidado {
-  color: #8888aa;
+  color: var(--text-secondary);
   font-size: 1rem;
   line-height: 1.7;
 }

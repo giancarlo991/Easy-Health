@@ -1,14 +1,20 @@
 /* src/mainLayout.css */
-body{
-  margin: 0px !important;
+body {
+  margin: 0 !important;
 }
+
 .layout-container {
-  display: flex; /* A mágica para deixar os itens lado a lado */
+  display: flex;
+  min-height: 100vh;
+  overflow-x: hidden; /* BUG FIX: evita scroll horizontal */
 }
 
 .page-content {
-  flex-grow: 1; /* Faz o conteúdo principal ocupar todo o espaço restante */
-  padding: 20px;
-  /* Como a sidebar é 'fixed' e tem 250px, precisamos de uma margem */
-  margin-left: 250px; 
+  flex: 1;
+  margin-left: 260px;
+  padding: 40px;
+  background-color: var(--bg-dark);
+  min-height: 100vh;
+  max-width: calc(100vw - 260px); /* BUG FIX: limita largura ao espaço disponível */
+  box-sizing: border-box;
 }

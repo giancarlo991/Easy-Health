@@ -13,6 +13,8 @@ import PerfilProfissional from './components/Profissional/perfilProfissional';
 import ConfiguracaoProfissional from './components/Profissional/configuracaoProfissional';
 import Home2 from './components/Home/homeProfissional';
 import MainLayout from './mainLayout';
+import Rankings from './components/Rankings/Rankings';
+import EncontrarTrainer from './components/EncontrarTrainer/EncontrarTrainer';
 
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
           <Route path="/perfilProfissional" element={<PerfilProfissional />} />
           <Route path="/configuracaoProfissional" element={<ConfiguracaoProfissional />} />
           <Route path="/home2" element={<Home2 />} />
+          <Route path="/rankings" element={<Rankings />} />
+          <Route path="/encontrar-trainer" element={<EncontrarTrainer />} />
         </Route>
 
       </Routes>

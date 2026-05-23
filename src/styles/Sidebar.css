@@ -1,44 +1,47 @@
 /* =====================================================
-   Sidebar — Dark Premium + Roxo Elétrico
+   Sidebar — Sport-Medical Premium · Teal
    ===================================================== */
 
 .sidebar {
-  font-family: var(--font-body, 'Inter', sans-serif);
-  width: 240px;
+  font-family: var(--font-body);
+  width: 260px;
   height: 100vh;
-  background-color: #12121a;
-  border-right: 1px solid #2a2a3d;
+  background-color: var(--bg-surface);
+  border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  padding: 24px 14px;
+  padding: 28px 14px;
   box-sizing: border-box;
   position: fixed;
   z-index: 100;
+  transition: var(--transition);
+  overflow-y: auto;
 }
 
 /* ── Logo ── */
-.sidebar .logo {
-  font-family: 'Barlow', var(--font-heading, sans-serif);
-  text-align: center;
-  font-size: 1.4rem;
-  font-weight: 800;
+.sidebar .logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 36px;
-  padding: 0 10px 20px;
-  border-bottom: 1px solid #2a2a3d;
-  color: #f0f0ff;
-  letter-spacing: 0.04em;
-  line-height: 1.2;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
 }
 
-.sidebar .logo span {
-  display: block;
-  color: #9d11d9;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+.sidebar .logo-img {
+  width: 130px;
+  height: auto;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 0 10px rgba(0, 200, 150, 0.25));
+}
+
+.sidebar .logo-tagline {
+  color: var(--text-muted);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  margin-top: 4px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
 }
 
 /* ── Lista de navegação ── */
@@ -55,26 +58,43 @@
 .sidebar .navItem {
   display: flex;
   align-items: center;
+  gap: 12px;
   padding: 11px 14px;
-  font-size: 0.95rem;
+  font-size: 0.875rem;
   font-weight: 500;
-  color: #8888aa;
+  color: var(--text-secondary);
   text-decoration: none;
-  border-radius: 8px;
-  transition: all 0.2s ease;
+  border-radius: var(--radius-md);
+  transition: var(--transition);
   position: relative;
 }
 
+.sidebar .navItem .nav-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  opacity: 0.75;
+  transition: opacity 0.2s;
+}
+
 .sidebar .navItem:hover {
-  background-color: rgba(157, 17, 217, 0.12);
-  color: #f0f0ff;
+  background-color: var(--primary-alpha);
+  color: var(--text-primary);
+}
+
+.sidebar .navItem:hover .nav-icon {
+  opacity: 1;
 }
 
 /* ── Item ativo ── */
 .sidebar .navItem.active {
-  background-color: rgba(157, 17, 217, 0.18);
-  color: #c158f0;
+  background-color: var(--primary-alpha);
+  color: var(--primary-light);
   font-weight: 600;
+}
+
+.sidebar .navItem.active .nav-icon {
+  opacity: 1;
 }
 
 .sidebar .navItem.active::before {
@@ -83,34 +103,46 @@
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  height: 55%;
+  height: 60%;
   width: 3px;
-  background: linear-gradient(180deg, #9d11d9, #c158f0);
-  border-radius: 0 4px 4px 0;
+  background: var(--primary);
+  border-radius: 0 3px 3px 0;
 }
 
 /* ── Botão Sair ── */
-.sidebar .login {
+.sidebar .logout-container {
   margin-top: auto;
-  padding: 0 4px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
 }
 
-.sidebar .login a {
-  display: block;
-  text-align: center;
-  padding: 11px;
-  border-radius: 8px;
+.sidebar .logout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
   font-weight: 600;
-  font-size: 0.9rem;
-  transition: all 0.25s ease;
+  font-size: 0.8rem;
+  font-family: var(--font-body);
+  transition: var(--transition);
   background-color: transparent;
-  border: 1.5px solid #9d11d9;
-  color: #9d11d9;
-  letter-spacing: 0.04em;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  cursor: pointer;
+  white-space: nowrap;
 }
 
-.sidebar .login a:hover {
-  background-color: #9d11d9;
-  color: #fff;
-  box-shadow: 0 0 16px rgba(157, 17, 217, 0.4);
+.sidebar .logout-btn .nav-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.sidebar .logout-btn:hover {
+  border-color: var(--error);
+  color: var(--error);
+  background-color: rgba(239, 68, 68, 0.08);
 }

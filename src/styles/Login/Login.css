@@ -1,15 +1,17 @@
 /* =====================================================
-   Login — Dark Premium + Roxo Elétrico
+   Login — Sport-Medical Premium · Teal
    ===================================================== */
 
 .login-page {
-  background-color: #0e0e14;
-  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-dark);
+  font-family: var(--font-body);
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   margin: 0;
+  padding: 24px;
+  box-sizing: border-box;
 }
 
 /* ── Card principal ── */
@@ -18,13 +20,14 @@
   width: 100%;
   max-width: 1000px;
   min-height: 600px;
-  background-color: #16161f;
-  border-radius: 20px;
-  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.7), 0 0 0 1px #2a2a3d;
+  background-color: var(--bg-surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border);
   overflow: hidden;
 }
 
-/* ── Painel Esquerdo (Roxo) ── */
+/* ── Painel Esquerdo (Teal) ── */
 .login-page .c11 {
   flex-basis: 50%;
   background: linear-gradient(145deg, #9d11d9 0%, #6b0a9e 60%, #3d0060 100%);
@@ -39,16 +42,16 @@
   overflow: hidden;
 }
 
-/* Efeito de glow decorativo no painel */
+/* Elementos decorativos sutis */
 .login-page .c11::before {
   content: '';
   position: absolute;
-  width: 300px;
-  height: 300px;
+  width: 320px;
+  height: 320px;
   background: rgba(255, 255, 255, 0.06);
   border-radius: 50%;
-  top: -80px;
-  right: -80px;
+  top: -90px;
+  right: -90px;
 }
 
 .login-page .c11::after {
@@ -63,8 +66,8 @@
 }
 
 .login-page .c11 h1 {
-  font-family: 'Barlow', sans-serif;
-  font-size: 2.6rem;
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
   font-weight: 800;
   line-height: 1.2;
   margin: 0;
@@ -72,17 +75,18 @@
 }
 
 .login-page .c11 p {
-  font-size: 1.05rem;
+  font-size: 1rem;
   margin: 18px 0;
-  opacity: 0.85;
+  opacity: 0.88;
   position: relative;
+  line-height: 1.6;
 }
 
 .login-page .c11 hr {
   width: 100%;
-  max-width: 300px;
+  max-width: 280px;
   height: 1px;
-  background-color: rgba(255,255,255,0.25);
+  background-color: rgba(255, 255, 255, 0.2);
   border: 0;
   margin: 6px auto;
 }
@@ -93,15 +97,15 @@
 
 .login-page .c11 button {
   background-color: transparent;
-  border: 2px solid rgba(255,255,255,0.8);
+  border: 2px solid rgba(255, 255, 255, 0.85);
   color: #fff;
   padding: 12px 36px;
   border-radius: 50px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition);
   position: relative;
 }
 
@@ -119,25 +123,25 @@
   padding: 50px;
   width: 100%;
   box-sizing: border-box;
-  background-color: #16161f;
+  background-color: var(--bg-surface);
 }
 
 .login-page .login h1 {
-  font-family: 'Barlow', sans-serif;
-  color: #f0f0ff;
-  font-size: 2rem;
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  font-size: 1.9rem;
   font-weight: 800;
   margin: 0 0 28px 0;
   text-align: center;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
 
 .login-page .mensagem-erro {
-  color: #ef4444;
-  background: rgba(239,68,68,0.12);
-  border: 1px solid rgba(239,68,68,0.3);
+  color: var(--error);
+  background: var(--error-alpha);
+  border: 1px solid rgba(240, 64, 64, 0.3);
   padding: 10px 14px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   margin-bottom: 16px;
   font-weight: 500;
   font-size: 0.9rem;
@@ -145,60 +149,61 @@
 }
 
 .login-page .login label {
-  color: #8888aa;
+  color: var(--text-secondary);
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   margin-bottom: 7px;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.07em;
+  display: block;
 }
 
 .login-page .login input {
   width: 100%;
   height: 46px;
-  border: 1px solid #2a2a3d;
-  border-radius: 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
   padding: 0 15px;
   margin-bottom: 20px;
-  font-size: 1rem;
-  font-family: 'Inter', sans-serif;
-  background-color: #1e1e2e;
-  color: #f0f0ff;
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  background-color: var(--bg-elevated);
+  color: var(--text-primary);
   transition: border-color 0.25s, box-shadow 0.25s;
   box-sizing: border-box;
+  outline: none;
 }
 
 .login-page .login input::placeholder {
-  color: #55556a;
+  color: var(--text-muted);
 }
 
 .login-page .login input:focus {
-  outline: none;
-  border-color: #9d11d9;
-  box-shadow: 0 0 0 3px rgba(157, 17, 217, 0.2);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-alpha);
 }
 
 /* Botão Entrar */
 .login-page .login .btn-entrar {
   width: 100%;
   height: 48px;
-  background: linear-gradient(135deg, #9d11d9 0%, #7d0db0 100%);
+  background: var(--primary);
   color: #fff;
   border: none;
-  border-radius: 8px;
-  font-family: 'Inter', sans-serif;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition);
   margin-top: 8px;
 }
 
 .login-page .login .btn-entrar:hover {
-  background: linear-gradient(135deg, #b520f0 0%, #9d11d9 100%);
-  box-shadow: 0 0 20px rgba(157, 17, 217, 0.45);
+  background: var(--primary-hover);
+  box-shadow: var(--shadow-glow);
   transform: translateY(-1px);
 }
 
@@ -207,20 +212,21 @@
   width: 100%;
   height: 46px;
   background: transparent;
-  color: #9d11d9;
-  border: 1.5px solid #9d11d9;
-  border-radius: 8px;
-  font-family: 'Inter', sans-serif;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition);
   margin-top: 12px;
 }
 
 .login-page .login .btn-convidado:hover {
-  background-color: rgba(157, 17, 217, 0.12);
-  box-shadow: 0 0 12px rgba(157, 17, 217, 0.2);
+  border-color: var(--primary);
+  color: var(--primary);
+  background-color: var(--primary-alpha);
 }
 
 /* Esqueceu a senha */
@@ -230,7 +236,7 @@
 }
 
 .login-page .esqueceu-a-senha a {
-  color: #8888aa;
+  color: var(--text-muted);
   font-weight: 500;
   font-size: 0.88rem;
   text-decoration: none;
@@ -238,13 +244,13 @@
 }
 
 .login-page .esqueceu-a-senha a:hover {
-  color: #c158f0;
+  color: var(--primary);
 }
 
 /* Alertas */
 .login-page .mensagem-alerta {
   padding: 10px 14px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   margin-bottom: 18px;
   font-weight: 500;
   text-align: center;
@@ -252,9 +258,9 @@
 }
 
 .login-page .mensagem-sucesso {
-  background-color: rgba(34, 197, 94, 0.12);
-  color: #22c55e;
-  border: 1px solid rgba(34, 197, 94, 0.3);
+  background-color: var(--success-alpha);
+  color: var(--success);
+  border: 1px solid rgba(0, 200, 150, 0.3);
 }
 
 /* Responsivo */
@@ -264,7 +270,7 @@
     flex-direction: column;
     min-height: auto;
   }
-  .login-page .c11 { padding: 40px 24px; }
+  .login-page .c11 { padding: 40px 24px; flex-basis: auto; }
   .login-page .c11 h1 { font-size: 2rem; }
-  .login-page .login { padding: 40px 24px; }
+  .login-page .login { flex-basis: auto; padding: 40px 24px; }
 }

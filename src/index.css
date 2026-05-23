@@ -1,20 +1,20 @@
 /* =====================================================
    EasyHealth — Design System Global
-   Paleta: Roxo Elétrico #9d11d9 + Dark Premium
-   Fontes: Barlow (títulos) + Inter (corpo)
+   Paleta: Teal #00C896 + Dark Warm Premium
+   Fontes: DM Sans (títulos) + Plus Jakarta Sans (corpo)
    ===================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@700;800&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
 :root {
-  /* ── Cor Primária ── */
+  /* ── Cor Primária: roxo elétrico ── */
   --primary:        #9d11d9;
   --primary-hover:  #7d0db0;
   --primary-light:  #c158f0;
-  --primary-alpha:  rgba(157, 17, 217, 0.15);
-  --primary-glow:   0 0 20px rgba(157, 17, 217, 0.35);
+  --primary-alpha:  rgba(157, 17, 217, 0.12);
+  --primary-glow:   0 0 24px rgba(157, 17, 217, 0.28);
 
-  /* ── Plano de Fundo ── */
+  /* ── Plano de Fundo: dark premium frio ── */
   --bg-dark:        #0e0e14;
   --bg-surface:     #16161f;
   --bg-elevated:    #1e1e2e;
@@ -37,8 +37,8 @@
   --error-alpha:    rgba(239, 68, 68, 0.15);
 
   /* ── Tipografia ── */
-  --font-heading: 'Barlow', sans-serif;
-  --font-body:    'Inter', sans-serif;
+  --font-heading: 'DM Sans', sans-serif;
+  --font-body:    'Plus Jakarta Sans', sans-serif;
 
   /* ── Arredondamentos ── */
   --radius-sm:  6px;
@@ -49,6 +49,9 @@
   /* ── Sombras ── */
   --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
   --shadow-glow: 0 0 24px rgba(157, 17, 217, 0.3);
+
+  /* ── Transições ── */
+  --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ── Reset & Base ── */
@@ -69,17 +72,19 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   letter-spacing: 0.02em;
+  color: var(--text-primary);
 }
 
 a {
   color: var(--primary-light);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: var(--transition);
 }
 
 a:hover {
@@ -96,10 +101,79 @@ a:hover {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border);
+  background: var(--bg-elevated);
   border-radius: 99px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary);
+}
+
+/* ── Utility Classes ── */
+.glass {
+  background: rgba(20, 25, 24, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+}
+
+.glow-text {
+  color: var(--primary-light);
+  /* Sem text-shadow agressivo */
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: var(--font-body);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-1px);
+}
+
+/* ── Micro-animações ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.conteudo-principal,
+.perfil-container,
+.perfil-prof-container,
+.config-container,
+.consultas-container {
+  animation: fadeInUp 0.35s ease forwards;
+}
+
+/* ── Skeleton Shimmer ── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton-header {
+  height: 80px;
+  background: linear-gradient(90deg, var(--bg-surface) 25%, var(--bg-elevated) 50%, var(--bg-surface) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-md);
+  margin-bottom: 40px;
+}
+
+.skeleton-card {
+  height: 140px;
+  background: linear-gradient(90deg, var(--bg-surface) 25%, var(--bg-elevated) 50%, var(--bg-surface) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
 }

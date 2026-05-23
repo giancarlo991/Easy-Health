@@ -1,33 +1,33 @@
-/* =====================================================
-   Perfil Profissional — Dark Premium + Roxo
+﻿/* =====================================================
+   Perfil Profissional — Sport-Medical Premium · Teal
    ===================================================== */
 
 .perfil-prof-container {
   padding: 40px;
-  font-family: 'Inter', sans-serif;
-  color: #f0f0ff;
+  font-family: var(--font-body);
+  color: var(--text-primary);
   max-width: 1400px;
   margin: 0 auto;
 }
 
-/* ── Cabeçalho ── */
+/* ── Cabecalho ── */
 .perfil-prof-cabecalho {
   margin-bottom: 34px;
-  border-bottom: 1px solid #2a2a3d;
+  border-bottom: 1px solid var(--border);
   padding-bottom: 20px;
 }
 
 .perfil-prof-cabecalho h1 {
-  font-family: 'Barlow', sans-serif;
+  font-family: var(--font-heading);
   font-size: 2rem;
   font-weight: 800;
-  color: #f0f0ff;
+  color: var(--text-primary);
   margin: 0 0 8px 0;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
 
 .perfil-prof-cabecalho p {
-  color: #8888aa;
+  color: var(--text-secondary);
   margin: 0;
 }
 
@@ -39,14 +39,14 @@
   justify-content: center;
   padding: 100px 0;
   gap: 20px;
-  color: #8888aa;
+  color: var(--text-secondary);
 }
 
 .spinner {
   width: 48px;
   height: 48px;
-  border: 4px solid #2a2a3d;
-  border-top-color: #9d11d9;
+  border: 4px solid var(--border);
+  border-top-color: var(--primary);
   border-radius: 50%;
   animation: girar 0.75s linear infinite;
 }
@@ -58,7 +58,7 @@
 /* ── Alerta ── */
 .alerta-prof {
   padding: 13px 18px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   margin-bottom: 26px;
   font-weight: 500;
   text-align: center;
@@ -66,18 +66,18 @@
 }
 
 .alerta-prof.sucesso {
-  background: rgba(34,197,94,0.12);
-  color: #22c55e;
-  border: 1px solid rgba(34,197,94,0.3);
+  background: var(--success-alpha);
+  color: var(--success);
+  border: 1px solid rgba(0, 200, 150, 0.3);
 }
 
 .alerta-prof.erro {
-  background: rgba(239,68,68,0.12);
-  color: #ef4444;
-  border: 1px solid rgba(239,68,68,0.3);
+  background: var(--error-alpha);
+  color: var(--error);
+  border: 1px solid rgba(240, 64, 64, 0.3);
 }
 
-/* ── Grid de Métricas ── */
+/* ── Grid de Metricas ── */
 .metricas-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -86,22 +86,22 @@
 }
 
 .metrica-card {
-  background: #16161f;
-  border: 1px solid #2a2a3d;
-  border-radius: 14px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
   padding: 24px 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 6px;
   position: relative;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
-  transition: all 0.25s ease;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
 }
 
 .metrica-card:hover {
-  border-color: rgba(157, 17, 217, 0.45);
-  box-shadow: 0 0 20px rgba(157, 17, 217, 0.2);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-glow);
   transform: translateY(-2px);
 }
 
@@ -114,19 +114,19 @@
 }
 
 .metrica-valor {
-  font-family: 'Barlow', sans-serif;
+  font-family: var(--font-heading);
   font-size: 2rem;
   font-weight: 800;
-  color: #f0f0ff;
+  color: var(--text-primary);
   line-height: 1.1;
 }
 
 .metrica-label {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #8888aa;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-secondary);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
 }
 
 /* ── Badges ── */
@@ -138,9 +138,9 @@
   display: inline-block;
 }
 
-.status-pendente  { background: rgba(245,158,11,0.15);  color: #f59e0b; }
-.status-aprovado  { background: rgba(34,197,94,0.15);   color: #22c55e; }
-.status-reprovado { background: rgba(239,68,68,0.15);   color: #ef4444; }
+.status-pendente  { background: var(--warning-alpha);  color: var(--warning); }
+.status-aprovado  { background: var(--success-alpha);  color: var(--success); }
+.status-reprovado { background: var(--error-alpha);    color: var(--error); }
 
 /* ── Grid de Cards ── */
 .perfil-prof-grid {
@@ -150,23 +150,23 @@
 }
 
 .perfil-prof-card {
-  background-color: #16161f;
+  background-color: var(--bg-surface);
   padding: 30px;
-  border-radius: 14px;
-  border: 1px solid #2a2a3d;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
   transition: border-color 0.25s ease;
 }
 
 .perfil-prof-card:hover {
-  border-color: rgba(157,17,217,0.3);
+  border-color: var(--primary);
 }
 
 .perfil-prof-card h2 {
-  font-family: 'Barlow', sans-serif;
+  font-family: var(--font-heading);
   font-size: 1.2rem;
   font-weight: 700;
-  color: #f0f0ff;
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -179,7 +179,7 @@
 .linha-divisoria {
   border: 0;
   height: 1px;
-  background-color: #2a2a3d;
+  background-color: var(--border);
   margin: 18px 0;
 }
 
@@ -192,58 +192,57 @@
 .grupo-info:last-child { margin-bottom: 0; }
 
 .info-label {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #9d11d9;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary);
   margin-bottom: 6px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
 }
 
 .info-valor {
   font-size: 1rem;
-  color: #f0f0ff;
+  color: var(--text-primary);
   font-weight: 500;
 }
 
 .input-perfil {
   width: 100%;
   padding: 11px 14px;
-  border: 1px solid #2a2a3d;
-  border-radius: 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
   font-size: 0.95rem;
-  font-family: 'Inter', sans-serif;
-  color: #f0f0ff;
-  background-color: #1e1e2e;
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background-color: var(--bg-elevated);
   box-sizing: border-box;
   outline: none;
   transition: border-color 0.25s, box-shadow 0.25s;
 }
 
-.input-perfil::placeholder { color: #55556a; }
+.input-perfil::placeholder { color: var(--text-muted); }
 
 .input-perfil:focus {
-  border-color: #9d11d9;
-  box-shadow: 0 0 0 3px rgba(157,17,217,0.2);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-alpha);
 }
 
-/* ── Botões ── */
+/* ── Botoes ── */
 .btn-editar {
   background-color: transparent;
-  color: #9d11d9;
-  border: 1.5px solid #9d11d9;
+  color: var(--primary);
+  border: 1.5px solid var(--primary);
   padding: 6px 16px;
-  border-radius: 6px;
-  font-family: 'Inter', sans-serif;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: var(--transition);
 }
 
 .btn-editar:hover {
-  background-color: rgba(157,17,217,0.15);
-  box-shadow: 0 0 10px rgba(157,17,217,0.2);
+  background-color: var(--primary-alpha);
 }
 
 .acoes-edicao {
@@ -255,36 +254,36 @@
 
 .btn-cancelar {
   background-color: transparent;
-  color: #8888aa;
-  border: 1px solid #2a2a3d;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
   padding: 10px 20px;
-  border-radius: 8px;
-  font-family: 'Inter', sans-serif;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: var(--transition);
 }
 
 .btn-cancelar:hover {
-  background-color: #1e1e2e;
-  color: #f0f0ff;
+  background-color: var(--bg-elevated);
+  color: var(--text-primary);
 }
 
 .btn-salvar {
-  background: linear-gradient(135deg, #9d11d9, #7d0db0);
+  background: var(--primary);
   color: #fff;
   border: none;
   padding: 10px 22px;
-  border-radius: 8px;
-  font-family: 'Inter', sans-serif;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition);
 }
 
 .btn-salvar:hover {
-  background: linear-gradient(135deg, #b520f0, #9d11d9);
-  box-shadow: 0 0 16px rgba(157,17,217,0.4);
+  background: var(--primary-hover);
+  box-shadow: var(--shadow-glow);
   transform: translateY(-1px);
 }
 
@@ -300,7 +299,7 @@
 }
 
 .mensagem-convidado {
-  color: #8888aa;
+  color: var(--text-secondary);
   font-size: 1rem;
   line-height: 1.7;
 }
