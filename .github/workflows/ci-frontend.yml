@@ -1,0 +1,49 @@
+name: CI – Frontend (Easy Health)
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: Lint e Build do projeto React + Vite
+    runs-on: ubuntu-latest
+
+    steps:
+      # ── 1. Checkout do código ──────────────────────────────────────────────
+      - name: 📥 Checkout do repositório
+        uses: actions/checkout@v4
+
+      # ── 2. Configurar Node.js ──────────────────────────────────────────────
+      - name: ⚙️ Configurar Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # ── 3. Instalar dependências ───────────────────────────────────────────
+      - name: 📦 Instalar dependências (npm install)
+        run: npm install
+
+      # ── 4. Verificar qualidade do código com ESLint ───────────────────────
+      - name: 🔍 Lint – ESLint
+        run: npm run lint
+
+      # ── 5. Build de produção com Vite ─────────────────────────────────────
+      - name: 🏗️ Build de produção (vite build)
+        run: npm run build
+
+      # ── 6. Resumo do resultado ────────────────────────────────────────────
+      - name: 📊 Exibir resultado do pipeline
+        if: always()
+        run: |
+          echo "============================================"
+          echo "  Resultado do pipeline: ${{ job.status }}"
+          echo "============================================"
+          if [ "${{ job.status }}" == "success" ]; then
+            echo "✅ Build concluído com sucesso!"
+          else
+            echo "❌ Falha no pipeline – verifique lint ou build acima."
+          fi
