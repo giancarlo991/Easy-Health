@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roteiro P2 Otimizado (Máx 10 Minutos) — Easy Health</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: #333333;
+      background-color: #f4f6f8;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 850px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.06);
+      border: 1px solid #e1e8ed;
+    }
+    h1 {
+      font-size: 26px;
+      color: #9D11D9;
+      border-bottom: 2px solid #EED8F7;
+      padding-bottom: 12px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .subtitle {
+      text-align: center;
+      color: #666666;
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+    h2 {
+      font-size: 18px;
+      color: #111111;
+      margin-top: 30px;
+      margin-bottom: 12px;
+      padding-left: 10px;
+      border-left: 4px solid #9D11D9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .time-badge {
+      font-size: 12px;
+      background-color: #EED8F7;
+      color: #9D11D9;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+    h3 {
+      font-size: 14px;
+      color: #555555;
+      margin-top: 12px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    p, li {
+      font-size: 14.5px;
+      color: #444444;
+    }
+    ul {
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+    .speech-box {
+      background-color: #FBF6FE;
+      border-left: 4px solid #c158f0;
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-style: italic;
+    }
+    .speech-box strong {
+      font-style: normal;
+      color: #9D11D9;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .highlight-box {
+      background-color: #F8F9FA;
+      border: 1px solid #E1E8ED;
+      padding: 12px 18px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 12px;
+      color: #888888;
+      border-top: 1px solid #e1e8ed;
+      padding-top: 20px;
+    }
+    .tips-header {
+      background-color: #EED8F7;
+      border: 1px solid #9D11D9;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+    }
+    .tips-header h3 {
+      color: #9D11D9;
+      margin: 0 0 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🗣️ Roteiro de Apresentação Otimizado (Máximo 10 Minutos)</h1>
+    <div class="subtitle">Easy Health — Integração e Entrega Contínua (Prof. Silvio Barbieri)</div>
+
+    <div class="tips-header">
+      <h3>⚡ Estratégia dos 10 Minutos (Cronometragem Focada):</h3>
+      <p>Para não ultrapassar o tempo, evite ler linhas de código na tela. Foque nos <strong>conceitos</strong>, no <strong>valor entregue</strong> e no fato de que o <strong>pipeline funciona automaticamente</strong>. A divisão ideal de falas para manter o dinamismo está sugerida abaixo.</p>
+    </div>
+
+    <!-- Slide 0 -->
+    <h2><span>📌 Slide 0: Capa / Introdução</span> <span class="time-badge">⏱️ 30 segundos</span></h2>
+    <div class="speech-box">
+      <strong>🎙️ André:</strong>
+      "Boa noite a todos. Somos o Grupo 1, composto por mim, pelo Daniel, Gustavo e Giancarlo, e vamos apresentar o Easy Health, um ecossistema digital para Personal Trainers e Nutricionistas gerenciarem seus clientes, treinos e avaliações. O nosso foco hoje é mostrar a evolução desse projeto ao longo de 5 semanas, guiada por uma esteira de automação de testes e deploy contínuo."
+    </div>
+
+    <!-- Slide 1 -->
+    <h2><span>📌 Slide 1: Cronograma & Legenda CI/CD</span> <span class="time-badge">⏱️ 45 segundos</span></h2>
+    <div class="speech-box">
+      <strong>🎙️ André:</strong>
+      "Nossa evolução seguiu a risca a matriz de CI/CD da P2. Partimos do planejamento de stack, criamos a infraestrutura em Docker, codificamos as rotas e telas, cobrimos a aplicação com testes unitários e de integração no CI, e encerramos aplicando logs de monitoramento. Preenchemos todas as etapas de build, testes, deploy, segurança e observabilidade que detalharemos a seguir."
+    </div>
+
+    <!-- Slide 2 -->
+    <h2><span>📌 Slide 2: Aula 1 — Planejamento e Stack</span> <span class="time-badge">⏱️ 1 minuto</span></h2>
+    <div class="speech-box">
+      <strong>🎙️ Daniel:</strong>
+      "Na primeira semana, definimos o escopo do Easy Health e escolhemos a nossa stack tecnológica: uma SPA em React com Vite no Frontend (para renderização rápida e compilação leve) e uma API Express com MongoDB usando Mongoose no Backend. O MongoDB foi escolhido por ser um banco documental NoSQL flexível, o que agiliza a gravação e modificação das tabelas de treinos e avaliações físicas. Separamos o projeto em dois repositórios independentes no GitHub."
+    </div>
+
+    <!-- Slide 3 -->
+    <h2><span>📌 Slide 3: Aula 2 — CI/CD e Infraestrutura</span> <span class="time-badge">⏱️ 1 minuto</span></h2>
+    <div class="speech-box">
+      <strong>🎙️ Daniel:</strong>
+      "Na Aula 2, dockerizamos o nosso banco local com Docker Compose para acelerar o desenvolvimento. Configuramos a esteira de CI no GitHub Actions. Toda vez que enviamos código ao repositório, o GitHub instala as dependências, roda o ESLint para auditoria estática e realiza o build de produção. O Frontend já foi conectado à Vercel com Deploy Contínuo automático a partir da branch principal."
+    </div>
+
+    <!-- Slide 4 -->
+    <h2><span>📌 Slide 4: Aula 3 — Desenvolvimento e Integração</span> <span class="time-badge">⏱️ 1.5 minutos</span></h2>
+    <div class="speech-box">
+      <strong>🎙️ Gustavo:</strong>
+      "Na Aula 3, construímos as rotas e modelos de dados para Usuários, Profissionais, Treinos e Avaliações. No Frontend, desenvolvemos os layouts responsivos e a navegação. O principal ponto de integração foi a nossa camada de API do Axios: criamos um interceptador que anexa automaticamente o token JWT nas requisições. Se o token expirar e o servidor responder 401, o interceptador limpa a sessão e redireciona o usuário ao login imediatamente, protegendo as telas privadas."
+    </div>
+    <div class="highlight-box">
+      <strong>Foco técnico:</strong> Mencione o arquivo <code>api.js</code> do frontend como a centralização desse controle de sessões.
+    </div>
+
+    <!-- Slide 5 -->
+    <h2><span>📌 Slide 5: Aula 4 — Testes e Segurança</span> <span class="time-badge">⏱️ 2 minutos</span></h2>
+    <div class="speech-box">
+      <strong>🎙️ Gustavo:</strong>
+      "Na Aula 4, blindamos a aplicação. Criamos testes unitários com Jest no Backend para validar o fluxo do 'AuthService' (login/cadastro) simulando cenários corretos e de erro através de mocks. Para integração, configuramos o pipeline do Actions para rodar o Newman e testar todos os endpoints reais contra uma instância temporária do MongoDB no Docker. Na parte de segurança, aplicamos criptografia irreversível de senhas com hashes Bcrypt de 10 rounds de salt, rotas privadas via middleware JWT e políticas de CORS na API."
+    </div>
+    <div class="highlight-box">
+      <strong>Foco técnico:</strong> Diga que mockar o banco nos testes unitários garante velocidade (milissegundos), enquanto o Newman em container valida os dados reais.
+    </div>
+
+    <!-- Slide 6 -->
+    <h2><span>📌 Slide 6: Aula 5 — Monitoramento e Deploy Final</span> <span class="time-badge">⏱️ 1.5 minutos</span></h2>
+    <div class="speech-box">
+      <strong>🎙️ Giancarlo:</strong>
+      "Na Aula 5, implementamos nosso sistema de monitoramento básico usando logs de visualizações de perfil (a tabela ProfileViewLog). O backend agrupa as visualizações e calcula automaticamente as visitas dos últimos 7 dias. Removemos as conexões fixas com o banco, centralizando tudo em variáveis de ambiente confidenciais (.env). O pipeline final foi testado e aprovado com sucesso, garantindo build e testes automáticos antes de qualquer atualização."
+    </div>
+
+    <!-- Slide 7 -->
+    <h2><span>📌 Slide 7: Planilha P2 Final</span> <span class="time-badge">⏱️ 1 minuto</span></h2>
+    <div class="speech-box">
+      <strong>🎙️ Giancarlo:</strong>
+      "Esta é a nossa planilha consolidada da P2. Mapeamos cada tecnologia e recurso aplicado no Grupo 1. A nossa esteira do GitHub Actions valida automaticamente a compilação, o estilo de código com ESLint, os testes unitários do Jest e testes de endpoints com Newman usando Docker. O projeto está publicado e integrado, cumprindo 100% dos requisitos acadêmicos."
+    </div>
+
+    <!-- Slide 8 -->
+    <h2><span>📌 Slide 8: Conclusão</span> <span class="time-badge">⏱️ 45 segundos</span></h2>
+    <div class="speech-box">
+      <strong>🎙️ Giancarlo:</strong>
+      "Para concluir, a engenharia do Easy Health atinge os padrões de mercado em termos de boas práticas de DevOps e Segurança: automação de builds, testes em duas camadas e criptografia forte. Agradecemos aos professores e colegas pela atenção e estamos abertos a perguntas da banca."
+    </div>
+
+    <div class="footer">
+      Roteiro Otimizado (Máx 10 minutos) — Easy Health — 11/06/2026<br>
+      Grupo 1: André França, Daniel, Gustavo e Giancarlo
+    </div>
+  </div>
+</body>
+</html>

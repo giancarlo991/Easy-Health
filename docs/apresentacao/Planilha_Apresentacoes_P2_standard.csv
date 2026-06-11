@@ -1,0 +1,5 @@
+﻿Grupo,Alunos(as),Projeto,Tecnologias (stack de back;front),Plataforma de CI,Build,Testes - Unitário (qual função),Testes - Integração (de - para),Testes - Infraestrutura,Testes - Build,"Testes - Performance (cpu, ram.., nping)",Testes - Segurança,Testes - Monitoramento,DEPLOY,Link do projeto Github/GitLAB,Link do projeto na Vercel
+1,André,Easy Health,"React, JavaScript (Vite) [Front] | Node.js, Express, MongoDB (Mongoose) [Back]",GitHub Workflows,NPM,"AuthService (login(), register() com Jest em auth.unit.test.js)",Newman/Postman (Auth e outros endpoints); React -> API Node.js -> MongoDB,MongoDB Atlas + Node.js (MongoDB local via Docker mongo:latest em CI),"Pipeline GitHub Actions (npm run lint, npm run build, npm test)",Não implementado (apenas tracking local de views: profile_views_7),"JWT (authMiddleware), Bcrypt (salt: 10), Validação de Entrada e CORS",Log de visualizações de perfil (ProfileViewLog + profile_views_7),Vercel (Frontend),https://github.com/giancarlo991/Easy-Health (Front) | https://github.com/Andrefranca1328/EasyHealthApiV2 (Back),Vercel (Frontend)
+,Daniel,,,,,,,,,,,,,,
+,Gustavo,,,,,,,,,,,,,,
+,Giancarlo,,,,,,,,,,,,,,

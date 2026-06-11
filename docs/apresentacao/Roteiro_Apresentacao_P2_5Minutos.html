@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roteiro P2 Super Otimizado (Máx 5 Minutos) — Easy Health</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: #333333;
+      background-color: #f4f6f8;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.06);
+      border: 1px solid #e1e8ed;
+    }
+    h1 {
+      font-size: 24px;
+      color: #9D11D9;
+      border-bottom: 2px solid #EED8F7;
+      padding-bottom: 12px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .subtitle {
+      text-align: center;
+      color: #666666;
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+    h2 {
+      font-size: 17px;
+      color: #111111;
+      margin-top: 25px;
+      margin-bottom: 12px;
+      padding-left: 10px;
+      border-left: 4px solid #9D11D9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .time-badge {
+      font-size: 11px;
+      background-color: #EED8F7;
+      color: #9D11D9;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+    p, li {
+      font-size: 14px;
+      color: #444444;
+    }
+    .speech-box {
+      background-color: #FBF6FE;
+      border-left: 4px solid #c158f0;
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-style: italic;
+    }
+    .speech-box strong {
+      font-style: normal;
+      color: #9D11D9;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .highlight-box {
+      background-color: #F8F9FA;
+      border: 1px solid #E1E8ED;
+      padding: 10px 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-size: 13px;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 12px;
+      color: #888888;
+      border-top: 1px solid #e1e8ed;
+      padding-top: 20px;
+    }
+    .tips-header {
+      background-color: #EED8F7;
+      border: 1px solid #9D11D9;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+    }
+    .tips-header h3 {
+      color: #9D11D9;
+      margin: 0 0 6px 0;
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🗣️ Roteiro Pitch de Apresentação (Máximo 5 Minutos)</h1>
+    <div class="subtitle">Easy Health — Integração e Entrega Contínua (Prof. Silvio Barbieri)</div>
+
+    <div class="tips-header">
+      <h3>⚡ Estratégia do Pitch de 5 Minutos:</h3>
+      <p>Apresentação extremamente ágil. Fale com ritmo firme, não se prenda a detalhes de telas, mostre os <strong>arquivos de teste e segurança do código</strong> apenas por cima e ressalte que o fluxo é 100% automatizado no GitHub Actions.</p>
+    </div>
+
+    <!-- Parte 1 -->
+    <h2><span>📌 Bloco 1: Introdução e Proposta (Slides 0 e 1)</span> <span class="time-badge">⏱️ 45 segundos</span></h2>
+    <div class="speech-box">
+      <strong>🎙️ André:</strong>
+      "Boa noite. O Easy Health é uma plataforma voltada para Personal Trainers e Nutricionistas gerenciarem seus alunos e treinos de forma integrada. Nosso objetivo em Engenharia de Software foi construir uma aplicação dividida em micro-serviços (Front e Back) com qualidade de código assegurada por uma esteira automática de CI/CD em GitHub Workflows, cobrindo compilação, testes e monitoramento."
+    </div>
+
+    <!-- Parte 2 -->
+    <h2><span>📌 Bloco 2: Stack e Infraestrutura (Slides 2 e 3)</span> <span class="time-badge">⏱️ 1 minuto</span></h2>
+    <div class="speech-box">
+      <strong>🎙️ Daniel:</strong>
+      "Nossa stack conta com Frontend em React via Vite e Backend em Express com banco documental MongoDB via Mongoose, garantindo flexibilidade para tabelas complexas de treinos. No quesito infraestrutura, criamos arquivos Docker Compose para orquestrar o banco localmente. Nossa esteira do GitHub Actions valida a compilação do código e o padrão estático com ESLint a cada push, disparando deploys automáticos diretamente para a Vercel."
+    </div>
+
+    <!-- Parte 3 -->
+    <h2><span>📌 Bloco 3: Integração e Comunicação (Slide 4)</span> <span class="time-badge">⏱️ 1 minuto</span></h2>
+    <div class="speech-box">
+      <strong>🎙️ Gustavo:</strong>
+      "A comunicação entre as partes é feita por chamadas de API centralizadas via Axios. Criamos um interceptador no frontend que insere automaticamente o Token JWT nas requisições seguras. Caso a sessão expire (retornando status HTTP 401), o próprio interceptador limpa as credenciais locais e redireciona o usuário para a tela de login, garantindo robustez de navegação."
+    </div>
+    <div class="highlight-box">
+      <strong>Destaque no código:</strong> Diga que o arquivo principal de integração é o <code>api.js</code> do React.
+    </div>
+
+    <!-- Parte 4 -->
+    <h2><span>📌 Bloco 4: Testes, Segurança e Logs (Slides 5 e 6)</span> <span class="time-badge">⏱️ 1.5 minutos</span></h2>
+    <div class="speech-box">
+      <strong>🎙️ Gustavo:</strong>
+      "Para blindar a segurança e qualidade, implementamos testes em duas camadas no pipeline de CI/CD: testes unitários com Jest mockando o banco no AuthService (registro e login) e testes de integração com Newman rodando endpoints HTTP contra um MongoDB em container Docker no GitHub Actions. Em segurança, as senhas usam criptografia irreversível com Bcrypt de 10 rounds de salt e rotas privadas protegidas por JWT. Por fim, criamos monitoramento de visualização de perfis semanais persistido no banco."
+    </div>
+    <div class="highlight-box">
+      <strong>Foco em Testes:</strong> Reforce que Jest roda em milissegundos e Newman garante o fluxo fim a fim no Actions.
+    </div>
+
+    
+    <!-- Bloco 4.5: Evolução do Pipeline -->
+    <h2><span>📌 Bloco 4.5: Evolução do Pipeline (Bugs no Actions)</span> <span class="time-badge">⏱️ 45 segundos</span></h2>
+    <div class="speech-box">
+      <strong>🎙️ Giancarlo:</strong>
+      "Durante o setup do CI, tivemos 5 execuções de testes. Corrigimos um problema clássico de incompatibilidade de ambientes: imports que funcionavam no Windows local quebravam no runner Linux do GitHub Actions devido à sensibilidade de maiúsculas/minúsculas (Case-Sensitivity) nos nomes de arquivos. Ajustamos os caminhos dos models nos commits #2, #3 e #4, e no commit final dividimos os testes em jobs independentes com timeout de inicialização da API corrigido com wait-on, garantindo sucesso total."
+    </div>
+
+    <!-- Parte 5 -->
+    <h2><span>📌 Bloco 5: Resultados e Conclusão (Slides 8 e 9)</span> <span class="time-badge">⏱️ 45 segundos</span></h2>
+    <div class="speech-box">
+      <strong>🎙️ Giancarlo:</strong>
+      "Concluímos preenchendo todos os requisitos da planilha de P2. Nossa esteira assegura build, testes unitários, testes de integração e deploy automático. O projeto está implantado em produção e funcional, seguindo boas práticas de DevOps e Segurança de dados. Agradecemos aos professores e abrimos espaço para perguntas."
+    </div>
+
+    <div class="footer">
+      Roteiro Pitch (Máx 5 minutos) — Easy Health — 11/06/2026<br>
+      Grupo 1: André, Daniel, Gustavo e Giancarlo
+    </div>
+  </div>
+</body>
+</html>

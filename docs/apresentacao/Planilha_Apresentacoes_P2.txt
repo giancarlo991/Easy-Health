@@ -1,0 +1,58 @@
+PLANILHA DE APRESENTACOES DA P2 - DETALHES DO PROJETO (GRUPO 1)
+=============================================================
+
+Esta e a listagem estruturada das informacoes preenchidas na planilha da P2 para o projeto Easy Health.
+
+GRUPO: 1
+ALUNOS(AS):
+- Andre
+- Daniel
+- Gustavo
+- Giancarlo
+
+PROJETO: Easy Health
+
+TECNOLOGIAS (STACK BACK & FRONT):
+- Frontend: React (Vite, JavaScript, Axios, React Router)
+- Backend: Node.js, Express.js (v5), Mongoose, MongoDB
+
+PLATAFORMA DE CI:
+- GitHub Workflows (Actions)
+
+BUILD:
+- NPM (scripts: npm run build, npm run lint, npm install)
+
+TESTES UNITARIOS:
+- Validacao de login e registro no AuthService (testes isolados mockando o banco MongoDB, rodando com Jest no arquivo auth.unit.test.js)
+
+TESTES DE INTEGRACAO:
+- Testes de endpoints HTTP da API usando Newman/Postman CLI rodando automaticamente no GitHub Actions (Fluxo: React -> API Express -> MongoDB)
+
+TESTES DE INFRAESTRUTURA:
+- Banco de dados em nuvem via MongoDB Atlas em producao
+- Servico MongoDB local subido em container Docker (mongo:latest) nos testes do pipeline de CI
+
+TESTES DE BUILD:
+- Validação automatica a cada commit rodando ESLint (Linter) e o comando de compilação de produção (Vite Build) no GitHub Actions
+
+TESTES DE PERFORMANCE:
+- Nao implementado de forma automatizada (apenas otimizacao de busca do MongoDB com indexes compostos e limite de avaliacao)
+
+TESTES DE SEGURANCA:
+- Autenticacao por JWT (JSON Web Tokens) com validacao em authMiddleware
+- Criptografia irreversivel de senhas com Bcrypt (salt rounds: 10)
+- Politicas de CORS (Cross-Origin Resource Sharing) ativas na API
+- Validacoes de formato de dados e campos unicos (Email/CPF) no Schema do Mongoose
+
+TESTES DE MONITORAMENTO:
+- Sistema interno de logs de visualizacao de perfil do profissional no MongoDB (Schema ProfileViewLog salvando visitas semanais com o campo profile_views_7)
+
+DEPLOY:
+- Vercel (Frontend SPA)
+
+LINK DO PROJETO GITHUB:
+- Frontend: https://github.com/giancarlo991/Easy-Health
+- Backend: https://github.com/Andrefranca1328/EasyHealthApiV2
+
+LINK DO PROJETO NA VERCEL:
+- Link de producao configurado no painel da Vercel para o frontend.

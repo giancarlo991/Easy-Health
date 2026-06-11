@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apresentação P2 — Easy Health</title>
+  <!-- Google Fonts: Barlow e Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #9d11d9;
+      --primary-hover: #7d0db0;
+      --primary-light: #c158f0;
+      --primary-alpha: rgba(157, 17, 217, 0.15);
+      --bg-dark: #0e0e14;
+      --bg-surface: #16161f;
+      --bg-elevated: #1e1e2e;
+      --border: #2a2a3d;
+      --text-primary: #f0f0ff;
+      --text-secondary: #8888aa;
+      --success: #22c55e;
+      --warning: #f59e0b;
+      --error: #ef4444;
+      --font-title: 'Barlow', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+    }
+
+    /* Layout da Apresentação */
+    .sidebar {
+      width: 280px;
+      background-color: var(--bg-surface);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px;
+      z-index: 10;
+    }
+
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 30px;
+    }
+
+    .logo-title {
+      font-family: var(--font-title);
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: 1px;
+    }
+
+    .logo-title span {
+      color: var(--primary-light);
+    }
+
+    .logo-tagline {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex-grow: 1;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .nav-item {
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid transparent;
+    }
+
+    .nav-item:hover {
+      background-color: var(--primary-alpha);
+      color: var(--text-primary);
+    }
+
+    .nav-item.active {
+      background-color: var(--primary);
+      color: white;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(157, 17, 217, 0.3);
+    }
+
+    .nav-number {
+      font-size: 11px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2px 6px;
+      border-radius: 4px;
+      min-width: 22px;
+      text-align: center;
+    }
+
+    .sidebar-footer {
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+      font-size: 11px;
+      color: var(--text-secondary);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    /* Conteúdo Principal dos Slides */
+    .main-content {
+      flex-grow: 1;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      background-image: radial-gradient(circle at 80% 20%, rgba(157, 17, 217, 0.08) 0%, transparent 50%);
+    }
+
+    .slides-container {
+      flex-grow: 1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 60px 80px;
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .slide.active {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+    }
+
+    /* Elementos Estéticos do Slide */
+    .slide-header {
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .slide-tag {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--primary-light);
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    .slide-title {
+      font-family: var(--font-title);
+      font-size: 38px;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--text-primary);
+    }
+
+    .slide-body {
+      flex-grow: 1;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      overflow-y: auto;
+      padding-bottom: 40px;
+    }
+
+    .slide-body.full-width {
+      grid-template-columns: 1fr;
+    }
+
+    /* Painéis e Cards de Informação */
+    .card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      border-color: var(--primary-light);
+      transform: translateY(-2px);
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-left: 3px solid var(--primary);
+      padding-left: 10px;
+    }
+
+    .card-content {
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* Listas Customizadas */
+    .task-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .task-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .task-number {
+      font-size: 11px;
+      font-weight: 700;
+      background-color: var(--primary-alpha);
+      color: var(--primary-light);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .task-text {
+      color: var(--text-primary);
+    }
+
+    .task-details {
+      font-size: 12px;
+      color: var(--text-secondary);
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* Legenda e Badges de CI/CD */
+    .badge-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .badge-item {
+      background-color: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+    }
+
+    .badge {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .badge.active {
+      background-color: rgba(34, 197, 94, 0.15);
+      color: var(--success);
+      border: 1px solid var(--success);
+    }
+
+    .badge.inactive {
+      background-color: rgba(136, 136, 170, 0.1);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+
+    /* Rodapé da Apresentação com Navegação */
+    .controls-footer {
+      height: 70px;
+      border-top: 1px solid var(--border);
+      background-color: var(--bg-surface);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      z-index: 10;
+    }
+
+    .progress-bar-container {
+      width: 40%;
+      height: 4px;
+      background-color: var(--border);
+      border-radius: 2px;
+      position: relative;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background-color: var(--primary);
+      width: 0%;
+      border-radius: 2px;
+      transition: width 0.3s ease;
+      box-shadow: 0 0 8px var(--primary-light);
+    }
+
+    .button-group {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      background-color: var(--bg-elevated);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn:hover:not(:disabled) {
+      border-color: var(--primary);
+      background-color: var(--primary-alpha);
+    }
+
+    .btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+    }
+
+    /* Slide de Capa Customizado */
+    .cover-slide {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-image: 
+        radial-gradient(circle at 50% 30%, rgba(157, 17, 217, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 20% 80%, rgba(34, 197, 94, 0.05) 0%, transparent 40%);
+    }
+
+    .cover-logo {
+      font-family: var(--font-title);
+      font-size: 64px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .cover-logo span {
+      color: var(--primary-light);
+      text-shadow: 0 0 20px rgba(157, 17, 217, 0.4);
+    }
+
+    .cover-tagline {
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      color: var(--text-secondary);
+      margin-bottom: 40px;
+      font-weight: 500;
+    }
+
+    .cover-info {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 30px 40px;
+      max-width: 600px;
+      width: 100%;
+      margin-bottom: 24px;
+    }
+
+    .cover-team {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+
+    .cover-team strong {
+      color: var(--text-primary);
+    }
+
+    /* Estilos para Tabelas */
+    table.matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+
+    table.matrix-table th, table.matrix-table td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    table.matrix-table th {
+      background-color: var(--primary-alpha);
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    table.matrix-table td {
+      color: var(--text-secondary);
+    }
+
+    table.matrix-table strong {
+      color: var(--text-primary);
+    }
+
+    table.matrix-table code {
+      background-color: var(--bg-elevated);
+      padding: 2px 4px;
+      border-radius: 4px;
+      color: var(--primary-light);
+      font-size: 11px;
+    }
+
+    /* Estilizações Especiais */
+    .timeline-container {
+      position: relative;
+      padding-left: 20px;
+      border-left: 2px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .timeline-node {
+      position: relative;
+    }
+
+    .timeline-node::before {
+      content: '';
+      position: absolute;
+      left: -27px;
+      top: 4px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      border: 2px solid var(--bg-dark);
+      box-shadow: 0 0 6px var(--primary-light);
+    }
+
+    .timeline-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .timeline-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .flex-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .code-block {
+      background-color: var(--bg-dark);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 12px;
+      font-family: monospace;
+      font-size: 11px;
+      color: #a9b7c6;
+      overflow-x: auto;
+      margin-top: 8px;
+    }
+
+    .highlight-text {
+      color: var(--primary-light);
+      font-weight: 600;
+    }
+
+    .link-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .link-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      text-decoration: none;
+      color: var(--primary-light);
+    }
+
+    .link-item:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar Lateral de Navegação -->
+  <aside class="sidebar">
+    <div class="logo-container">
+      <div class="logo-title">Easy<span>Health</span></div>
+      <div class="logo-tagline">Performance & Health</div>
+    </div>
+    
+    <ul class="nav-list">
+      <li class="nav-item active" onclick="goToSlide(0)">
+        <span class="nav-number">0</span> Capa
+      </li>
+      <li class="nav-item" onclick="goToSlide(1)">
+        <span class="nav-number">1</span> Cronograma & Legenda
+      </li>
+      <li class="nav-item" onclick="goToSlide(2)">
+        <span class="nav-number">2</span> Aula 1: Planejamento
+      </li>
+      <li class="nav-item" onclick="goToSlide(3)">
+        <span class="nav-number">3</span> Aula 2: Ambiente & CI
+      </li>
+      <li class="nav-item" onclick="goToSlide(4)">
+        <span class="nav-number">4</span> Aula 3: Desenvolvimento
+      </li>
+      <li class="nav-item" onclick="goToSlide(5)">
+        <span class="nav-number">5</span> Aula 4: Testes & Segurança
+      </li>
+      <li class="nav-item" onclick="goToSlide(6)">
+        <span class="nav-number">6</span> Aula 5: Monitoramento
+      </li>
+      <li class="nav-item" onclick="goToSlide(7)">
+        <span class="nav-number">7</span> Evolução do Pipeline
+      </li>
+      <li class="nav-item" onclick="goToSlide(8)">
+        <span class="nav-number">8</span> Planilha P2 Final
+      </li>
+      <li class="nav-item" onclick="goToSlide(9)">
+        <span class="nav-number">9</span> Encerramento
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <div>Apresentação P2 — 11/06/2026</div>
+      <div>Prof. Silvio Barbieri</div>
+      <div>Integração e Entrega Contínua</div>
+      <div>Grupo 1 • Engenharia</div>
+    </div>
+  </aside>
+
+  <!-- Conteúdo Principal com os Slides -->
+  <main class="main-content">
+    <div class="slides-container">
+      
+      <!-- Slide 0: Capa -->
+      <section class="slide active cover-slide">
+        <div class="cover-logo">Easy<span>Health</span></div>
+        <div class="cover-tagline">Apresentação de P2 — Entrega Final</div>
+        
+        <div class="cover-info">
+          <h3>Plataforma Integrada para Personal Trainers e Nutricionistas</h3>
+          <p class="cover-team">
+            <strong>Disciplina:</strong> Integração e Entrega Contínua<br>
+            <strong>Professor:</strong> Silvio Barbieri<br>
+            <strong>Grupo 1:</strong> André França, Daniel, Gustavo e Giancarlo<br>
+            <strong>Data da Entrega:</strong> 11 de Junho de 2026<br>
+            <strong>Status do Projeto:</strong> Finalizado, homologado e validado em Pipeline de CI/CD
+          </p>
+        </div>
+        <p style="font-size: 12px; color: var(--text-secondary);">Use as setas do teclado (← / →) ou a barra de navegação lateral</p>
+      </section>
+
+      <!-- Slide 1: Cronograma & Legenda -->
+      <section class="slide">
+        <header class="slide-header">
+          <span class="slide-tag">Visão Geral</span>
+          <h1 class="slide-title">Cronograma do Projeto & Legenda CI/CD</h1>
+        </header>
+        <div class="slide-body">
+          <div class="card">
+            <h3 class="card-title">Linha do Tempo de Desenvolvimento (5 Aulas)</h3>
+            <div class="timeline-container" style="margin-top: 15px;">
+              <div class="timeline-node">
+                <div class="timeline-title">AULA 1 (23/04) — Definição do Escopo</div>
+                <div class="timeline-desc">Definição do tema, stack tecnológica, grupos e inicialização dos repositórios GitHub.</div>
+              </div>
+              <div class="timeline-node">
+                <div class="timeline-title">AULA 2 (30/04) — Infraestrutura e CI/CD</div>
+                <div class="timeline-desc">Setup de containers Docker locais, estruturação dos pipelines no Actions e deploy base.</div>
+              </div>
+              <div class="timeline-node">
+                <div class="timeline-title">AULA 3 (07/05) — Codificação & Integração</div>
+                <div class="timeline-desc">Codificação das rotas, schemas do MongoDB, views do React e integração inicial via Axios.</div>
+              </div>
+              <div class="timeline-node">
+                <div class="timeline-title">AULA 4 (21/05) — Testes e Segurança</div>
+                <div class="timeline-desc">Implementação de testes unitários (Jest), de integração (Newman), criptografia e JWT.</div>
+              </div>
+              <div class="timeline-node">
+                <div class="timeline-title">AULA 5 (28/05) — Observabilidade e Ajustes</div>
+                <div class="timeline-desc">Criação de métricas de visualização de perfil, refatorações críticas de performance e deploy final.</div>
+              </div>
+            </div>
+          </div>
+          
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div class="card">
+              <h3 class="card-title">Matriz de Evolução do CI/CD</h3>
+              <div class="badge-grid" style="margin-top: 10px;">
+                <div class="badge-item">Build (Push/PR) <span class="badge active">Sim</span></div>
+                <div class="badge-item">Testes Unitários <span class="badge active">Sim</span></div>
+                <div class="badge-item">Testes Integração <span class="badge active">Sim</span></div>
+                <div class="badge-item">Deploy Contínuo <span class="badge active">Sim</span></div>
+                <div class="badge-item">Segurança Estática <span class="badge active">Sim</span></div>
+                <div class="badge-item">Monitoramento <span class="badge active">Sim</span></div>
+              </div>
+            </div>
+            
+            <div class="card">
+              <h3 class="card-title">Legenda Técnica</h3>
+              <div class="card-content" style="font-size: 12px;">
+                <p><strong>Build:</strong> Compilação com Vite e instalação npm.</p>
+                <p><strong>Testes Unit.:</strong> Jest testando regras do `AuthService`.</p>
+                <p><strong>Testes Integr.:</strong> Newman testando endpoints HTTP.</p>
+                <p><strong>Deploy:</strong> Publicação automática na Vercel (Front).</p>
+                <p><strong>Segurança:</strong> Bcrypt (senhas), JWT (rotas) e CORS.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 2: Aula 1 -->
+      <section class="slide">
+        <header class="slide-header">
+          <span class="slide-tag">23/04/2026 — Aula 1</span>
+          <h1 class="slide-title">Planejamento, Definição e Setup de Repositórios</h1>
+        </header>
+        <div class="slide-body">
+          <div class="card">
+            <h3 class="card-title">Tarefas Executadas</h3>
+            <ul class="task-list" style="margin-top: 15px;">
+              <li class="task-item">
+                <span class="task-number">1</span>
+                <div>
+                  <span class="task-text">Formação do Grupo e Ideia</span>
+                  <span class="task-details">Grupo 1 focando no nicho Fitness & Saúde: "Easy Health"</span>
+                </div>
+              </li>
+              <li class="task-item">
+                <span class="task-number">2</span>
+                <div>
+                  <span class="task-text">Definição do Escopo e Fluxos de Acesso</span>
+                  <span class="task-details">Gestão para Personal Trainers/Nutricionistas (Profissionais) e seus Alunos (Clientes). Mapeado perfis em IDENTIDADE.md.</span>
+                </div>
+              </li>
+              <li class="task-item">
+                <span class="task-number">3</span>
+                <div>
+                  <span class="task-text">Decisão Arquitetural e Stack</span>
+                  <span class="task-details">Decisão por SPA em React (Vite) no front, API RESTful Node/Express no backend e MongoDB como banco NoSQL.</span>
+                </div>
+              </li>
+              <li class="task-item">
+                <span class="task-number">4</span>
+                <div>
+                  <span class="task-text">Inicialização de Repositórios GitHub</span>
+                  <span class="task-details">Criação de repositórios isolados para garantir modularidade e independência de pipelines.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div class="card">
+              <h3 class="card-title">Arquitetura Escolhida</h3>
+              <div class="card-content">
+                <p><strong>Frontend SPA:</strong> Vite + React + React Router + Axios. Leve, rápido e modular.</p>
+                <br>
+                <p><strong>Backend API:</strong> Express.js (v5) + Mongoose (v9). Escolhido NoSQL pela flexibilidade no Schema de treinos e avaliações.</p>
+              </div>
+            </div>
+            <div class="card">
+              <h3 class="card-title">Links dos Repositórios</h3>
+              <div class="link-list">
+                <a href="https://github.com/giancarlo991/Easy-Health" target="_blank" class="link-item">🔗 GitHub - Frontend (Easy-Health)</a>
+                <a href="https://github.com/Andrefranca1328/EasyHealthApiV2" target="_blank" class="link-item">🔗 GitHub - Backend (EasyHealthApiV2)</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 3: Aula 2 -->
+      <section class="slide">
+        <header class="slide-header">
+          <span class="slide-tag">30/04/2026 — Aula 2</span>
+          <h1 class="slide-title">Configuração de Ambiente, CI/CD e Infraestrutura</h1>
+        </header>
+        <div class="slide-body">
+          <div class="card">
+            <h3 class="card-title">Infraestrutura como Código e Pipelines</h3>
+            <ul class="task-list" style="margin-top: 15px;">
+              <li class="task-item">
+                <span class="task-number">1</span>
+                <div>
+                  <span class="task-text">Dockerização de Banco Local</span>
+                  <span class="task-details">Criação do arquivo <code>docker-compose.yml</code> na pasta docs para subir container MongoDB localmente no ambiente dev.</span>
+                </div>
+              </li>
+              <li class="task-item">
+                <span class="task-number">2</span>
+                <div>
+                  <span class="task-text">Configuração do GitHub Actions</span>
+                  <span class="task-details">Criação de <code>ci-frontend.yml</code> e <code>ci-backend.yml</code> disparados por push ou PR.</span>
+                </div>
+              </li>
+              <li class="task-item">
+                <span class="task-number">3</span>
+                <div>
+                  <span class="task-text">Pipeline de Build Automatizado</span>
+                  <span class="task-details">Pipeline de CI configurado para baixar dependências, rodar o linter (ESLint) e fazer o build do React.</span>
+                </div>
+              </li>
+              <li class="task-item">
+                <span class="task-number">4</span>
+                <div>
+                  <span class="task-text">Deploy Inicial na Vercel</span>
+                  <span class="task-details">Integração da Vercel com o repositório front para builds automáticos da branch <code>main</code>.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title">Trecho de Configuração do Pipeline (ci-frontend.yml)</h3>
+            <div class="card-content">
+              <p>Mapeamento das regras de compilação da aplicação no runner ubuntu:</p>
+              <div class="code-block">
+- name: ⚙️ Configurar Node.js 20
+  uses: actions/setup-node@v4
+  with:
+    node-version: '20'
+    cache: 'npm'
+
+- name: 📦 Instalar dependências
+  run: npm install
+
+- name: 🔍 Lint – ESLint
+  run: npm run lint
+
+- name: 🏗️ Build de produção
+  run: npm run build</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 4: Aula 3 -->
+      <section class="slide">
+        <header class="slide-header">
+          <span class="slide-tag">07/05/2026 — Aula 3</span>
+          <h1 class="slide-title">Desenvolvimento Back-end, Front-end e Integração</h1>
+        </header>
+        <div class="slide-body">
+          <div class="card">
+            <h3 class="card-title">Implementações de Codificação</h3>
+            <ul class="task-list" style="margin-top: 10px;">
+              <li class="task-item">
+                <span class="task-number">1</span>
+                <div>
+                  <span class="task-text">Rotas e Controladores Express</span>
+                  <span class="task-details">Desenvolvimento das entidades: <code>User</code>, <code>Professional</code>, <code>Training</code> e <code>Rating</code>.</span>
+                </div>
+              </li>
+              <li class="task-item">
+                <span class="task-number">2</span>
+                <div>
+                  <span class="task-text">Camada de Serviços do Banco</span>
+                  <span class="task-details">Refatoração de Services no Mongoose para isolar a lógica de acesso ao banco (<code>User.find().lean()</code>).</span>
+                </div>
+              </li>
+              <li class="task-item">
+                <span class="task-number">3</span>
+                <div>
+                  <span class="task-text">Componentes React de Interface</span>
+                  <span class="task-details">Desenvolvimento do <code>Sidebar.jsx</code>, telas de login, cadastro, painel e listagem de profissionais.</span>
+                </div>
+              </li>
+              <li class="task-item">
+                <span class="task-number">4</span>
+                <div>
+                  <span class="task-text">Integração via Axios</span>
+                  <span class="task-details">Criação do interceptador Axios <code>api.js</code> gerenciando o token JWT no cabeçalho e redirecionamentos automáticos em caso de expiração (401).</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title">Modelo de Integração de Dados</h3>
+            <div class="card-content">
+              <p>Mapeamento de relacionamentos no MongoDB (Mongoose):</p>
+              <div class="code-block">
+// Schema Professional com relação ao User
+const ProfessionalSchema = new mongoose.Schema({
+  userId: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'User', 
+    required: true 
+  },
+  type: { type: String, required: true },
+  status: { type: String, default: 'pending' },
+  weighted_rating: { type: Number, default: 0 }
+});</div>
+              <p style="font-size: 11px; margin-top: 8px;">Uso extensivo do método <code>.populate('userId')</code> para exibir dados de cadastro do profissional de forma fluida no React.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 5: Aula 4 -->
+      <section class="slide">
+        <header class="slide-header">
+          <span class="slide-tag">21/05/2026 — Aula 4</span>
+          <h1 class="slide-title">Testes, Cobertura, Performance e Segurança</h1>
+        </header>
+        <div class="slide-body">
+          <div class="card">
+            <h3 class="card-title">Qualidade de Código e Proteção de Dados</h3>
+            <ul class="task-list" style="margin-top: 10px;">
+              <li class="task-item">
+                <span class="task-number">1</span>
+                <div>
+                  <span class="task-text">Testes Unitários Automatizados (Jest)</span>
+                  <span class="task-details">Criação de <code>auth.unit.test.js</code>. Simula login/registro isolado mockando o MongoDB, jwt e bcrypt.</span>
+                </div>
+              </li>
+              <li class="task-item">
+                <span class="task-number">2</span>
+                <div>
+                  <span class="task-text">Testes de Integração em CI (Newman)</span>
+                  <span class="task-details">Execução da collection do Postman <code>easyhealth.postman_collection.json</code> contra o servidor ativo no runner usando um container Docker do MongoDB.</span>
+                </div>
+              </li>
+              <li class="task-item">
+                <span class="task-number">3</span>
+                <div>
+                  <span class="task-text">Segurança de Senhas e Acessos</span>
+                  <span class="task-details">Criptografia irreversível com Bcrypt (10 rounds de salt). Bloqueio de rotas API sem cabeçalho <code>Authorization: Bearer</code> válido.</span>
+                </div>
+              </li>
+              <li class="task-item">
+                <span class="task-number">4</span>
+                <div>
+                  <span class="task-text">Análise de Performance Inicial</span>
+                  <span class="task-details">Redução de tempo de consultas via índices compostos no MongoDB (ex: limitar avaliações duplicadas por usuário).</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title">Trecho do Pipeline de Integração (ci-backend.yml)</h3>
+            <div class="card-content">
+              <p>Orquestração automática de serviços auxiliares no GitHub Actions:</p>
+              <div class="code-block">
+services:
+  mongodb:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+
+steps:
+  - name: 🚀 Iniciar servidor Express
+    run: |
+      npm start &
+      npx wait-on http://localhost:3000/
+  - name: 🔐 Testar endpoints Newman
+    run: npx newman run tests/newman/...json</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 6: Aula 5 -->
+      <section class="slide">
+        <header class="slide-header">
+          <span class="slide-tag">28/05/2026 — Aula 5</span>
+          <h1 class="slide-title">Métricas de Uso, Monitoramento e Deploy Final</h1>
+        </header>
+        <div class="slide-body">
+          <div class="card">
+            <h3 class="card-title">Última Etapa antes da Entrega</h3>
+            <ul class="task-list" style="margin-top: 15px;">
+              <li class="task-item">
+                <span class="task-number">1</span>
+                <div>
+                  <span class="task-text">Monitoramento Base (Profile Views)</span>
+                  <span class="task-details">Criação do modelo <code>ProfileViewLog</code> para registrar interações e calcular visualizações dos últimos 7 dias.</span>
+                </div>
+              </li>
+              <li class="task-item">
+                <span class="task-number">2</span>
+                <div>
+                  <span class="task-text">Ajuste de Conectividade do MongoDB</span>
+                  <span class="task-details">Substituição da URI de banco de dados hardcoded e remoção de imports redundantes do <code>dotenv</code> que causavam quebras no ambiente.</span>
+                </div>
+              </li>
+              <li class="task-item">
+                <span class="task-number">3</span>
+                <div>
+                  <span class="task-text">Publicação Oficial do Link do Front</span>
+                  <span class="task-details">Configuração final da hospedagem do Frontend SPA na plataforma Vercel em produção.</span>
+                </div>
+              </li>
+              <li class="task-item">
+                <span class="task-number">4</span>
+                <div>
+                  <span class="task-text">Homologação de Pipeline Completo</span>
+                  <span class="task-details">Validação de que novos commits nas branches <code>main</code> e <code>develop</code> disparam testes e realizam deploys automáticos sem falhas.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title">Métricas Locais de Monitoramento</h3>
+            <div class="card-content">
+              <p>Sistema implementado no backend para monitorar o engajamento dos profissionais cadastrados no app:</p>
+              <div class="code-block">
+// Rota de contagem analítica de views
+router.get('/:id/profile-views', async (req, res) => {
+  const { id } = req.params;
+  const views = await ProfessionalService
+    .incrementAndGetProfileViews(id);
+  res.json({ profile_views_7: views });
+});</div>
+              <p style="font-size: 12px; margin-top: 8px; color: var(--text-secondary);">Isso permite aos profissionais acompanhar o alcance do seu perfil nos últimos 7 dias, fornecendo analytics integrados ao banco de dados.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 7: Evolução do Pipeline & Solução de Bugs -->
+      <section class="slide">
+        <header class="slide-header">
+          <span class="slide-tag">Histórico de Integração</span>
+          <h1 class="slide-title">Evolução do Pipeline & Resolução de Bugs (Sabatinas CI)</h1>
+        </header>
+        <div class="slide-body">
+          <div class="card">
+            <h3 class="card-title">As 5 Execuções do Workflow Backend</h3>
+            <ul class="task-list" style="margin-top: 10px;">
+              <li class="task-item">
+                <span class="task-number" style="background-color: var(--success); color: white;">#5</span>
+                <div>
+                  <span class="task-text"><strong>Sucesso 🎉</strong> (ci: melhora pipeline com jobs separados e timeout corrigido)</span>
+                  <span class="task-details"><strong>Duração:</strong> 1m 0s | Separado em jobs dependentes e corrigido timeout de subida do servidor.</span>
+                </div>
+              </li>
+              <li class="task-item">
+                <span class="task-number" style="background-color: var(--error); color: white;">#4</span>
+                <div>
+                  <span class="task-text"><strong>Falhou ❌</strong> (fix: corrige import do professionalController para minúsculo)</span>
+                  <span class="task-details"><strong>Duração:</strong> 47s | Correção de import de controller com minúscula no Linux.</span>
+                </div>
+              </li>
+              <li class="task-item">
+                <span class="task-number" style="background-color: var(--error); color: white;">#3</span>
+                <div>
+                  <span class="task-text"><strong>Falhou ❌</strong> (fix: corrige import do AuthService para maiúsculo)</span>
+                  <span class="task-details"><strong>Duração:</strong> 58s | Falha de import de classe de serviço com maiúscula no Linux.</span>
+                </div>
+              </li>
+              <li class="task-item">
+                <span class="task-number" style="background-color: var(--error); color: white;">#2</span>
+                <div>
+                  <span class="task-text"><strong>Falhou ❌</strong> (fix: corrige case de models de user e professional para linux)</span>
+                  <span class="task-details"><strong>Duração:</strong> 57s | Primeiro erro de case-sensitivity no runner da Action.</span>
+                </div>
+              </li>
+              <li class="task-item">
+                <span class="task-number" style="background-color: var(--error); color: white;">#1</span>
+                <div>
+                  <span class="task-text"><strong>Falhou ❌</strong> (feat: adiciona testes unitarios, newman e pipeline ci/cd)</span>
+                  <span class="task-details"><strong>Duração:</strong> 27s | Primeiras configurações de execução em Actions.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div class="card">
+              <h3 class="card-title">Resolução de Bugs Críticos (Banca CI)</h3>
+              <div class="card-content" style="font-size: 13px;">
+                <p><strong>1. Windows vs Linux (Case-Sensitivity):</strong></p>
+                <p style="color: var(--text-primary); margin-left: 10px;">O desenvolvimento local foi feito em Windows (sistema case-insensitive), porém os runners da Action usam Linux (case-sensitive). Imports como <code>require('./models/user')</code> que rodavam localmente causavam erro de compilação <code>Cannot find module</code> no CI. Corrigido mapeando as pastas para minúsculas exatas nos commits #2, #3 e #4.</p>
+                <br>
+                <p><strong>2. Timeout e Race Condition no Servidor:</strong></p>
+                <p style="color: var(--text-primary); margin-left: 10px;">A API demorava alguns segundos para conectar ao MongoDB e iniciar. O Newman rodava antes e as requisições quebravam. Corrigido adicionando o utilitário <code>wait-on</code> com timeout de 60s antes de rodar os testes de endpoint.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 8: Planilha P2 Final -->
+      <section class="slide">
+        <header class="slide-header">
+          <span class="slide-tag">Resultados Homologados</span>
+          <h1 class="slide-title">Planilha de Apresentações da P2 Preenchida</h1>
+        </header>
+        <div class="slide-body full-width">
+          <div class="card" style="overflow-x: auto;">
+            <h3 class="card-title">Planilha Oficial preenchida com as métricas e especificações de código do Grupo 1</h3>
+            <table class="matrix-table">
+              <thead>
+                <tr>
+                  <th>Grupo</th>
+                  <th>Alunos(as)</th>
+                  <th>Projeto</th>
+                  <th>Tecnologias</th>
+                  <th>CI</th>
+                  <th>Build</th>
+                  <th>Testes Unitários</th>
+                  <th>Testes Integração</th>
+                  <th>Infraestrutura</th>
+                  <th>Testes Build</th>
+                  <th>Segurança</th>
+                  <th>DEPLOY</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="center"><strong>1</strong></td>
+                  <td>
+                    André<br>
+                    Daniel<br>
+                    Gustavo<br>
+                    Giancarlo
+                  </td>
+                  <td><strong>Easy Health</strong></td>
+                  <td>React, Vite, Express, Node.js, Mongoose</td>
+                  <td>GitHub Workflows</td>
+                  <td>NPM</td>
+                  <td><code>AuthService</code>: login() e register() com Jest</td>
+                  <td>React → API Express → MongoDB. Newman testando rotas da API</td>
+                  <td>MongoDB Atlas (Produção) + MongoDB local Docker (CI)</td>
+                  <td>Pipelines acionando Lint (ESLint), Build (Vite) e Jest</td>
+                  <td>JWT Bearer, hashes Bcrypt (salt: 10), validação de entrada, CORS</td>
+                  <td>Vercel (Frontend)</td>
+                </tr>
+              </tbody>
+            </table>
+            
+            <div class="badge-grid" style="margin-top: 20px; grid-template-columns: repeat(4, 1fr);">
+              <div class="badge-item"><strong>Cód. Excel local:</strong> Planilha_Apresentacoes_P2.xlsx</div>
+              <div class="badge-item"><strong>Cód. CSV:</strong> Planilha_Apresentacoes_P2_excel.csv</div>
+              <div class="badge-item"><strong>Cód. Markdown:</strong> Planilha_Apresentacoes_P2.md</div>
+              <div class="badge-item" style="color: var(--success); border-color: var(--success);"><strong>Status P2:</strong> Aprovado para Entrega ✓</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 8: Encerramento -->
+      <section class="slide cover-slide">
+        <div class="cover-logo">Conclusão</div>
+        <div class="cover-tagline">Muito Obrigado!</div>
+        
+        <div class="cover-info" style="max-width: 700px;">
+          <h3 style="margin-bottom: 15px;">Destaques da Implementação do Grupo 1</h3>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; text-align: left; font-size: 14px; color: var(--text-secondary);">
+            <li>🚀 <strong>Automação Completa:</strong> A cada push ou PR, a base de código é validada estruturalmente e logicamente.</li>
+            <li>🧪 <strong>Testes em Dupla Camada:</strong> Garantia de integridade com Jest (camada lógica) e Newman/Postman (camada de rede).</li>
+            <li>🔐 <strong>Arquitetura Segura:</strong> Criptografia robusta de senhas e proteção rígida com tokens expiráveis JWT.</li>
+            <li>📈 <strong>Pronto para Produção:</strong> Banco de dados hospedado em nuvem (MongoDB Atlas) e Frontend escalável e performático na Vercel.</li>
+          </ul>
+        </div>
+        
+        <div class="button-group" style="margin-top: 20px;">
+          <button class="btn btn-primary" onclick="goToSlide(0)">Recomeçar Apresentação</button>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Barra de Controles Inferior -->
+    <footer class="controls-footer">
+      <button class="btn" id="prev-btn" onclick="changeSlide(-1)">
+        ← Anterior
+      </button>
+      
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="slide-progress"></div>
+      </div>
+      
+      <button class="btn btn-primary" id="next-btn" onclick="changeSlide(1)">
+        Próximo →
+      </button>
+    </footer>
+  </main>
+
+  <script>
+    // Gerenciador de Slides
+    const slides = document.querySelectorAll('.slide');
+    const navItems = document.querySelectorAll('.nav-item');
+    const progressBar = document.getElementById('slide-progress');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    let currentSlide = 0;
+
+    function updatePresentation() {
+      // Atualiza estado ativo dos slides
+      slides.forEach((slide, idx) => {
+        if (idx === currentSlide) {
+          slide.classList.add('active');
+        } else {
+          slide.classList.remove('active');
+        }
+      });
+
+      // Atualiza estado ativo da barra lateral
+      navItems.forEach((item, idx) => {
+        if (idx === currentSlide) {
+          item.classList.add('active');
+          // Rola suavemente a navegação se ela sumir
+          item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          item.classList.remove('active');
+        }
+      });
+
+      // Atualiza barra de progresso
+      const progressPercent = (currentSlide / (slides.length - 1)) * 100;
+      progressBar.style.width = `${progressPercent}%`;
+
+      // Habilita/Desabilita botões
+      prevBtn.disabled = currentSlide === 0;
+      nextBtn.disabled = currentSlide === slides.length - 1;
+    }
+
+    function goToSlide(slideIndex) {
+      if (slideIndex >= 0 && slideIndex < slides.length) {
+        currentSlide = slideIndex;
+        updatePresentation();
+      }
+    }
+
+    function changeSlide(direction) {
+      const target = currentSlide + direction;
+      if (target >= 0 && target < slides.length) {
+        currentSlide = target;
+        updatePresentation();
+      }
+    }
+
+    // Atalhos do teclado (setas do teclado esquerda/direita e barra de espaço)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault();
+        changeSlide(1);
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        changeSlide(-1);
+      }
+    });
+
+    // Inicialização da barra
+    updatePresentation();
+  </script>
+</body>
+</html>

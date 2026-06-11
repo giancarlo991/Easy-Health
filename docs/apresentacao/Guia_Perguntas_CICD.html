@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guia de Sobrevivência: Perguntas de CI/CD — Easy Health</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: #333333;
+      background-color: #f8f9fa;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      border: 1px solid #e1e8ed;
+    }
+    h1 {
+      font-size: 26px;
+      color: #9D11D9;
+      border-bottom: 2px solid #EED8F7;
+      padding-bottom: 12px;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    .subtitle {
+      text-align: center;
+      color: #666666;
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+    .intro-box {
+      background-color: #FBF6FE;
+      border-left: 4px solid #c158f0;
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+      font-size: 14.5px;
+    }
+    .qa-section {
+      margin-bottom: 25px;
+      border: 1px solid #e1e8ed;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+    .question {
+      background-color: #f1f3f5;
+      padding: 15px 20px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #111111;
+      border-bottom: 1px solid #e1e8ed;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .question-tag {
+      background-color: #9D11D9;
+      color: #ffffff;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 12px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .answer {
+      padding: 20px;
+      font-size: 14.5px;
+      color: #444444;
+      background-color: #ffffff;
+    }
+    .answer p {
+      margin-bottom: 12px;
+    }
+    .answer p:last-child {
+      margin-bottom: 0;
+    }
+    .code-block {
+      background-color: #272822;
+      color: #f8f8f2;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 12px 0;
+    }
+    .keyword {
+      color: #f92672;
+      font-weight: bold;
+    }
+    .comment {
+      color: #75715e;
+      font-style: italic;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 12px;
+      color: #888888;
+      border-top: 1px solid #e1e8ed;
+      padding-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📚 Guia de CI/CD: Perguntas Técnicas da Banca</h1>
+    <div class="subtitle">Easy Health — Dossiê Técnico (Matéria: Integração e Entrega Contínua | Prof. Silvio Barbieri)</div>
+
+    <div class="intro-box">
+      <strong>⚠️ Instruções para a sabatina:</strong>
+      Use este guia durante as perguntas do professor. Ele contém as explicações exatas e trechos das configurações de pipeline que nós implementamos nos repositórios <code>Easy-Health</code> e <code>EasyHealthApiV2</code>.
+    </div>
+
+    <!-- Pergunta 1 -->
+    <div class="qa-section">
+      <div class="question">
+        <span>1. Como está estruturado o workflow do seu Backend?</span>
+        <span class="question-tag">Estrutura</span>
+      </div>
+      <div class="answer">
+        <p>O workflow está estruturado em <strong>dois Jobs principais interdependentes</strong> rodando no runner <code>ubuntu-latest</code>:</p>
+        <ul>
+          <li><strong>Job 1 (unit-tests):</strong> Responsável por rodar os testes unitários (Jest) com isolamento total.</li>
+          <li><strong>Job 2 (integration-tests):</strong> Responsável por rodar os testes de integração HTTP (Newman). Ele possui uma dependência declarada e só executa se o primeiro passar.</li>
+        </ul>
+        <p>Isso segue o princípio de <strong>Fail-Fast</strong> em DevOps: não gastamos minutos de runner executando testes de rede complexos se a integridade da lógica básica estiver quebrada.</p>
+        <div class="code-block">
+<span class="keyword">integration-tests:</span>
+  <span class="keyword">name:</span> 🔗 Testes de Integração – Endpoints (Newman)
+  <span class="keyword">runs-on:</span> ubuntu-latest
+  <span class="keyword">needs:</span> unit-tests <span class="comment"># Garante a dependência entre os jobs</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pergunta 2 -->
+    <div class="qa-section">
+      <div class="question">
+        <span>2. Como vocês resolvem a dependência do banco MongoDB no pipeline?</span>
+        <span class="question-tag">Docker Services</span>
+      </div>
+      <div class="answer">
+        <p>Não conectamos o pipeline a um banco de dados externo ou de staging. Em vez disso, utilizamos o recurso de <strong>Services do GitHub Actions</strong>.</p>
+        <p>Declaramos um serviço chamado <code>mongodb</code> no Job de integração. O runner cria automaticamente um container Docker a partir da imagem <code>mongo:latest</code> e expõe a porta padrão do MongoDB (<code>27017:27017</code>) para a máquina virtual de teste.</p>
+        <div class="code-block">
+<span class="keyword">services:</span>
+  <span class="keyword">mongodb:</span>
+    <span class="keyword">image:</span> mongo:latest
+    <span class="keyword">ports:</span>
+      - 27017:27017
+        </div>
+      </div>
+    </div>
+
+    <!-- Pergunta 3 -->
+    <div class="qa-section">
+      <div class="question">
+        <span>3. Como vocês iniciam a API e evitam concorrência com o Newman?</span>
+        <span class="question-tag">wait-on</span>
+      </div>
+      <div class="answer">
+        <p>Esta é uma questão clássica de <i>Race Condition</i> (condição de corrida) em pipelines. Se disparássemos o Newman logo após o start do servidor, as requisições falhariam porque o Node ainda estaria conectando ao banco.</p>
+        <p>Nós resolvemos isso com duas etapas:</p>
+        <ol>
+          <li>Iniciamos o servidor em segundo plano (background) no terminal Linux usando o operador <strong><code>&</code></strong>.</li>
+          <li>Utilizamos a biblioteca <strong><code>wait-on</code></strong> para bloquear o pipeline e realizar requisições de checagem contra a porta 3000. O pipeline só avança quando a API responder com status HTTP de sucesso (com um tempo limite de 60 segundos).</li>
+        </ol>
+        <div class="code-block">
+<span class="keyword">- name:</span> 🚀 Iniciar servidor Express
+  <span class="keyword">run:</span> |
+    npm start &
+    npx wait-on http://localhost:3000/ -t 60000
+        </div>
+      </div>
+    </div>
+
+    <!-- Pergunta 4 -->
+    <div class="qa-section">
+      <div class="question">
+        <span>4. Como funcionam os testes unitários sem banco de dados?</span>
+        <span class="question-tag">Mocking</span>
+      </div>
+      <div class="answer">
+        <p>Nos testes unitários (feitos com <strong>Jest</strong>), mockamos (simulamos) completamente todas as dependências de rede e criptografia usando o método <code>jest.mock()</code>.</p>
+        <p>Mockamos a biblioteca <code>bcrypt</code>, <code>jsonwebtoken</code> e o próprio modelo do Mongoose <code>User</code>. Nos testes do <code>AuthService</code>, nós definimos previamente o que as funções de banco devem retornar usando <code>mockResolvedValue()</code> e verificamos se elas foram chamadas com os parâmetros corretos.</p>
+        <div class="code-block">
+<span class="comment">// Mocks antes de instanciar a classe</span>
+jest.mock('../src/models/User');
+jest.mock('bcrypt');
+jest.mock('jsonwebtoken');
+
+<span class="comment">// Simulando comportamento para login correto</span>
+User.findOne.mockResolvedValue(fakeUser);
+bcrypt.compare.mockResolvedValue(true);
+jwt.sign.mockReturnValue('mocked.jwt.token');
+        </div>
+      </div>
+    </div>
+
+    <!-- Pergunta 5 -->
+    <div class="qa-section">
+      <div class="question">
+        <span>5. Como vocês orquestram os testes do Postman no pipeline?</span>
+        <span class="question-tag">Newman CLI</span>
+      </div>
+      <div class="answer">
+        <p>Os testes de endpoints foram escritos no Postman e exportados como um arquivo JSON de Collection. No pipeline, executamos essa coleção usando a ferramenta <strong>Newman CLI</strong> (executada via npx para não precisar instalar globalmente).</p>
+        <p>Injetamos a variável de ambiente dinamicamente na CLI usando <code>--env-var baseUrl=http://localhost:3000</code>. Dividimos a execução em duas etapas: primeiro validamos a pasta de Autenticação (Cadastro/Login) e depois rodamos a suíte de testes de todos os outros módulos.</p>
+        <div class="code-block">
+<span class="keyword">run:</span> |
+  npx newman run tests/newman/easyhealth.postman_collection.json \
+    --folder "Auth – Cadastro e Login" \
+    --env-var baseUrl=http://localhost:3000 \
+    --reporters cli
+        </div>
+      </div>
+    </div>
+
+    <!-- Pergunta 6 -->
+    <div class="qa-section">
+      <div class="question">
+        <span>6. Onde ficam guardadas as chaves e segredos do banco?</span>
+        <span class="question-tag">Secrets & Fallbacks</span>
+      </div>
+      <div class="answer">
+        <p>Utilizamos os <strong>Secrets do GitHub</strong> para criptografar chaves de produção (como <code>JWT_SECRET</code> e <code>MONGODB_URI</code>). No pipeline, acessamos esses valores usando a sintaxe <code>${{ secrets.CHAVE }}</code>.</p>
+        <p>Para garantir que o pipeline de testes local/CI funcione mesmo se as secrets não estiverem preenchidas, implementamos operadores de fallback (<code>||</code>) no yml apontando para instâncias locais seguras de desenvolvimento.</p>
+        <div class="code-block">
+<span class="keyword">env:</span>
+  MONGODB_URI: ${{ secrets.MONGODB_URI || 'mongodb://localhost:27017/easyhealth' }}
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      Dossiê Técnico CI/CD — Easy Health — 11/06/2026<br>
+      Grupo 1: André, Daniel, Gustavo e Giancarlo
+    </div>
+  </div>
+</body>
+</html>

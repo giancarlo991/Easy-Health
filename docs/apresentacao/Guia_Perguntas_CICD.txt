@@ -1,0 +1,68 @@
+GUIA DE CI/CD: PERGUNTAS TECNICAS (EASY HEALTH)
+==============================================
+MATERIA: INTEGRACAO E ENTREGA CONTINUA
+PROFESSOR: SILVIO BARBIERI
+
+Este dossie foi preparado com base nas configuracoes reais dos arquivos "ci-backend.yml" e "auth.unit.test.js" dos seus projetos. Use-o para responder as perguntas tecnicas do Prof. Silvio Barbieri.
+
+--------------------------------------------------------------------------------
+1. COMO ESTA ESTRUTURADO O WORKFLOW DO BACKEND?
+--------------------------------------------------------------------------------
+RESPOSTA:
+O pipeline de CI esta estruturado em dois Jobs interdependentes executados no runner Linux "ubuntu-latest":
+
+- Job 1 (unit-tests): Roda de forma isolada os testes unitarios desenvolvidos em Jest.
+- Job 2 (integration-tests): Roda os testes de rede/endpoints HTTP desenvolvidos no Postman (Newman).
+
+Destaque Tecnico:
+O Job 2 tem a declaracao "needs: unit-tests". Isso significa que se um teste unitario falhar, o pipeline aborta imediatamente e os testes de integracao nem sao iniciados (Conceito de Fail-Fast do DevOps para economizar recursos do runner).
+
+
+--------------------------------------------------------------------------------
+2. COMO VOCES RESOLVEM A DEPENDENCIA DO BANCO MONGODB NO PIPELINE DE INTEGRACAO?
+--------------------------------------------------------------------------------
+RESPOSTA:
+Utilizamos a diretiva "services" do GitHub Actions. Declaramos um container do Docker rodando a imagem oficial "mongo:latest" mapeada na porta padrao "27017:27017". O runner sobe esse container localmente antes de rodar os testes de integracao.
+
+Trecho do yml:
+services:
+  mongodb:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+
+
+--------------------------------------------------------------------------------
+3. COMO VOCES INICIAM A API E EVITAM CONCORRENCIA (RACE CONDITION) COM O NEWMAN?
+--------------------------------------------------------------------------------
+RESPOSTA:
+Se o Newman tentasse realizar chamadas de endpoints logo apos iniciar o node, os testes falhariam porque o servidor ainda estaria subindo e conectando ao banco de dados.
+
+Resolvemos isso em dois passos:
+1. Iniciamos o servidor Express em segundo plano (background) usando o operador "&" do Linux bash: "npm start &"
+2. Usamos o utilitario "wait-on" apontando para a url "http://localhost:3000/" com timeout de 60 segundos ("-t 60000"). O pipeline é travado ate receber uma resposta HTTP de sucesso, garantindo que o servidor ja esta no ar antes dos testes iniciarem.
+
+
+--------------------------------------------------------------------------------
+4. COMO FUNCIONAM OS TESTES UNITARIOS SEM ACESSAR O BANCO DE DADOS?
+--------------------------------------------------------------------------------
+RESPOSTA:
+Nos testes unitarios com Jest (arquivo auth.unit.test.js), isolamos totalmente a camada de banco de dados e criptografia usando mockers ("jest.mock").
+
+Mockamos o modelo do Mongoose (User.js) e as dependencias "bcrypt" e "jsonwebtoken". Usando o Jest, interceptamos as chamadas e forcamos retornos de teste pré-definidos (ex: "User.findOne.mockResolvedValue(fakeUser)" e "bcrypt.compare.mockResolvedValue(true)"), testando apenas a logica interna de validacao de emails, regras de erros e formatacao do token sem fazer chamadas de rede reais.
+
+
+--------------------------------------------------------------------------------
+5. COMO O POSTMAN RODA NO CI? QUAL FERRAMENTA E UTILIZADA?
+--------------------------------------------------------------------------------
+RESPOSTA:
+Exportamos as collections do Postman em formato JSON e executamos no workflow usando a biblioteca Newman CLI (executada via npx).
+Passamos a url do servidor local dinamicamente na CLI usando "--env-var baseUrl=http://localhost:3000" e dividimos os testes rodando a pasta de autenticacao primeiro e depois os outros endpoints.
+
+
+--------------------------------------------------------------------------------
+6. ONDE FICAM SALVOS OS SEGREDOS DO BANCO E JWT NO PIPELINE?
+--------------------------------------------------------------------------------
+RESPOSTA:
+As chaves confidenciais ficam guardadas nos Secrets do GitHub. No yml, acessamos via "${{ secrets.CHAVE }}".
+Para o pipeline nao quebrar se as secrets nao estiverem preenchidas (ex: forks de teste), implementamos fallbacks (operador "||") apontando para credenciais padrao locais do Docker (como "mongodb://localhost:27017/easyhealth").

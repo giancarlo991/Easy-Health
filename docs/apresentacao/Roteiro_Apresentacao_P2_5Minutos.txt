@@ -1,0 +1,63 @@
+ROTEIRO PITCH DE APRESENTACAO - EASY HEALTH (MAXIMO 5 MINUTOS)
+MATERIA: INTEGRACAO E ENTREGA CONTINUA (PROF. SILVIO BARBIERI)
+================================================================
+
+Este roteiro e otimizado para uma apresentacao super rapida de 5 minutos (estilo pitch). Fale com firmeza e ritmo constante.
+
+--------------------------------------------------------------------------------
+BLOCO 1: INTRODUCAO E PROPOSTA (Slides 0 e 1)
+--------------------------------------------------------------------------------
+* Tempo estimado: 45 segundos
+
+🎙️ FALA (André):
+"Boa noite. O Easy Health e uma plataforma voltada para Personal Trainers e Nutricionistas gerenciarem seus alunos e treinos de forma integrada. Nosso objetivo em Engenharia de Software foi construir uma aplicacao dividida em micro-servicos (Front e Back) com qualidade de codigo assegurada por uma esteira automatizada de CI/CD em GitHub Workflows, cobrindo compilacao, testes e monitoramento."
+
+
+--------------------------------------------------------------------------------
+BLOCO 2: STACK E INFRAESTRUTURA (Slides 2 e 3)
+--------------------------------------------------------------------------------
+* Tempo estimado: 1 minuto
+
+🎙️ FALA (Daniel):
+"Nossa stack conta com Frontend em React via Vite e Backend em Express com banco documental MongoDB via Mongoose, garantindo flexibilidade para tabelas complexas de treinos. No quesito infraestrutura, criamos arquivos Docker Compose para orquestrar o banco localmente. Nossa esteira do GitHub Actions valida a compilacao do codigo e o padrao estatico com ESLint a cada push, disparando deploys automaticos diretamente para a Vercel."
+
+
+--------------------------------------------------------------------------------
+BLOCO 3: INTEGRACAO E COMUNICACAO (Slide 4)
+--------------------------------------------------------------------------------
+* Tempo estimado: 1 minuto
+
+🎙️ FALA (Gustavo):
+"A comunicacao entre as partes e feita por chamadas de API centralizadas via Axios. Criamos um interceptador no frontend que insere automaticamente o Token JWT nas requisicoes seguras. Caso a sessao expire (retornando status HTTP 401), o proprio interceptador limpa as credenciais locais e redireciona o usuario para a tela de login, garantindo robustez de navegacao."
+
+🛠️ Foco Técnico: O arquivo principal de integração é o api.js do React.
+
+
+--------------------------------------------------------------------------------
+BLOCO 4: TESTES, SEGURANCA E LOGS (Slides 5 e 6)
+--------------------------------------------------------------------------------
+* Tempo estimado: 1.5 minutos
+
+🎙️ FALA (Gustavo):
+"Para blindar a seguranca e qualidade, implementamos testes em duas camadas no pipeline de CI/CD: testes unitarios com Jest mockando o banco no AuthService (registro e login) e testes de integracao com Newman rodando endpoints HTTP contra um MongoDB em container Docker no GitHub Actions. Em seguranca, as senhas usam criptografia irreversivel com Bcrypt de 10 rounds de salt e rotas privadas protegidas por JWT. Por fim, criamos monitoramento de visualizacao de perfis semanais persistido no banco."
+
+🛠️ Foco Técnico: Jest roda em milissegundos e Newman garante o fluxo fim a fim no Actions.
+
+
+
+--------------------------------------------------------------------------------
+BLOCO 4.5: EVOLUCAO DO PIPELINE (BUGS NO ACTIONS)
+--------------------------------------------------------------------------------
+* Tempo estimado: 45 segundos
+
+🎙️ FALA (Giancarlo):
+"Durante o setup do CI, tivemos 5 execucoes de testes. Corrigimos um problema classico de incompatibilidade de ambientes: imports que funcionavam no Windows local quebravam no runner Linux do GitHub Actions devido a sensibilidade de maiusculas/minusculas (Case-Sensitivity) nos nomes de arquivos. Ajustamos os caminhos dos models nos commits #2, #3 e #4, e no commit final dividimos os testes em jobs independentes com timeout de inicializacao da API corrigido com wait-on, garantindo sucesso total."
+
+
+--------------------------------------------------------------------------------
+BLOCO 5: RESULTADOS E CONCLUSAO (Slides 8 e 9)
+--------------------------------------------------------------------------------
+* Tempo estimado: 45 segundos
+
+🎙️ FALA (Giancarlo):
+"Concluimos preenchendo todos os requisitos da planilha de P2. Nossa esteira assegura build, testes unitarios, testes de integracao e deploy automatico. O projeto esta implantado em producao e funcional, seguindo boas praticas de DevOps e Seguranca de dados. Agradecemos aos professores e abrimos espaco para perguntas."

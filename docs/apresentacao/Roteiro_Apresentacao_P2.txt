@@ -1,0 +1,137 @@
+ROTEIRO E GUIA DE APRESENTACAO - EASY HEALTH
+MATERIA: INTEGRACAO E ENTREGA CONTINUA (PROF. SILVIO BARBIERI)
+================================================
+
+Este roteiro serve para guiar a sua fala na apresentacao da P2, destacando os pontos tecnicos reais da sua base de codigo.
+
+--------------------------------------------------------------------------------
+SLIDE 0: CAPA / INTRODUCAO
+--------------------------------------------------------------------------------
+* Titulo do Slide: Easy Health - Plataforma para Personal Trainers e Nutricionistas
+* Tempo estimado: 1 minuto
+
+🎙️ FALA SUGERIDA:
+"Boa noite a todos, professores e colegas. Nos somos o Grupo 1, composto por mim (Andre), pelo Daniel, Gustavo e Giancarlo. Hoje vamos apresentar o Easy Health, um ecossistema completo projetado especificamente para que Personal Trainers e Nutricionistas gerenciem seus clientes, treinos, avaliacoes e metricas de desempenho. O foco da nossa apresentacao e demonstrar como o projeto evoluiu ao longo das ultimas 5 semanas, culminando em um ambiente de producao robusto e validado por esteira automatizada de CI/CD."
+
+🛠️ DESTAQUES TECNICOS:
+- O projeto e modular (Frontend e Backend desacoplados).
+- Identidade visual propria e documentada (roxo eletrico #9d11d9).
+
+
+--------------------------------------------------------------------------------
+SLIDE 1: CRONOGRAMA & LEGENDA CI/CD
+--------------------------------------------------------------------------------
+* Titulo do Slide: Cronograma do Projeto & Legenda CI/CD
+* Tempo estimado: 1.5 minutos
+
+🎙️ FALA SUGERIDA:
+"Para organizar a entrega, seguimos o cronograma de 5 semanas proposto para a P2. Iniciamos com o planejamento de escopo, passamos pela automacao do ambiente com Docker e CI/CD, codificamos as rotas e telas, implementamos testes automatizados em duas camadas (unitarios e integracao) e finalizamos com a implementacao de logs e monitoramento no deploy final. Mapeamos cada coluna da esteira de CI/CD: desde o Build automatico a cada push, passando pelos testes unitarios e de integracao, seguranca com auditorias de codigo e criptografia, ate a observabilidade no deploy de producao."
+
+❓ PERGUNTA DA BANCA: "Por que a evolucao das colunas de testes e deploy so comeca a ficar ativa a partir da Aula 2/3?"
+Resposta sugerida: "Porque na Aula 1 focamos no planejamento e setup. A partir da Aula 2, o pipeline de Build e o Deploy inicial na Vercel foram integrados. Na Aula 3, com o backend funcional, ativamos testes unitarios e de integracao locais e na esteira."
+
+
+--------------------------------------------------------------------------------
+SLIDE 2: AULA 1 - PLANEJAMENTO E DEFINICAO
+--------------------------------------------------------------------------------
+* Titulo do Slide: Planejamento, Definicao e Setup de Repositorios
+* Tempo estimado: 1.5 minutos
+
+🎙️ FALA SUGERIDA:
+"Na Aula 1, definimos que o Easy Health seria uma SPA (Single Page Application) em React utilizando o Vite, por conta de sua velocidade de desenvolvimento e build de producao leve. No Backend, optamos pelo Express.js na versao 5 rodando com Node.js e MongoDB (usando o ORM Mongoose). Escolhemos o MongoDB por ser um banco NoSQL documental que facilita muito a gravacao de documentos dinamicos como treinos e logs de acesso. Inicializamos dois repositorios independentes no GitHub para organizar a arquitetura de forma limpa."
+
+🛠️ DESTAQUES NO CODIGO:
+- Configuracoes base nos arquivos package.json de ambos os projetos.
+- Separacao de pastas estruturadas em MVC no Backend (Models, Controllers, Routes, Services, Middlewares).
+
+
+--------------------------------------------------------------------------------
+SLIDE 3: AULA 2 - CI/CD E INFRAESTRUTURA
+--------------------------------------------------------------------------------
+* Titulo do Slide: Configuracao de Ambiente, CI/CD e Infraestrutura
+* Tempo estimado: 2 minutos
+
+🎙️ FALA SUGERIDA:
+"Na Aula 2, nos concentramos na infraestrutura. Criamos uma configuracao com Docker Compose para subir uma instancia do MongoDB localmente, eliminando a dependencia de instalacoes locais de banco por parte dos desenvolvedores. Alem disso, criamos as acoes do GitHub Workflows. Para o Frontend, configuramos o pipeline para instalar pacotes, rodar o ESLint para garantir a qualidade estatica do codigo, e efetuar o build de producao com o Vite. Tambem realizamos o deploy continuo integrado diretamente com a Vercel, o que garante que qualquer alteracao na branch 'main' seja publicada de forma automatica."
+
+❓ PERGUNTA DA BANCA: "Como o pipeline garante que um codigo com erros nao va para a producao na Vercel?"
+Resposta sugerida: "O pipeline do GitHub Actions roda o linter (npm run lint) e o comando de compilacao (npm run build). Caso qualquer um desses passos falhe (por exemplo, erro de sintaxe ou variavel inexistente), o workflow e interrompido com erro e a Vercel bloqueia a atualizacao da producao."
+
+
+--------------------------------------------------------------------------------
+SLIDE 4: AULA 3 - DESENVOLVIMENTO & INTEGRACAO
+--------------------------------------------------------------------------------
+* Titulo do Slide: Desenvolvimento Back-end, Front-end e Integracao
+* Tempo estimado: 2.5 minutos
+
+🎙️ FALA SUGERIDA:
+"A Aula 3 foi o coracao do desenvolvimento. No Backend, implementamos o modelo MVC classico com Mongoose para gerenciar usuarios, profissionais, treinos e avaliacoes. No Frontend, desenvolvemos as interfaces, como a barra lateral de navegacao e as telas de cadastro e paineis. O ponto chave aqui foi a integracao. Criamos um modulo de API centralizado com o Axios que le o token JWT do localStorage a cada requisicao e o anexa ao cabecalho Authorization como Bearer Token. Se o servidor responder com status 401 (nao autorizado/token expirado), o interceptor limpa a sessao e redireciona o usuario para a tela de login automaticamente, garantindo uma navegacao segura."
+
+🛠️ DESTAQUES NO CODIGO:
+- Interceptador do Axios no arquivo src/services/api.js do React.
+- Estrutura de rotas da API Express no arquivo app.js acionando rotas como Auth, Users e Professionals.
+
+
+--------------------------------------------------------------------------------
+SLIDE 5: AULA 4 - TESTES, COBERTURA, PERFORMANCE E SEGURANCA
+--------------------------------------------------------------------------------
+* Titulo do Slide: Testes, Cobertura, Performance e Seguranca
+* Tempo estimado: 3 minutos
+
+🎙️ FALA SUGERIDA:
+"Na Aula 4, elevamos o nivel de maturidade do projeto focando em testes e seguranca.
+1. Testes Unitarios: Utilizamos o Jest para validar as regras do AuthService (registro e login) mockando o banco MongoDB, o jwt e o bcrypt.
+2. Testes de Integracao: Configuramos o GitHub Actions para subir um container Docker temporario do MongoDB no runner, iniciar a API Express em background e rodar o Newman (CLI do Postman) contra a API ativa, testando o fluxo ponta a ponta.
+3. Seguranca: Senhas sao salvas com hashes Bcrypt usando 10 rounds de salt. Protegemos todas as rotas privadas com JWT e ativamos CORS.
+4. Performance: No MongoDB, criamos indices compostos para impedir que um aluno avalie o mesmo profissional mais de uma vez, otimizando as consultas."
+
+❓ PERGUNTA DA BANCA: "Por que mockar o banco de dados no teste unitario?"
+Resposta sugerida: "Porque o teste unitario serve para validar apenas a logica de decisao do nosso codigo (por exemplo, validacoes de senha e regras de e-mail duplicado). Ele precisa rodar rapido (em milissegundos) e nao pode depender de um banco de dados real estar online. Para testar o banco de dados de forma integrada, usamos o Newman."
+
+
+--------------------------------------------------------------------------------
+SLIDE 6: AULA 5 - METRICAS DE USO, MONITORAMENTO E DEPLOY FINAL
+--------------------------------------------------------------------------------
+* Titulo do Slide: Metricas de Uso, Monitoramento e Deploy Final
+* Tempo estimado: 2 minutos
+
+🎙️ FALA SUGERIDA:
+"Na ultima aula, implementamos um sistema interno de monitoramento e analise (Analytics). Criamos a entidade ProfileViewLog e o endpoint /profile-views no backend. Toda vez que o perfil de um personal ou nutricionista e visualizado, registramos o log. O backend calcula automaticamente o total de acessos acumulados nos ultimos 7 dias. Alem disso, fizemos ajustes finais de conectividade do MongoDB substituindo as URIs de conexao por variaveis de ambiente configuraveis no arquivo .env. O deploy final foi homologado na Vercel e o pipeline de CI/CD foi validado com sucesso."
+
+🛠️ DESTAQUES NO CODIGO:
+- Logica de contagem em ProfessionalController.js (funcao getProfileViews).
+- Modelo de logs de visualizacao em ProfileViewLog.js.
+
+
+
+--------------------------------------------------------------------------------
+SLIDE 7: EVOLUCAO DO PIPELINE & RESOLUCAO DE BUGS
+--------------------------------------------------------------------------------
+* Titulo do Slide: Evolucao do Pipeline & Resolucao de Bugs (Sabatinas CI)
+* Tempo estimado: 1.5 minutos
+
+🎙️ FALA SUGERIDA:
+"Nesta tela, mostramos o historico real do nosso pipeline no GitHub Actions. Tivemos 5 execucoes no historico de commits do backend. As quatro primeiras execucoes falharam por conta de uma incompatibilidade classica de ambientes: desenvolvemos em maquinas Windows, que tratam nomes de arquivos como case-insensitive (insensiveis a maiusculas e minusculas), enquanto o runner do GitHub Actions roda em Linux, que e estritamente case-sensitive. Isso fez com que imports como require('./models/user') falhassem no runner. Corrigimos o case dos modelos nos commits 2, 3 e 4. No quinto commit, corrigimos tambem o timeout da subida do servidor usando wait-on, resultando em sucesso completo do build."
+
+❓ PERGUNTA DA BANCA (Prof. Silvio Barbieri): "Qual foi a importancia de dividir o pipeline em jobs separados no commit final?"
+Resposta sugerida: "Dividir o pipeline em jobs de testes unitarios e de integracao, com a instrucao 'needs: unit-tests', evita desperdicio de recursos. Se a logica unitaria basica falhar, o pipeline falha rapido (fail-fast) e nem perde tempo subindo containers Docker e rodando testes de endpoints no Newman."
+
+
+--------------------------------------------------------------------------------
+SLIDE 8: PLANILHA P2 FINAL
+--------------------------------------------------------------------------------
+* Titulo do Slide: Planilha de Apresentacoes da P2 Preenchida
+* Tempo estimado: 1.5 minutos
+
+🎙️ FALA SUGERIDA:
+"Como resultado de todo esse processo, preenchemos a nossa Planilha de Apresentacoes da P2 com todas as especificacoes reais de engenharia implementadas. O grupo 1 entregou o Easy Health utilizando React e Node.js. A plataforma de CI/CD foi o GitHub Workflows com gerenciador NPM. Os testes unitarios focaram no AuthService, a integracao mapeou a comunicacao React -> API -> MongoDB utilizando Newman, a infraestrutura rodou com Atlas e Docker, o build foi validado no Actions, a seguranca cobriu JWT, Bcrypt e CORS, e o monitoramento foi feito localmente no banco de dados via logs de visualizacao."
+
+
+--------------------------------------------------------------------------------
+SLIDE 9: CONCLUSAO
+--------------------------------------------------------------------------------
+* Titulo do Slide: Conclusao
+* Tempo estimado: 1 minuto
+
+🎙️ FALA SUGERIDA:
+"Para concluir, o desenvolvimento do Easy Health nos permitiu aplicar praticas reais de engenharia de software e DevOps. Conseguimos criar uma esteira automatizada completa que garante que todo codigo commitado passe por auditoria de estilo, testes de logica de negocios e testes de integracao de rede antes de ser implantado de forma continua. A plataforma esta operacional, com banco de dados em nuvem e frontend escalavel. Agradecemos a atencao de todos os professores e colegas, e ficamos abertos a perguntas!"

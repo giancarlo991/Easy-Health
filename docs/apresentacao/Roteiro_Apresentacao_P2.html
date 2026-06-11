@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roteiro de Apresentação P2 — Easy Health</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: #333333;
+      background-color: #f7f9fa;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      border: 1px solid #e1e8ed;
+    }
+    h1 {
+      font-size: 28px;
+      color: #9D11D9;
+      border-bottom: 2px solid #EED8F7;
+      padding-bottom: 12px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    h2 {
+      font-size: 20px;
+      color: #111111;
+      margin-top: 35px;
+      margin-bottom: 15px;
+      padding-left: 10px;
+      border-left: 4px solid #9D11D9;
+    }
+    h3 {
+      font-size: 15px;
+      color: #555555;
+      margin-top: 15px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    p, li {
+      font-size: 15px;
+      color: #444444;
+    }
+    ul {
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    .speech-box {
+      background-color: #FBF6FE;
+      border-left: 4px solid #c158f0;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .speech-box strong {
+      font-style: normal;
+      color: #9D11D9;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .highlight-box {
+      background-color: #F8F9FA;
+      border: 1px solid #E1E8ED;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .question-box {
+      background-color: #FFF9E6;
+      border-left: 4px solid #f59e0b;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .question-box strong.q {
+      color: #b27200;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .question-box p {
+      margin: 0;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 12px;
+      color: #888888;
+      border-top: 1px solid #e1e8ed;
+      padding-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🗣️ Roteiro e Guia de Apresentação — Easy Health</h1>
+    <p style="text-align: center; font-weight: 600;">Matéria: Integração e Entrega Contínua | Prof. Silvio Barbieri</p>
+    <p>Este roteiro interativo foi estruturado slide a slide para guiar a sua fala na apresentação da P2, destacando os pontos técnicos reais da sua base de código.</p>
+
+    <!-- Slide 0 -->
+    <h2>📌 Slide 0: Capa / Introdução</h2>
+    <p><strong>Tempo estimado:</strong> 1 minuto</p>
+    <div class="speech-box">
+      <strong>🎙️ O que falar (Fala sugerida):</strong>
+      "Boa noite a todos, professores e colegas. Nós somos o Grupo 1, composto por mim (André), pelo Daniel, Gustavo e Giancarlo. Hoje vamos apresentar o Easy Health, um ecossistema completo projetado especificamente para que Personal Trainers e Nutricionistas gerenciem seus clientes, treinos, avaliações e métricas de desempenho. O foco da nossa apresentação é demonstrar como o projeto evoluiu ao longo das últimas 5 semanas, culminando em um ambiente de produção robusto e validado por esteira automatizada de CI/CD."
+    </div>
+    <div class="highlight-box">
+      <h3>🛠️ Destaques Técnicos:</h3>
+      <ul>
+        <li>O projeto é modular (Frontend e Backend desacoplados).</li>
+        <li>Identidade visual própria e documentada (roxo elétrico #9d11d9).</li>
+      </ul>
+    </div>
+
+    <!-- Slide 1 -->
+    <h2>📌 Slide 1: Cronograma & Legenda CI/CD</h2>
+    <p><strong>Tempo estimado:</strong> 1.5 minutos</p>
+    <div class="speech-box">
+      <strong>🎙️ O que falar (Fala sugerida):</strong>
+      "Para organizar a entrega, seguimos o cronograma de 5 semanas proposto para a P2. Iniciamos com o planejamento de escopo, passamos pela automação do ambiente com Docker e CI/CD, codificamos as rotas e telas, implementamos testes automatizados em duas camadas (unitários e integração) e finalizamos com a implementação de logs e monitoramento no deploy final. Mapeamos cada coluna da esteira de CI/CD: desde o Build automático a cada push, passando pelos testes unitários e de integração, segurança com auditorias de código e criptografia, até a observabilidade no deploy de produção."
+    </div>
+    <div class="question-box">
+      <strong class="q">❓ Pergunta da Banca: "Por que a evolução das colunas de testes e deploy só começa a ficar ativa a partir da Aula 2/3?"</strong>
+      <p><strong>Resposta sugerida:</strong> "Porque na Aula 1 focamos no planejamento e setup. A partir da Aula 2, o pipeline de Build e o Deploy inicial na Vercel foram integrados. Na Aula 3, com o backend funcional, ativamos testes unitários e de integração locais e na esteira."</p>
+    </div>
+
+    <!-- Slide 2 -->
+    <h2>📌 Slide 2: Aula 1 — Planejamento e Definição</h2>
+    <p><strong>Tempo estimado:</strong> 1.5 minutos</p>
+    <div class="speech-box">
+      <strong>🎙️ O que falar (Fala sugerida):</strong>
+      "Na Aula 1, definimos que o Easy Health seria uma SPA (Single Page Application) em React utilizando o Vite, por conta de sua velocidade de desenvolvimento e build de produção leve. No Backend, optamos pelo Express.js na versão 5 rodando com Node.js e MongoDB (usando o ORM Mongoose). Escolhemos o MongoDB por ser um banco NoSQL documental que facilita muito a gravação de documentos dinâmicos como treinos e logs de acesso. Inicializamos dois repositórios independentes no GitHub para organizar a arquitetura de forma limpa."
+    </div>
+    <div class="highlight-box">
+      <h3>🛠️ Destaques no Código:</h3>
+      <ul>
+        <li>Configurações base nos arquivos <code>package.json</code> de ambos os projetos.</li>
+        <li>Separação de pastas estruturadas em MVC no Backend (Models, Controllers, Routes, Services, Middlewares).</li>
+      </ul>
+    </div>
+
+    <!-- Slide 3 -->
+    <h2>📌 Slide 3: Aula 2 — CI/CD e Infraestrutura</h2>
+    <p><strong>Tempo estimado:</strong> 2 minutos</p>
+    <div class="speech-box">
+      <strong>🎙️ O que falar (Fala sugerida):</strong>
+      "Na Aula 2, nos concentramos na infraestrutura. Criamos uma configuração com Docker Compose para subir uma instância do MongoDB localmente, eliminando a dependência de instalações locais de banco por parte dos desenvolvedores. Além disso, criamos as ações do GitHub Workflows. Para o Frontend, configuramos o pipeline para instalar pacotes, rodar o ESLint para garantir a qualidade estática do código, e efetuar o build de produção com o Vite. Também realizamos o deploy contínuo integrado diretamente com a Vercel, o que garante que qualquer alteração na branch 'main' seja publicada de forma automática."
+    </div>
+    <div class="question-box">
+      <strong class="q">❓ Pergunta da Banca: "Como o pipeline garante que um código com erros não vá para a produção na Vercel?"</strong>
+      <p><strong>Resposta sugerida:</strong> "O pipeline do GitHub Actions roda o linter (npm run lint) e o comando de compilação (npm run build). Caso qualquer um desses passos falhe (por exemplo, erro de sintaxe ou variável inexistente), o workflow é interrompido com erro e a Vercel bloqueia a atualização da produção."</p>
+    </div>
+
+    <!-- Slide 4 -->
+    <h2>📌 Slide 4: Aula 3 — Desenvolvimento & Integração</h2>
+    <p><strong>Tempo estimado:</strong> 2.5 minutos</p>
+    <div class="speech-box">
+      <strong>🎙️ O que falar (Fala sugerida):</strong>
+      "A Aula 3 foi o coração do desenvolvimento. No Backend, implementamos o modelo MVC clássico com Mongoose para gerenciar usuários, profissionais, treinos e avaliações. No Frontend, desenvolvemos as interfaces, como a barra lateral de navegação e as telas de cadastro e painéis. O ponto chave aqui foi a integração. Criamos um módulo de API centralizado com o Axios que lê o token JWT do localStorage a cada requisição e o anexa ao cabeçalho Authorization como Bearer Token. Se o servidor responder com status 401 (não autorizado/token expirado), o interceptor limpa a sessão e redireciona o usuário para a tela de login automaticamente, garantindo uma navegação segura."
+    </div>
+    <div class="highlight-box">
+      <h3>🛠️ Destaques no Código:</h3>
+      <ul>
+        <li>Interceptador do Axios no arquivo <code>src/services/api.js</code> do React.</li>
+        <li>Estrutura de rotas da API Express no arquivo <code>app.js</code> acionando rotas como Auth, Users e Professionals.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 5 -->
+    <h2>📌 Slide 5: Aula 4 — Testes, Cobertura, Performance e Segurança</h2>
+    <p><strong>Tempo estimado:</strong> 3 minutos</p>
+    <div class="speech-box">
+      <strong>🎙️ O que falar (Fala sugerida):</strong>
+      "Na Aula 4, elevamos o nível de maturidade do projeto focando em testes e segurança.
+      1. Testes Unitários: Utilizamos o Jest para validar as regras do AuthService (registro e login) mockando o banco MongoDB, o jwt e o bcrypt.
+      2. Testes de Integração: Configuramos o GitHub Actions para subir um container Docker temporário do MongoDB no runner, iniciar a API Express em background e rodar o Newman (CLI do Postman) contra a API ativa, testando o fluxo ponta a ponta.
+      3. Segurança: Senhas são salvas com hashes Bcrypt usando 10 rounds de salt. Protegemos todas as rotas privadas com JWT e ativamos CORS.
+      4. Performance: No MongoDB, criamos índices compostos para impedir que um aluno avalie o mesmo profissional mais de uma vez, otimizando as consultas."
+    </div>
+    <div class="question-box">
+      <strong class="q">❓ Pergunta da Banca: "Por que mockar o banco de dados no teste unitário?"</strong>
+      <p><strong>Resposta sugerida:</strong> "Porque o teste unitário serve para validar apenas a lógica de decisão do nosso código (por exemplo, validações de senha e regras de e-mail duplicado). Ele precisa rodar rápido (em milissegundos) e não pode depender de um banco de dados real estar online. Para testar o banco de dados de forma integrada, usamos o Newman."</p>
+    </div>
+
+    <!-- Slide 6 -->
+    <h2>📌 Slide 6: Aula 5 — Métricas de Uso, Monitoramento e Deploy Final</h2>
+    <p><strong>Tempo estimado:</strong> 2 minutos</p>
+    <div class="speech-box">
+      <strong>🎙️ O que falar (Fala sugerida):</strong>
+      "Na última aula, implementamos um sistema interno de monitoramento e análise (Analytics). Criamos a entidade ProfileViewLog e o endpoint /profile-views no backend. Toda vez que o perfil de um personal ou nutricionista é visualizado, registramos o log. O backend calcula automaticamente o total de acessos acumulados nos últimos 7 dias. Além disso, fizemos ajustes finais de conectividade do MongoDB substituindo as URIs de conexão por variáveis de ambiente configuráveis no arquivo .env. O deploy final foi homologado na Vercel e o pipeline de CI/CD foi validado com sucesso."
+    </div>
+    <div class="highlight-box">
+      <h3>🛠️ Destaques no Código:</h3>
+      <ul>
+        <li>Lógica de contagem em <code>ProfessionalController.js</code> (função <code>getProfileViews</code>).</li>
+        <li>Modelo de logs de visualização em <code>ProfileViewLog.js</code>.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 7 -->
+    <h2>📌 Slide 7: Planilha P2 Final</h2>
+    <p><strong>Tempo estimado:</strong> 1.5 minutos</p>
+    <div class="speech-box">
+      <strong>🎙️ O que falar (Fala sugerida):</strong>
+      "Como resultado de todo esse processo, preenchemos a nossa Planilha de Apresentações da P2 com todas as especificações reais de engenharia implementadas. O grupo 1 entregou o Easy Health utilizando React e Node.js. A plataforma de CI/CD foi o GitHub Workflows com gerenciador NPM. Os testes unitários focaram no AuthService, a integração mapeou a comunicação React -> API -> MongoDB utilizando Newman, a infraestrutura rodou com Atlas e Docker, o build foi validado no Actions, a segurança cobriu JWT, Bcrypt e CORS, e o monitoramento foi feito localmente no banco de dados via logs de visualização."
+    </div>
+
+    <!-- Slide 8 -->
+    <h2>📌 Slide 8: Conclusão</h2>
+    <p><strong>Tempo estimado:</strong> 1 minuto</p>
+    <div class="speech-box">
+      <strong>🎙️ O que falar (Fala sugerida):</strong>
+      "Para concluir, o desenvolvimento do Easy Health nos permitiu aplicar práticas reais de engenharia de software e DevOps. Conseguimos criar uma esteira automatizada completa que garante que todo código commitado passe por auditoria de estilo, testes de lógica de negócios e testes de integração de rede antes de ser implantado de forma contínua. A plataforma está operacional, com banco de dados em nuvem e frontend escalável. Agradecemos a atenção de todos os professores e colegas, e ficamos abertos a perguntas!"
+    </div>
+
+    <div class="footer">
+      Apresentação P2 — Easy Health — 11/06/2026<br>
+      Grupo 1: André França, Daniel, Gustavo e Giancarlo
+    </div>
+  </div>
+</body>
+</html>
