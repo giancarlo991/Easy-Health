@@ -6,7 +6,11 @@ import '../../styles/EncontrarTrainer/encontrarTrainer.css';
 
 export default function EncontrarTrainer() {
   const [professionals, setProfessionals] = useState([]);
-  const [pagination, setPagination] = useState({ page: 1, totalPages: 1, total: 0 });
+  const [pagination, setPagination] = useState({
+    page: 1,
+    totalPages: 1,
+    total: 0
+  });
   const [carregando, setCarregando] = useState(true);
   const [page, setPage] = useState(1);
 
@@ -16,18 +20,30 @@ export default function EncontrarTrainer() {
     minPrice: '',
     maxPrice: '',
     minRating: 0,
-    sortBy: 'rating',
+    sortBy: 'rating'
   });
 
   const fetchProfessionals = useCallback(async () => {
     setCarregando(true);
+
     try {
       const token = localStorage.getItem('token');
-      if (!token) return;
+
+      if (!token) {
+        setProfessionals([]);
+        setPagination({
+          page: 1,
+          totalPages: 1,
+          total: 0
+        });
+        return;
+      }
 
       const params = new URLSearchParams();
+
       params.set('page', page);
       params.set('limit', '12');
+
       if (filters.city) params.set('city', filters.city);
       if (filters.modality) params.set('modality', filters.modality);
       if (filters.minPrice) params.set('minPrice', filters.minPrice);
@@ -36,10 +52,23 @@ export default function EncontrarTrainer() {
       if (filters.sortBy) params.set('sortBy', filters.sortBy);
 
       const res = await api.get(`/api/professionals/search?${params.toString()}`);
+
       setProfessionals(res.data.professionals || []);
-      setPagination(res.data.pagination || { page: 1, totalPages: 1, total: 0 });
+      setPagination(
+        res.data.pagination || {
+          page: 1,
+          totalPages: 1,
+          total: 0
+        }
+      );
     } catch (err) {
       console.error('Erro ao buscar profissionais:', err);
+      setProfessionals([]);
+      setPagination({
+        page: 1,
+        totalPages: 1,
+        total: 0
+      });
     } finally {
       setCarregando(false);
     }
@@ -58,7 +87,7 @@ export default function EncontrarTrainer() {
     <div className="encontrar-container">
       <div className="encontrar-header">
         <h1>Encontrar Personal Trainer</h1>
-        <p>Encontre o profissional ideal para seus objetivos</p>
+        <p>Encontre o profissional ideal para seus objetivos, treinos e hábitos saudáveis.</p>
       </div>
 
       <div className="encontrar-layout">
@@ -68,7 +97,9 @@ export default function EncontrarTrainer() {
 
         <main className="encontrar-main">
           {carregando ? (
-            <div className="encontrar-loading">Buscando profissionais...</div>
+            <div className="encontrar-loading">
+              Buscando profissionais...
+            </div>
           ) : professionals.length === 0 ? (
             <div className="encontrar-empty">
               <h3>Nenhum profissional encontrado</h3>
@@ -83,8 +114,8 @@ export default function EncontrarTrainer() {
               </div>
 
               <div className="encontrar-grid">
-                {professionals.map((p) => (
-                  <TrainerCard key={p._id} trainer={p} />
+                {professionals.map((professional) => (
+                  <TrainerCard key={professional._id} trainer={professional} />
                 ))}
               </div>
 
@@ -93,19 +124,21 @@ export default function EncontrarTrainer() {
                   <button
                     className="pagination-btn"
                     disabled={page <= 1}
-                    onClick={() => setPage((p) => p - 1)}
+                    onClick={() => setPage((currentPage) => currentPage - 1)}
                   >
                     Anterior
                   </button>
+
                   <span className="pagination-info">
-                    P�gina {pagination.page} de {pagination.totalPages}
+                    Página {pagination.page} de {pagination.totalPages}
                   </span>
+
                   <button
                     className="pagination-btn"
                     disabled={page >= pagination.totalPages}
-                    onClick={() => setPage((p) => p + 1)}
+                    onClick={() => setPage((currentPage) => currentPage + 1)}
                   >
-                    Pr�xima
+                    Próxima
                   </button>
                 </div>
               )}

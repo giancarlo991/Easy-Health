@@ -1,19 +1,15 @@
-/* =====================================================
-   Registro — Dark Premium + Roxo Elétrico
-   ===================================================== */
-
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@700;800&family=Inter:wght@400;500;600&display=swap');
 
 :root {
-  --primary:       #9d11d9;
+  --primary: #9d11d9;
   --primary-hover: #7d0db0;
   --primary-light: #c158f0;
-  --bg-dark:       #0e0e14;
-  --bg-surface:    #16161f;
-  --bg-elevated:   #1e1e2e;
-  --border:        #2a2a3d;
-  --text-primary:  #f0f0ff;
-  --text-secondary:#8888aa;
+  --bg-dark: #0e0e14;
+  --bg-surface: #16161f;
+  --bg-elevated: #1e1e2e;
+  --border: #2a2a3d;
+  --text-primary: #f0f0ff;
+  --text-secondary: #8888aa;
 }
 
 body {
@@ -23,7 +19,6 @@ body {
   color: var(--text-primary);
 }
 
-/* ── Página ── */
 .registro-page {
   display: flex;
   justify-content: center;
@@ -32,18 +27,16 @@ body {
   padding: 30px 20px;
 }
 
-/* ── Card principal ── */
 .registro-container {
   display: flex;
   width: 100%;
   max-width: 1200px;
   border-radius: 18px;
-  box-shadow: 0 8px 48px rgba(0,0,0,0.7), 0 0 0 1px var(--border);
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.7), 0 0 0 1px var(--border);
   background-color: var(--bg-surface);
   overflow: hidden;
 }
 
-/* ── Painel Esquerdo (Roxo) ── */
 .registro-sidebar {
   flex: 1;
   background: linear-gradient(150deg, #9d11d9 0%, #6b0a9e 55%, #3d0060 100%);
@@ -51,6 +44,7 @@ body {
   border-radius: 18px 0 0 18px;
   position: relative;
   overflow: hidden;
+  min-height: 100vh;
 }
 
 .registro-sidebar::before {
@@ -58,7 +52,7 @@ body {
   position: absolute;
   width: 250px;
   height: 250px;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 50%;
   top: -60px;
   right: -60px;
@@ -74,6 +68,8 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  will-change: transform;
 }
 
 .registro-sidebar h2 {
@@ -91,9 +87,15 @@ body {
   opacity: 0.88;
 }
 
+.registro-sidebar h2,
+.registro-sidebar p,
+.sidebar-btn {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
 .sidebar-btn {
   background: transparent;
-  border: 2px solid rgba(255,255,255,0.8);
+  border: 2px solid rgba(255, 255, 255, 0.8);
   color: #fff;
   padding: 10px 32px;
   border-radius: 50px;
@@ -110,7 +112,6 @@ body {
   color: var(--primary);
 }
 
-/* ── Formulário ── */
 .registro-form-section {
   flex: 1;
   padding: 48px 44px;
@@ -170,58 +171,60 @@ body {
 .form-group input:focus,
 .form-group select:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(157,17,217,0.2);
+  box-shadow: 0 0 0 3px rgba(157, 17, 217, 0.2);
 }
 
 .form-row {
   display: flex;
-  gap: 14px;
+  gap: 18px;
 }
 
-/* =====================================================
-   Alinhamento Perfeito dos Radio Buttons
-   ===================================================== */
+.profile-type {
+  margin-bottom: 18px;
+}
 
-/* Garante que o título "TIPO DE PERFIL" fique posicionado corretamente acima */
 .profile-type > label {
-  margin-bottom: 450px;
+  margin-bottom: 10px;
   display: block;
 }
 
 .radio-options {
   display: flex;
   align-items: center;
-  /* Removemos o 'gap' para que a bolinha não fuja do texto */
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .radio-options input[type="radio"] {
   cursor: pointer;
-  transform: scale(1.2); /* Bolinha levemente maior para visual premium */
+  transform: scale(1.2);
   accent-color: var(--primary);
-  margin: 0 8px 0 0; /* Apenas 8px de espaço: gruda a bolinha no SEU próprio texto */
+  margin: 0 4px 0 0;
 }
 
 .radio-options label {
-  margin: 0 32px 0 0; /* 32px de espaço na direita: separa uma opção da outra */
-  font-weight: 500;
+  margin: 0 28px 0 0;
+  font-weight: 600;
   color: var(--text-primary);
   cursor: pointer;
   font-size: 0.95rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  
-  /* Truques para alinhar a altura da fonte com o centro do círculo */
-  line-height: 1; 
-  padding-top: 2px; 
+  letter-spacing: 0.04em;
+  line-height: 1;
+  padding-top: 2px;
 }
 
-/* Tira a margem da última opção para não sobrar espaço inútil na direita */
 .radio-options label:last-child {
   margin-right: 0;
 }
-/* =====================================================
-   Botão de Cadastro & Animações
-   ===================================================== */
+
+.erro-senha {
+  color: #ff4d6d;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin: -6px 0 12px 2px;
+}
+
 .submit-btn {
   width: 100%;
   padding: 13px;
@@ -249,20 +252,23 @@ body {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
 
-/* =====================================================
-   Layout do Campo de Data Híbrido & Ícone Clicável
-   ===================================================== */
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 .date-input-container {
   position: relative;
   display: flex;
   align-items: center;
   width: 100%;
-  height: 44px; /* Fixa uma altura para o container servir de base perfeita para o ícone */
+  height: 44px;
 }
 
 .custom-datepicker-input {
@@ -274,17 +280,13 @@ body {
   font-size: 0.95rem;
   font-family: 'Inter', sans-serif;
   background-color: var(--bg-elevated);
-  
-  /* Cor principal branca sempre */
   color: var(--text-primary) !important;
-  
   box-sizing: border-box;
   transition: border-color 0.25s, box-shadow 0.25s;
   outline: none;
   cursor: text;
 }
 
-/* Força os blocos da data (dd, mm, aaaa) a ficarem brancos */
 .custom-datepicker-input::-webkit-datetime-edit-text,
 .custom-datepicker-input::-webkit-datetime-edit-month-field,
 .custom-datepicker-input::-webkit-datetime-edit-day-field,
@@ -294,21 +296,19 @@ body {
 
 .custom-datepicker-input:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(157,17,217,0.2);
+  box-shadow: 0 0 0 3px rgba(157, 17, 217, 0.2);
 }
 
-/* Oculta o ícone feio nativo do navegador */
 .no-native-icon::-webkit-calendar-picker-indicator {
   display: none !important;
   -webkit-appearance: none;
 }
 
-/* Alinhamento à prova de balas para o ícone SVG */
 .icon-datepicker-wrapper {
   position: absolute;
   right: 14px;
   top: 0;
-  bottom: 0; /* Esticar do topo à base garante a centralização vertical com flex */
+  bottom: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -327,7 +327,7 @@ body {
   fill: var(--text-secondary);
   cursor: pointer;
   display: block;
-  margin: 0; /* Anula qualquer margem externa */
+  margin: 0;
   transition: fill 0.2s ease, transform 0.2s ease;
 }
 
@@ -340,16 +340,12 @@ body {
   fill: var(--primary);
 }
 
-/* =====================================================
-   Customização do Calendário React DatePicker (Pop-up)
-   ===================================================== */
-
 .react-datepicker {
   font-family: 'Inter', sans-serif !important;
   background-color: var(--bg-surface) !important;
   border: 1px solid var(--border) !important;
   border-radius: 12px !important;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.6) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
   color: var(--text-primary) !important;
 }
 
@@ -449,6 +445,35 @@ body {
 
 .react-datepicker__year-option:hover,
 .react-datepicker__month-option:hover,
+.react-datepicker__year-dropdown .react-datepicker__year-option:hover,
+.react-datepicker__month-dropdown .react-datepicker__month-option:hover,
 .react-datepicker__month-year-option:hover {
   background-color: rgba(157, 17, 217, 0.2) !important;
+}
+
+@media (max-width: 900px) {
+  .registro-container {
+    flex-direction: column;
+  }
+
+  .registro-sidebar {
+    min-height: 320px;
+    border-radius: 18px 18px 0 0;
+  }
+
+  .sidebar-fixa {
+    position: relative;
+    top: auto;
+    transform: none;
+    min-height: 320px;
+  }
+
+  .registro-form-section {
+    padding: 36px 26px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
 }
