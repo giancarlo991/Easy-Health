@@ -1,10 +1,10 @@
 import React, { useState, forwardRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { ptBR } from 'date-fns/locale';
 import '../../styles/Login/Registro.css';
+import api from '../../services/api';
 
 function Registro() {
   const navigate = useNavigate();
@@ -66,8 +66,6 @@ function Registro() {
 
     setErroSenha('');
 
-    const API_BASE_URL = 'http://localhost:3000';
-
     try {
       const dadosParaEnvio = {
         name: formData.nome,
@@ -80,11 +78,11 @@ function Registro() {
         role: formData.tipoPerfil === 'profissional' ? 'trainer' : 'user'
       };
 
-      const response = await axios.post(`${API_BASE_URL}/api/auth/register`, dadosParaEnvio);
+      const response = await api.post('/api/auth/register', dadosParaEnvio);
 
       if (response.status === 201 || response.status === 200) {
         if (formData.tipoPerfil === 'profissional') {
-          const loginResponse = await axios.post(`${API_BASE_URL}/api/auth/login`, {
+          const loginResponse = await api.post('/api/auth/login', {
             email: formData.email,
             password: formData.senha
           });
@@ -92,13 +90,19 @@ function Registro() {
           const token = loginResponse.data.token;
           const userId = loginResponse.data.user._id;
 
-          await axios.post(`${API_BASE_URL}/api/professionals`, {
-            userId: userId,
-            type: formData.especialidade,
-            document: formData.crm
-          }, {
-            headers: { Authorization: `Bearer ${token}` }
-          });
+          await api.post(
+            '/api/professionals',
+            {
+              userId: userId,
+              type: formData.especialidade,
+              document: formData.crm
+            },
+            {
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
+            }
+          );
         }
 
         alert('Conta criada com sucesso!');
@@ -106,7 +110,13 @@ function Registro() {
       }
     } catch (error) {
       console.error('Erro ao cadastrar:', error);
-      const mensagemErro = error.response?.data?.error || 'Erro ao conectar com o servidor.';
+
+      const mensagemErro =
+        error.response?.data?.error ||
+        error.response?.data?.message ||
+        error.message ||
+        'Erro ao conectar com o servidor.';
+
       alert(mensagemErro);
     }
   };
