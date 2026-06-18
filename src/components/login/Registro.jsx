@@ -109,13 +109,15 @@ function Registro() {
         navigate('/');
       }
     } catch (error) {
-      console.error('Erro ao cadastrar:', error);
+      console.error('Erro ao cadastrar:', error.response?.data || error);
 
-      const mensagemErro =
-        error.response?.data?.error ||
-        error.response?.data?.message ||
-        error.message ||
-        'Erro ao conectar com o servidor.';
+      const details = error.response?.data?.details;
+      const mensagemErro = details && Array.isArray(details)
+        ? `Dados inválidos:\n${details.map((d) => `- ${d}`).join('\n')}`
+        : (error.response?.data?.error ||
+           error.response?.data?.message ||
+           error.message ||
+           'Erro ao conectar com o servidor.');
 
       alert(mensagemErro);
     }
