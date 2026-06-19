@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import '../styles/Sidebar.css';
-import logo from '../assets/logo.svg';
+import logo from '../assets/logo.png';
 
 /* ── SVG icon helpers ── */
 const IconHome = () => (

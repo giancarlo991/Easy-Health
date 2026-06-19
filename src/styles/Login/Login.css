@@ -274,3 +274,149 @@
   .login-page .c11 h1 { font-size: 2rem; }
   .login-page .login { flex-basis: auto; padding: 40px 24px; }
 }
+
+/* =====================================================
+   Mobile — Login
+   ===================================================== */
+
+@media (max-width: 768px) {
+  .login-page {
+    min-height: 100vh;
+    padding: 0;
+    align-items: stretch;
+    justify-content: flex-start;
+    background-color: var(--bg-dark);
+  }
+
+  .login-page .c1 {
+    width: 100%;
+    min-height: 100vh;
+    max-width: none;
+    flex-direction: column;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    overflow: visible;
+  }
+
+  .login-page .c11 {
+    flex-basis: auto;
+    min-height: 220px;
+    padding: 34px 22px 30px;
+    border-radius: 0 0 30px 30px;
+  }
+
+  .login-page .c11::before {
+    width: 230px;
+    height: 230px;
+    top: -90px;
+    right: -90px;
+  }
+
+  .login-page .c11::after {
+    width: 150px;
+    height: 150px;
+    bottom: -55px;
+    left: -55px;
+  }
+
+  .login-page .c11 h1 {
+    font-size: 1.85rem;
+    line-height: 1.15;
+  }
+
+  .login-page .c11 p {
+    font-size: 0.95rem;
+    margin: 14px 0;
+  }
+
+  .login-page .c11 hr {
+    max-width: 220px;
+  }
+
+  .login-page .c11 button {
+    width: 100%;
+    max-width: 240px;
+    padding: 11px 24px;
+    font-size: 0.9rem;
+  }
+
+  .login-page .login {
+    flex-basis: auto;
+    padding: 34px 22px 40px;
+    justify-content: flex-start;
+    background-color: var(--bg-dark);
+  }
+
+  .login-page .login h1 {
+    font-size: 1.75rem;
+    margin-bottom: 24px;
+  }
+
+  .login-page .mensagem-erro,
+  .login-page .mensagem-alerta {
+    font-size: 0.86rem;
+    padding: 11px 13px;
+    margin-bottom: 16px;
+  }
+
+  .login-page .login label {
+    font-size: 0.76rem;
+    margin-bottom: 6px;
+  }
+
+  .login-page .login input {
+    height: 50px;
+    font-size: 1rem;
+    margin-bottom: 18px;
+    border-radius: 12px;
+  }
+
+  .login-page .login .btn-entrar,
+  .login-page .login .btn-convidado {
+    height: 52px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+  }
+
+  .login-page .esqueceu-a-senha {
+    margin-top: 18px;
+  }
+
+  .login-page .esqueceu-a-senha a {
+    font-size: 0.86rem;
+  }
+}
+
+@media (max-width: 430px) {
+  .login-page .c11 {
+    min-height: 200px;
+    padding: 30px 18px 26px;
+  }
+
+  .login-page .c11 h1 {
+    font-size: 1.55rem;
+  }
+
+  .login-page .c11 p {
+    font-size: 0.88rem;
+  }
+
+  .login-page .login {
+    padding: 30px 18px 36px;
+  }
+
+  .login-page .login h1 {
+    font-size: 1.55rem;
+  }
+
+  .login-page .login input {
+    height: 48px;
+    font-size: 0.95rem;
+  }
+
+  .login-page .login .btn-entrar,
+  .login-page .login .btn-convidado {
+    height: 50px;
+  }
+}

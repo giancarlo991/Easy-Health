@@ -1,54 +1,118 @@
 /* =====================================================
-   Home Dashboard — Sport-Medical Premium · Teal
+   Home Dashboard — EasyHealth Premium · Responsive
    ===================================================== */
 
 .conteudo-principal {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
   padding: 40px;
   font-family: var(--font-body);
   color: var(--text-primary);
-  max-width: 1400px;
-  margin: 0 auto;
+}
+
+/* ── Cabeçalho ── */
+.cabecalho-home {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 34px;
+  padding: 30px;
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at top right, rgba(34, 211, 238, 0.16), transparent 34%),
+    linear-gradient(135deg, var(--bg-surface), var(--bg-elevated));
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+}
+
+.cabecalho-home::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5px;
+  height: 100%;
+  background: var(--primary);
+}
+
+.badge-home {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 7px 12px;
+  margin-bottom: 14px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--primary-light);
+  background: rgba(34, 211, 238, 0.1);
+  border: 1px solid rgba(34, 211, 238, 0.22);
 }
 
 .cabecalho-home h1 {
   font-family: var(--font-heading);
-  font-size: 2.1rem;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
   font-weight: 800;
   color: var(--text-primary);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   letter-spacing: 0.01em;
 }
 
 .cabecalho-home p {
   color: var(--text-secondary);
-  margin-bottom: 40px;
   font-size: 1rem;
+  max-width: 620px;
+  line-height: 1.6;
+}
+
+.avatar-home {
+  width: 78px;
+  height: 78px;
+  min-width: 78px;
+  border-radius: 22px;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--bg-dark, #061014);
+  background: linear-gradient(135deg, var(--primary-light), var(--primary));
+  box-shadow: var(--shadow-glow);
 }
 
 /* ── Grid de resumo ── */
 .grid-resumo {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
-  margin-bottom: 48px;
+  margin-bottom: 34px;
 }
 
 .card-informativo {
-  background-color: var(--bg-surface);
-  padding: 26px 22px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent),
+    var(--bg-surface);
+  padding: 24px;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-card);
   transition: var(--transition);
   position: relative;
   overflow: hidden;
+  min-height: 178px;
 }
 
 .card-informativo::after {
   content: '';
   position: absolute;
-  top: 0; left: 0;
-  width: 3px; height: 100%;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
   background: var(--primary);
   border-radius: var(--radius-lg) 0 0 var(--radius-lg);
 }
@@ -56,16 +120,41 @@
 .card-informativo:hover {
   border-color: var(--primary);
   box-shadow: var(--shadow-glow);
-  transform: translateY(-2px); /* reduzido de -4px */
+  transform: translateY(-3px);
+}
+
+.card-destaque {
+  background:
+    radial-gradient(circle at bottom right, rgba(34, 211, 238, 0.14), transparent 36%),
+    var(--bg-surface);
+}
+
+.card-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 18px;
 }
 
 .card-informativo h3 {
-  font-size: 0.78rem;
-  font-weight: 700;
+  font-size: 0.76rem;
+  font-weight: 800;
   color: var(--text-secondary);
-  margin-bottom: 12px;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.13em;
+}
+
+.card-icone {
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  font-size: 1.1rem;
 }
 
 .dado-destaque {
@@ -73,22 +162,110 @@
   font-size: 2.4rem;
   font-weight: 800;
   color: var(--primary-light);
-  margin-bottom: 6px;
-  /* sem text-shadow */
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+
+.texto-suave {
+  color: var(--text-secondary);
+  font-size: 1.35rem;
+}
+
+.perfil-texto {
+  font-size: 1.75rem;
 }
 
 .card-informativo p {
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   color: var(--text-muted);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+/* ── Ações rápidas ── */
+.acoes-rapidas {
+  margin-bottom: 36px;
+}
+
+.acoes-rapidas h2,
+.secao-detalhes h2 {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 18px;
+}
+
+.grid-acoes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.acao-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-card);
+}
+
+.acao-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+  background: var(--bg-elevated);
+}
+
+.acao-card > span {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: rgba(34, 211, 238, 0.1);
+  border: 1px solid rgba(34, 211, 238, 0.18);
+  font-size: 1.2rem;
+}
+
+.acao-card strong {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.acao-card small {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  line-height: 1.4;
 }
 
 /* ── Seção de detalhes ── */
-.secao-detalhes h2 {
-  font-family: var(--font-heading);
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 20px;
+.secao-detalhes {
+  margin-bottom: 30px;
+}
+
+.secao-titulo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.secao-titulo span {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--bg-surface);
 }
 
 .lista-atividades {
@@ -96,30 +273,239 @@
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
   overflow: hidden;
+  box-shadow: var(--shadow-card);
 }
 
 .item-atividade {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 18px;
   padding: 18px 22px;
   border-bottom: 1px solid var(--border);
   transition: var(--transition);
 }
 
-.item-atividade:last-child { border-bottom: none; }
+.item-atividade:last-child {
+  border-bottom: none;
+}
 
 .item-atividade:hover {
   background-color: var(--bg-elevated);
 }
 
 .item-atividade span {
-  font-weight: 500;
+  display: block;
+  font-weight: 700;
   color: var(--text-primary);
   font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.item-atividade p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.4;
 }
 
 .item-atividade small {
   color: var(--text-muted);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+/* ── Skeleton Loading ── */
+.skeleton-header,
+.skeleton-card,
+.skeleton-lista {
+  border-radius: var(--radius-lg);
+  background: linear-gradient(
+    90deg,
+    var(--bg-surface) 25%,
+    var(--bg-elevated) 50%,
+    var(--bg-surface) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.4s ease infinite;
+  border: 1px solid var(--border);
+}
+
+.skeleton-header {
+  height: 160px;
+  margin-bottom: 28px;
+}
+
+.skeleton-card {
+  height: 178px;
+}
+
+.skeleton-lista {
+  height: 150px;
+  margin-top: 20px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ── Responsivo ── */
+@media (max-width: 1100px) {
+  .grid-resumo,
+  .grid-acoes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .conteudo-principal {
+    padding: 22px 16px;
+  }
+
+  .cabecalho-home {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  .cabecalho-home h1 {
+    font-size: 1.85rem;
+  }
+
+  .cabecalho-home p {
+    font-size: 0.95rem;
+  }
+
+  .avatar-home {
+    width: 62px;
+    height: 62px;
+    min-width: 62px;
+    border-radius: 18px;
+    font-size: 1.6rem;
+  }
+
+  .grid-resumo,
+  .grid-acoes {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .grid-resumo {
+    margin-bottom: 28px;
+  }
+
+  .card-informativo {
+    padding: 22px;
+    min-height: auto;
+  }
+
+  .dado-destaque {
+    font-size: 2rem;
+  }
+
+  .texto-suave {
+    font-size: 1.25rem;
+  }
+
+  .perfil-texto {
+    font-size: 1.55rem;
+  }
+
+  .acao-card {
+    padding: 18px;
+  }
+
+  .secao-titulo {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 8px;
+  }
+
+  .item-atividade {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 18px;
+    gap: 8px;
+  }
+
+  .item-atividade small {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 480px) {
+  .conteudo-principal {
+    padding: 18px 12px;
+  }
+
+  .cabecalho-home {
+    padding: 22px 18px;
+    border-radius: 18px;
+  }
+
+  .badge-home {
+    font-size: 0.72rem;
+  }
+
+  .cabecalho-home h1 {
+    font-size: 1.55rem;
+  }
+
+  .cabecalho-home p {
+    font-size: 0.9rem;
+  }
+
+  .card-informativo {
+    padding: 20px 18px;
+    border-radius: 18px;
+  }
+
+  .card-topo {
+    margin-bottom: 14px;
+  }
+
+  .card-icone {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    border-radius: 12px;
+  }
+
+  .dado-destaque {
+    font-size: 1.8rem;
+  }
+
+  .texto-suave {
+    font-size: 1.12rem;
+  }
+
+  .perfil-texto {
+    font-size: 1.35rem;
+  }
+
+  .acoes-rapidas h2,
+  .secao-detalhes h2 {
+    font-size: 1.15rem;
+  }
+
+  .acao-card {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .acao-card > span {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+  }
+
+  .lista-atividades {
+    border-radius: 18px;
+  }
 }

@@ -477,3 +477,232 @@ body {
     gap: 0;
   }
 }
+
+
+
+/* =====================================================
+   Mobile — Registro
+   ===================================================== */
+
+@media (max-width: 768px) {
+  .registro-page {
+    min-height: 100vh;
+    padding: 0;
+    align-items: stretch;
+    justify-content: flex-start;
+    background-color: var(--bg-dark);
+  }
+
+  .registro-container {
+    width: 100%;
+    max-width: none;
+    min-height: 100vh;
+    flex-direction: column;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: visible;
+  }
+
+  .registro-sidebar {
+    flex: none;
+    width: 100%;
+    min-height: 210px;
+    border-radius: 0 0 30px 30px;
+  }
+
+  .registro-sidebar::before {
+    width: 210px;
+    height: 210px;
+    top: -80px;
+    right: -80px;
+  }
+
+  .sidebar-fixa {
+    position: relative;
+    top: auto;
+    transform: none;
+    min-height: 210px;
+    padding: 30px 22px;
+    justify-content: center;
+  }
+
+  .registro-sidebar h2 {
+    font-size: 1.65rem;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+
+  .registro-sidebar p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 18px;
+  }
+
+  .sidebar-btn {
+    width: 100%;
+    max-width: 240px;
+    padding: 11px 24px;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .registro-form-section {
+    flex: none;
+    width: 100%;
+    padding: 32px 20px 42px;
+    background-color: var(--bg-dark);
+    box-sizing: border-box;
+  }
+
+  .registro-form-section h2 {
+    font-size: 1.65rem;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group label {
+    font-size: 0.76rem;
+    margin-bottom: 6px;
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="tel"],
+  .form-group input[type="password"],
+  .form-group select,
+  .custom-datepicker-input {
+    min-height: 50px;
+    padding: 12px 14px;
+    font-size: 0.95rem;
+    border-radius: 12px;
+  }
+
+  .date-input-container {
+    height: 50px;
+  }
+
+  .custom-datepicker-input {
+    padding-right: 44px;
+  }
+
+  .icon-datepicker-wrapper {
+    right: 14px;
+  }
+
+  .calendar-icon {
+    width: 21px;
+    height: 21px;
+  }
+
+  .profile-type {
+    margin-top: 4px;
+    margin-bottom: 18px;
+  }
+
+  .radio-options {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 12px 8px;
+    align-items: center;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background-color: var(--bg-surface);
+  }
+
+  .radio-options input[type="radio"] {
+    transform: scale(1.1);
+    margin: 0;
+  }
+
+  .radio-options label {
+    margin: 0;
+    font-size: 0.86rem;
+    line-height: 1.2;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  .conditional-fields {
+    gap: 0;
+  }
+
+  .erro-senha {
+    font-size: 0.8rem;
+    margin: -4px 0 12px 2px;
+  }
+
+  .submit-btn {
+    min-height: 52px;
+    border-radius: 14px;
+    font-size: 0.92rem;
+    margin-top: 8px;
+  }
+
+  .react-datepicker {
+    max-width: calc(100vw - 24px);
+    font-size: 0.9rem !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .registro-sidebar {
+    min-height: 190px;
+  }
+
+  .sidebar-fixa {
+    min-height: 190px;
+    padding: 28px 18px;
+  }
+
+  .registro-sidebar h2 {
+    font-size: 1.45rem;
+  }
+
+  .registro-sidebar p {
+    font-size: 0.84rem;
+  }
+
+  .registro-form-section {
+    padding: 30px 16px 38px;
+  }
+
+  .registro-form-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="tel"],
+  .form-group input[type="password"],
+  .form-group select,
+  .custom-datepicker-input {
+    min-height: 48px;
+    font-size: 0.92rem;
+  }
+
+  .date-input-container {
+    height: 48px;
+  }
+
+  .radio-options {
+    padding: 13px;
+  }
+
+  .radio-options label {
+    font-size: 0.82rem;
+  }
+
+  .submit-btn {
+    min-height: 50px;
+  }
+}
