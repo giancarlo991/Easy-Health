@@ -131,19 +131,17 @@ export default function PerfilPaciente() {
     );
   }
 
-  if (!dadosIniciais) {
+  const token = localStorage.getItem('token');
+  const userId = localStorage.getItem('userId');
+  const isConvidado = !token || userId === 'convidado';
+
+  if (isConvidado) {
     return (
       <div className="perfil-container">
         <div className="cabecalho-perfil">
           <h1>Meu Perfil</h1>
           <p>Visualize suas informações pessoais.</p>
         </div>
-
-        {mensagem.texto && (
-          <div className={`alerta-perfil ${mensagem.tipo}`}>
-            {mensagem.texto}
-          </div>
-        )}
 
         <div className="card-perfil visitante-card">
           <p className="mensagem-convidado">
@@ -153,6 +151,27 @@ export default function PerfilPaciente() {
 
           <button className="botao-salvar" onClick={() => navigate('/')}>
             Fazer Login
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (!dadosIniciais) {
+    return (
+      <div className="perfil-container">
+        <div className="cabecalho-perfil">
+          <h1>Meu Perfil</h1>
+          <p>Visualize suas informações pessoais.</p>
+        </div>
+
+        <div className="card-perfil visitante-card">
+          <p className="mensagem-convidado" style={{ color: '#ef4444' }}>
+            Não foi possível carregar as informações do seu perfil. Verifique se o servidor está ativo.
+          </p>
+
+          <button className="botao-salvar" onClick={() => window.location.reload()}>
+            Tentar Novamente
           </button>
         </div>
       </div>

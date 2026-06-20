@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import api from '../../services/api';
 import '../../styles/Profissional/perfilProfissional.css';
-
-const API_BASE_URL = 'http://localhost:3000';
 
 const STATUS_MAP = {
   pending:  { label: 'Pendente',  classe: 'status-pendente'  },
@@ -43,18 +41,14 @@ export default function PerfilProfissional() {
         }
 
         // 1️⃣  Busca dados do usuário
-        const respostaUser = await axios.get(`${API_BASE_URL}/api/users/${userId}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const respostaUser = await api.get(`/api/users/${userId}`);
         const dadosUser = respostaUser.data;
         setUsuario(dadosUser);
         setTelefone(dadosUser.phone   || '');
         setEndereco(dadosUser.address || '');
 
         // 2️⃣  Busca dados do profissional (usa a lista e filtra pelo userId)
-        const respostaProf = await axios.get(`${API_BASE_URL}/api/professionals`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const respostaProf = await api.get('/api/professionals');
 
         const lista = respostaProf.data;
         const meu   = lista.find(
@@ -85,19 +79,15 @@ export default function PerfilProfissional() {
       const userId = localStorage.getItem('userId');
 
       // Atualiza dados do usuário (telefone + endereço)
-      await axios.put(`${API_BASE_URL}/api/users/${userId}`, {
+      await api.put(`/api/users/${userId}`, {
         phone:   telefone,
         address: endereco,
-      }, {
-        headers: { Authorization: `Bearer ${token}` },
       });
 
       // Atualiza tipo do profissional (se existir registro)
       if (profissional) {
-        await axios.put(`${API_BASE_URL}/api/professionals/${profissional._id}`, {
+        await api.put(`/api/professionals/${profissional._id}`, {
           type: tipo,
-        }, {
-          headers: { Authorization: `Bearer ${token}` },
         });
         setProfissional({ ...profissional, type: tipo });
       }
@@ -138,7 +128,11 @@ export default function PerfilProfissional() {
     );
   }
 
-  if (!usuario) {
+  const token = localStorage.getItem('token');
+  const userId = localStorage.getItem('userId');
+  const isConvidado = !token || userId === 'convidado';
+
+  if (isConvidado) {
     return (
       <div className="perfil-prof-container">
         <div className="perfil-prof-cabecalho">
@@ -152,6 +146,25 @@ export default function PerfilProfissional() {
           </p>
           <button className="btn-salvar" onClick={() => navigate('/')}>
             Fazer Login
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (!usuario) {
+    return (
+      <div className="perfil-prof-container">
+        <div className="perfil-prof-cabecalho">
+          <h1>Meu Perfil Profissional</h1>
+          <p>Gerencie suas informações e métricas.</p>
+        </div>
+        <div className="perfil-prof-card visitante-card">
+          <p className="mensagem-convidado" style={{ color: '#ef4444' }}>
+            Não foi possível carregar as informações do seu perfil. Verifique se o servidor está ativo.
+          </p>
+          <button className="btn-salvar" onClick={() => window.location.reload()}>
+            Tentar Novamente
           </button>
         </div>
       </div>

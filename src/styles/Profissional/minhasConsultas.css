@@ -1,0 +1,494 @@
+/* c:\Users\DANIEL\Documents\DSM\Integrador_4\Easy-Health\src\styles\Profissional\minhasConsultas.css */
+
+.cabecalho-consultas {
+  margin-bottom: 30px;
+}
+
+.cabecalho-consultas h1 {
+  font-family: 'Barlow', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+  letter-spacing: -0.01em;
+}
+
+.cabecalho-consultas p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Container de Loading */
+.consultas-container-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 350px;
+  color: var(--text-secondary);
+  gap: 15px;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(157, 17, 217, 0.15);
+  border-left-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Alertas de Erro */
+.alert-danger {
+  background-color: rgba(234, 84, 85, 0.1);
+  border: 1px solid rgba(234, 84, 85, 0.35);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.alert-content {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.alert-icon {
+  width: 24px;
+  height: 24px;
+  fill: #ea5455;
+  flex-shrink: 0;
+}
+
+.alert-content strong {
+  color: #ea5455;
+  font-size: 1.05rem;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.alert-content p {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.btn-retry {
+  background-color: #ea5455;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+}
+
+.btn-retry:hover {
+  opacity: 0.9;
+}
+
+/* Filtros de Status */
+.consultas-filtros {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.filtro-btn {
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.25s ease;
+}
+
+.filtro-btn:hover {
+  background-color: var(--border);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.filtro-badge {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 2px 8px;
+  min-width: 14px;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.filtro-btn.active {
+  color: white;
+  box-shadow: 0 4px 12px rgba(157, 17, 217, 0.3);
+}
+
+.filtro-btn.active.status-todas {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.filtro-btn.active.status-todas .filtro-badge {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.filtro-btn.active.status-pendente {
+  background-color: #ff9f43;
+  border-color: #ff9f43;
+}
+
+.filtro-btn.active.status-pendente .filtro-badge {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.filtro-btn.active.status-confirmada {
+  background-color: #28c76f;
+  border-color: #28c76f;
+}
+
+.filtro-btn.active.status-confirmada .filtro-badge {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.filtro-btn.active.status-cancelada {
+  background-color: #ea5455;
+  border-color: #ea5455;
+}
+
+.filtro-btn.active.status-cancelada .filtro-badge {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+/* Estado Vazio */
+.consultas-vazio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  background-color: var(--bg-surface);
+  border: 1px dashed var(--border);
+  border-radius: 16px;
+  text-align: center;
+  min-height: 250px;
+}
+
+.vazio-icon {
+  width: 60px;
+  height: 60px;
+  fill: var(--text-secondary);
+  opacity: 0.4;
+  margin-bottom: 18px;
+}
+
+.consultas-vazio h3 {
+  font-family: 'Barlow', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+}
+
+.consultas-vazio p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin: 0;
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+/* Grid de Consultas */
+.consultas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 24px;
+}
+
+/* Card de Consulta */
+.consulta-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.consulta-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--primary-light);
+  border-color: rgba(157, 17, 217, 0.4);
+}
+
+/* Borda Indicadora lateral por status */
+.consulta-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+}
+
+.consulta-card.card-status-pendente::before {
+  background-color: #ff9f43;
+}
+
+.consulta-card.card-status-confirmada::before {
+  background-color: #28c76f;
+}
+
+.consulta-card.card-status-cancelada::before {
+  background-color: #ea5455;
+  opacity: 0.6;
+}
+
+/* Cabeçalho do Card */
+.consulta-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.consulta-data-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  width: 65px;
+  height: 65px;
+  flex-shrink: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.data-dia {
+  font-family: 'Barlow', sans-serif;
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.data-mes-ano {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  margin-top: 3px;
+  font-weight: 600;
+}
+
+.consulta-info-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.consulta-horario {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.icon-small {
+  width: 16px;
+  height: 16px;
+  fill: var(--text-secondary);
+}
+
+.status-tag {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: 50px;
+}
+
+.status-tag.status-pendente {
+  background-color: rgba(255, 159, 67, 0.12);
+  color: #ff9f43;
+}
+
+.status-tag.status-confirmada {
+  background-color: rgba(40, 199, 111, 0.12);
+  color: #28c76f;
+}
+
+.status-tag.status-cancelada {
+  background-color: rgba(234, 84, 85, 0.12);
+  color: #ea5455;
+}
+
+/* Corpo do Card */
+.consulta-card-body {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-grow: 1;
+}
+
+.info-paciente h4 {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  margin: 0 0 6px 0;
+  font-weight: 600;
+}
+
+.paciente-nome {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+}
+
+.paciente-contatos {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contato-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  word-break: break-all;
+}
+
+.icon-micro {
+  width: 14px;
+  height: 14px;
+  fill: #666680;
+  flex-shrink: 0;
+}
+
+.contato-item:hover .icon-micro {
+  fill: var(--primary-light);
+}
+
+.info-especialidade {
+  margin-top: auto;
+}
+
+.especialidade-tag {
+  background-color: rgba(157, 17, 217, 0.1);
+  border: 1px solid rgba(157, 17, 217, 0.2);
+  color: var(--primary-light);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+/* Ações do Card */
+.consulta-card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+
+.btn-confirmar,
+.btn-cancelar {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.btn-confirmar {
+  background-color: #28c76f;
+  border: 1px solid #28c76f;
+  color: white;
+}
+
+.btn-confirmar:hover:not(:disabled) {
+  background-color: #20a058;
+  border-color: #20a058;
+  box-shadow: 0 4px 12px rgba(40, 199, 111, 0.25);
+  transform: translateY(-1px);
+}
+
+.btn-cancelar {
+  background-color: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+.btn-cancelar:hover:not(:disabled) {
+  background-color: rgba(234, 84, 85, 0.1);
+  border-color: rgba(234, 84, 85, 0.5);
+  color: #ea5455;
+  transform: translateY(-1px);
+}
+
+.btn-confirmar:disabled,
+.btn-cancelar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Layout Responsivo */
+@media (max-width: 768px) {
+  .consultas-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filtro-btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+}

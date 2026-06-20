@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../../styles/Login/Login.css'; 
-import axios from 'axios';
+import api from '../../services/api';
 
 export default function RedefinirSenha() {
   const [senhaAtual, setSenhaAtual] = useState('');
@@ -30,15 +30,11 @@ export default function RedefinirSenha() {
     setCarregando(true);
 
     try {
-      const token = localStorage.getItem('token');
       const userId = localStorage.getItem('userId');
-      const API_BASE_URL = 'http://localhost:3000';
-
+      
       // Envia a nova senha para a rota de atualização do usuário
-      await axios.put(`${API_BASE_URL}/api/users/${userId}`, {
+      await api.put(`/api/users/${userId}`, {
         password: novaSenha
-      }, {
-        headers: { Authorization: `Bearer ${token}` }
       });
 
       setCarregando(false);

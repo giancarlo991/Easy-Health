@@ -15,6 +15,8 @@ function Registro() {
     cpf: '',
     telefone: '',
     endereco: '',
+    cidade: '',
+    estado: '',
     senha: '',
     confirmarSenha: '',
     birthdate: '',
@@ -75,6 +77,8 @@ function Registro() {
         cpf: formData.cpf,
         birthdate: formData.birthdate,
         address: formData.endereco,
+        city: formData.cidade,
+        state: formData.estado,
         role: formData.tipoPerfil === 'profissional' ? 'trainer' : 'user'
       };
 
@@ -89,24 +93,31 @@ function Registro() {
 
           const token = loginResponse.data.token;
           const userId = loginResponse.data.user._id;
+          const role = loginResponse.data.user.role;
+
+          // Salva no localStorage para deixar o usuário logado automaticamente!
+          localStorage.setItem('token', token);
+          localStorage.setItem('userId', userId);
+          localStorage.setItem('role', role);
 
           await api.post(
             '/api/professionals',
             {
               userId: userId,
               type: formData.especialidade,
-              document: formData.crm
-            },
-            {
-              headers: {
-                Authorization: `Bearer ${token}`
-              }
+              professionalRegister: formData.crm,
+              city: formData.cidade,
+              state: formData.estado,
+              document: `uploads/document-${userId}.pdf` // Documento de suporte
             }
           );
-        }
 
-        alert('Conta criada com sucesso!');
-        navigate('/');
+          alert('Conta de profissional criada com sucesso!');
+          navigate('/home2');
+        } else {
+          alert('Conta criada com sucesso! Faça login para acessar.');
+          navigate('/');
+        }
       }
     } catch (error) {
       console.error('Erro ao cadastrar:', error.response?.data || error);
@@ -242,6 +253,33 @@ function Registro() {
 
             <div className="form-row">
               <div className="form-group">
+                <label htmlFor="cidade">Cidade</label>
+                <input
+                  type="text"
+                  id="cidade"
+                  placeholder="Ex: São Paulo"
+                  value={formData.cidade}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="estado">Estado (UF)</label>
+                <input
+                  type="text"
+                  id="estado"
+                  placeholder="Ex: SP"
+                  maxLength="2"
+                  value={formData.estado}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="form-row">
+              <div className="form-group">
                 <label htmlFor="senha">Senha</label>
                 <input
                   type="password"
@@ -299,23 +337,30 @@ function Registro() {
               <div className="form-row conditional-fields">
                 <div className="form-group">
                   <label htmlFor="especialidade">Especialidade</label>
-                  <input
-                    type="text"
+                  <select
                     id="especialidade"
-                    placeholder="Ex: Nutricionista"
                     value={formData.especialidade}
                     onChange={handleChange}
-                  />
+                    required
+                  >
+                    <option value="">Selecione...</option>
+                    <option value="Personal Trainer">Personal Trainer</option>
+                    <option value="Nutricionista">Nutricionista</option>
+                    <option value="Fisioterapeuta">Fisioterapeuta</option>
+                    <option value="Endocrinologista">Endocrinologista</option>
+                    <option value="Dermatologista">Dermatologista</option>
+                  </select>
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="crm">CRM</label>
+                  <label htmlFor="crm">Registro Profissional (CRM/CREF/CRN)</label>
                   <input
                     type="text"
                     id="crm"
-                    placeholder="Seu registro"
+                    placeholder="Ex: CRM-SP 123456"
                     value={formData.crm}
                     onChange={handleChange}
+                    required
                   />
                 </div>
               </div>
