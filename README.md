@@ -83,6 +83,31 @@ React SPA (Vite)  ──► Express REST API (Node.js)  ──► MongoDB Atlas
 
 ---
 
+## 🗄️ Banco de Dados — MongoDB Atlas
+
+O EasyHealth utiliza **[MongoDB Atlas](https://www.mongodb.com/cloud/atlas)** como banco de dados — um SGBD **NoSQL orientado a documentos** hospedado em nuvem.
+
+**Por que MongoDB?**
+- Flexibilidade de schema para dados heterogêneos (logs de visita, planos personalizados, metadados de profissionais)
+- Escalabilidade horizontal nativa
+- Integração simples com Node.js via **Mongoose ODM** (Object Document Mapper)
+- Hospedagem gerenciada no Atlas com backup automático e alta disponibilidade
+
+**Coleções utilizadas:**
+
+| Coleção | Finalidade |
+|---------|------------|
+| `users` | Usuários cadastrados (pacientes, profissionais, admins) |
+| `professionals` | Perfis profissionais vinculados a um `user` (city, state, pricePerHour, weighted_rating) |
+| `consultas` | Agendamentos com status, data, horário e multa aplicada |
+| `trainings` | Planos de exercício criados por profissionais para pacientes |
+| `ratings` | Avaliações 1–5 estrelas (índice único por par usuário/profissional) |
+| `profileviewlogs` | Histórico de visualizações de perfil (janela de 7 dias) |
+
+> A comunicação com o MongoDB é feita **exclusivamente pelo backend** (API). O frontend nunca acessa o banco diretamente — toda interação ocorre via chamadas HTTP autenticadas com JWT.
+
+---
+
 ## ♿ Acessibilidade
 
 Conforme requisitos da disciplina de Experiência do Usuário (UX):
