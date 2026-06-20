@@ -2,7 +2,7 @@
 
 > *"Evolua quem evolui os outros."*
 
-**EasyHealth** é uma Single Page Application (SPA) moderna e responsiva que conecta **Personal Trainers** e **Nutricionistas** a seus clientes/pacientes. A interface permite que profissionais gerenciem seus perfis e planos de treino/dieta, enquanto clientes buscam profissionais por localização ou nota (Ranking Bayesiano), agendam consultas e acompanham suas atividades.
+**EasyHealth** é uma Single Page Application (SPA) moderna e responsiva que conecta **Personal Trainers** e **Nutricionistas** a seus clientes/pacientes. A interface permite que profissionais gerenciem seus perfis e planos de treino/dieta, enquanto clientes buscam profissionais por localização ou nota/Ranking, agendam consultas e acompanham suas atividades.
 
 Desenvolvido para o **Projeto Interdisciplinar IV** do Curso Superior de Tecnologia em **Desenvolvimento de Software Multiplataforma — FATEC Cotia**.
 
