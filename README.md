@@ -10,12 +10,12 @@ Desenvolvido para o **Projeto Interdisciplinar IV** do Curso Superior de Tecnolo
 
 ## 👥 Integrantes do Grupo (Colaboradores)
 
-| Nome | RA |
-|------|----|
-| André L. D. França | [RA] |
-| Daniel França | [RA] |
-| Gustavo [Sobrenome] | [RA] |
-| Giancarlo Sabatini | [RA] |
+| Nome Completo | E-mail Institucional |
+|---------------|----------------------|
+| André Luiz de França Junior | andre.franca3@aluno.cps.sp.gov.br |
+| Daniel França Almeida | daniel.almeida3@aluno.cps.sp.gov.br |
+| Giancarlo Sabatini | giancarlo.sabatini@aluno.cps.sp.gov.br |
+| Gustavo Pereira Queiroz | gustavo.queiroz01@aluno.cps.sp.gov.br |
 
 ---
 
